@@ -1,0 +1,20 @@
+{
+  "name": "vgot/real-debrid",
+  "type": "library",
+  "description": "A simple API interface for real-debrid.com",
+  "keywords": ["real-debrid.com", "unrestrict", "torrent"],
+  "homepage": "https://github.com/ValentinGot/real-debrid",
+  "license": "Apache License 2.O",
+  "authors": [
+    {
+      "name": "Valentin GOT",
+      "email": "gotvalentin@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "psr-0": { "RealDebrid": "." }
+  }
+}
