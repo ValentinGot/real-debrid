@@ -4,7 +4,7 @@ namespace RealDebrid;
 
 class CURL {
     public static $API = 'https://real-debrid.com/';
-    public static $COOKIE_FILE_PATH = sys_get_temp_dir() . '/realdebrid-auth.txt';
+    public static $COOKIE_FILE_PATH = 'cookie.txt';
 
     /**
      * Execute a cURL request
@@ -21,8 +21,8 @@ class CURL {
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_NOBODY, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_COOKIEJAR, self::$COOKIE_FILE_PATH);
-        curl_setopt($ch, CURLOPT_COOKIEFILE, self::$COOKIE_FILE_PATH);
+        curl_setopt($ch, CURLOPT_COOKIEJAR, __DIR__ . '/../' . self::$COOKIE_FILE_PATH);
+        curl_setopt($ch, CURLOPT_COOKIEFILE, __DIR__ . '/../' . self::$COOKIE_FILE_PATH);
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_REFERER, $_SERVER['REQUEST_URI']);
@@ -45,7 +45,7 @@ class CURL {
     public static function cookie() {
         $cookie = array();
 
-        foreach(file(self::$COOKIE_FILE_PATH) as $line) {
+        foreach(file(__DIR__ . '/../' . self::$COOKIE_FILE_PATH) as $line) {
             if($line[0] != '#' && substr_count($line, "\t") == 6) {
                 $variable = explode("\t", $line);
                 $variable = array_map('trim', $variable);

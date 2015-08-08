@@ -5,22 +5,12 @@ namespace RealDebrid;
 class Base {
 
     /**
-     * The user must be authenticated to access the URL
-     *
-     * @return null if the user isn't authenticated
-     */
-    protected function must_be_authenticated() {
-        if(!$this->is_authenticated())
-            return null;
-    }
-
-    /**
      * Test if the user is authenticated
      *
      * @return bool TRUE if he is; FALSE otherwise
      */
     public function is_authenticated() {
-        if(file_exists(CURL::$COOKIE_FILE_NAME)) {
+        if(file_exists(__DIR__ . '/../' . CURL::$COOKIE_FILE_PATH)) {
             $cookie = CURL::cookie();
 
             return isset($cookie->auth) && $cookie->auth->expiration >= time();
