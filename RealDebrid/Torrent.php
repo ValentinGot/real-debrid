@@ -5,20 +5,25 @@ namespace RealDebrid;
 use RealDebrid\Exception\ForbiddenException;
 
 class Torrent extends Base {
+    public static $HOSTER_UPTOBOX = 'utb';
+    public static $HOSTER_1FICHIER = '1f';
+    public static $HOSTER_MEGA = 'mega';
 
     /**
      * Add torrent
      *
      * @param string $magnet Magnet link
+     * @param int $splitting_size Splitting size
+     * @param string $hoster Torrent hoster
      * @return bool TRUE torrent has been successfully added; FALSE otherwise
      * @throws ForbiddenException User is not authenticated
      */
-    public function add($magnet) {
+    public function add($magnet, $splitting_size = 50, $hoster = 'utb') {
         if(!$this->is_authenticated())
             throw new ForbiddenException;
 
         // Convert
-        $id = $this->convert($magnet);
+        $id = $this->convert($magnet, $splitting_size, $hoster);
 
         // Error at torrent convertion
         if(is_null($id))
@@ -49,16 +54,18 @@ class Torrent extends Base {
      * Convert the torrent
      *
      * @param string $magnet Magnet link
+     * @param int $splitting_size Splitting size
+     * @param string $hoster Torrent hoster
      * @return int|null The torrent ID; or NULL if an error occurred
      * @throws \Exception
      */
-    private function convert($magnet) {
+    private function convert($magnet, $splitting_size, $hoster) {
         $curl_opts[CURLOPT_REFERER] = CURL::$API . 'torrents';
         $curl_opts[CURLOPT_POST] = true;
         $curl_opts[CURLOPT_POSTFIELDS] = array(
             'magnet' => $magnet,
-            'splitting_size' => 50,
-            'hoster' => 'utb'
+            'splitting_size' => $splitting_size,
+            'hoster' => $hoster
         );
         $curl_opts[CURLOPT_HTTPHEADER] = array('Content-Type: multipart/form-data');
 
