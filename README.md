@@ -8,6 +8,20 @@ A simple API interface for real-debrid.com
 
 You may install the Real-Debrid API with Composer (recommended) or manually.
 
+For composer install :
+```
+"repositories": [
+  {
+    "type": "git",
+    "url": "https://github.com/ValentinGot/real-debrid"
+  }
+],
+"require": {
+  "php": ">=5.3",
+  "vgot/real-debrid": "dev-master"
+}
+```
+
 ### System Requirements
 
 You need **PHP >= 5.3.0**
