@@ -46,7 +46,18 @@ $user->account();
 
 ### Download
 
-**COMING SOON**
+```
+$download = new \RealDebrid\Download();
+```
+
+#### Unrestrict 
+
+Unrestrict a link and optionally tell the password to the file.
+
+```
+$download->unrestrict('http://uptobox.com/ABCDEFGH');
+$download->unrestrict('http://uptobox.com/ABCDEFGH', 'password');
+```
 
 ### Torrent
 
