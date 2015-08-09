@@ -1,6 +1,6 @@
 # Real-Debrid API
 
-A simple API interface for real-debrid.com
+A simple API interface for real-debrid.com.
 
 ## Getting started
 
