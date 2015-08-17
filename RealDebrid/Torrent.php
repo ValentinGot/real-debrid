@@ -51,6 +51,27 @@ class Torrent extends Base {
     }
 
     /**
+     * Test if the given torrent already exists in the user torrent list
+     *
+     * @param $torrent_name Torrent name
+     * @return bool TRUE if it exists; FALSE otherwise
+     * @throws ForbiddenException User is not authenticated
+     */
+    public function exists($torrent_name) {
+        if(!$this->is_authenticated())
+            throw new ForbiddenException;
+
+        $status = $this->status();
+
+        foreach($status->list as $torrent) {
+            if($torrent->name == $torrent_name)
+                return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Convert the torrent
      *
      * @param string $magnet Magnet link
