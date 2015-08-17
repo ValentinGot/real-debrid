@@ -62,6 +62,7 @@ class Torrent extends Base {
             throw new ForbiddenException;
 
         $status = $this->status();
+        $torrent_name = str_replace(' ', '.', $torrent_name);
 
         foreach($status->list as $torrent) {
             if($torrent->name == $torrent_name)
