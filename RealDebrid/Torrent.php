@@ -62,7 +62,7 @@ class Torrent extends Base {
             throw new ForbiddenException;
 
         $status = $this->status();
-        $torrent_name = str_replace(' ', '.', $torrent_name);
+        $torrent_name = self::strtotorrentname($torrent_name);
 
         foreach($status->list as $torrent) {
             if($torrent->name == $torrent_name)
@@ -110,5 +110,17 @@ class Torrent extends Base {
         $curl_opts[CURLOPT_HTTPHEADER] = array('Content-Type: application/x-www-form-urlencoded');
 
         CURL::exec('ajax/torrent_files.php?id=' . $id, $curl_opts);
+    }
+
+    /**
+     * Convert the string into a Real-Debrid torrent name
+     *
+     * @param string $str The input string
+     * @return string The converted string
+     */
+    public static function strtotorrentname($str) {
+        $str = str_replace(' ', '.', $str);
+
+        return $str;
     }
 }
