@@ -119,7 +119,9 @@ class Torrent extends Base {
      * @return string The converted string
      */
     public static function strtotorrentname($str) {
+        $str = trim($str);
         $str = str_replace(' ', '.', $str);
+        $str = preg_replace('/^(.*)\[.*?\]$/', '$1', $str);
 
         return $str;
     }
