@@ -36,6 +36,20 @@ class Torrent extends Base {
     }
 
     /**
+     * Remove torrent from list
+     *
+     * @param string $torrent_id Torrent ID
+     * @throws ForbiddenException User is not authenticated
+     */
+    public function delete($torrent_id) {
+        if(!$this->is_authenticated())
+            throw new ForbiddenException;
+
+        // Remove
+        CURL::exec('torrents?del=' . $torrent_id);
+    }
+
+    /**
      * Return torrents status
      *
      * @return \stdClass Torrents status
