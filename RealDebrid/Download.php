@@ -19,11 +19,12 @@ class Download extends Base {
             throw new ForbiddenException;
 
         $resp = CURL::exec('ajax/unrestrict.php?out=json&link=' . $link . '&password=' . $password);
+        $resp = json_decode($resp);
 
         // Error handling
         if($resp->error > 0)
-            throw new \Exception();
+            throw new \Exception($resp->message);
 
-        return json_decode($resp);
+        return $resp;
     }
 }
