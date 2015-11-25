@@ -8,18 +8,10 @@ A simple API interface for real-debrid.com.
 
 You may install the Real-Debrid API with Composer (recommended) or manually.
 
-For composer install :
+Via [Composer](https://getcomposer.org) :
+
 ```
-"repositories": [
-  {
-    "type": "git",
-    "url": "https://github.com/ValentinGot/real-debrid"
-  }
-],
-"require": {
-  "php": ">=5.3",
-  "vgot/real-debrid": "dev-master"
-}
+$ composer require vgot/real-debrid:~1.0
 ```
 
 ### System Requirements
@@ -94,3 +86,9 @@ Get user torrents status.
 ```
 $torrent->status();
 ```
+
+## License
+
+The Real-Debrid API is released under the Apache public license.
+
+https://github.com/ValentinGot/real-debrid/blob/master/LICENSE
