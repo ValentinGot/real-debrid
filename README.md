@@ -1,4 +1,4 @@
-# Real-Debrid API
+# [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
 A simple API interface for real-debrid.com.
 
@@ -8,10 +8,18 @@ A simple API interface for real-debrid.com.
 
 You may install the Real-Debrid API with Composer (recommended) or manually.
 
-Via [Composer](https://getcomposer.org) :
+Via [Composer](https://getcomposer.org) (preferred method) :
 
 ```
-$ composer require vgot/real-debrid:~1.0
+$ composer require vgot/real-debrid
+```
+
+Alternative method :
+
+If you don't want/have composer installed on your computer, you can manually download the library by cloning it with git.
+
+```
+$ git clone https://github.com/ValentinGot/real-debrid.git
 ```
 
 ### System Requirements
