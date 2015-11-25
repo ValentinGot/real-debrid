@@ -8,13 +8,13 @@ A simple API interface for real-debrid.com.
 
 You may install the Real-Debrid API with Composer (recommended) or manually.
 
-Via [Composer](https://getcomposer.org) (preferred method) :
+**Via [Composer](https://getcomposer.org) (preferred method)**
 
 ```
 $ composer require vgot/real-debrid
 ```
 
-Manually :
+**Manually**
 
 If you don't want/have composer installed on your computer, you can manually download the library by cloning it with git.
 
