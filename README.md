@@ -14,7 +14,7 @@ Via [Composer](https://getcomposer.org) (preferred method) :
 $ composer require vgot/real-debrid
 ```
 
-Alternative method :
+Manually :
 
 If you don't want/have composer installed on your computer, you can manually download the library by cloning it with git.
 
