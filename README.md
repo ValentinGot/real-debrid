@@ -28,7 +28,7 @@ You need **PHP >= 5.3.0**
 
 ## Basic usage
 
-```
+```php
 // Login
 $user = new \RealDebrid\User();
 $user->login('username', 'password');
@@ -49,7 +49,7 @@ $status = $torrent->status();
 
 ### User
 
-```
+```php
 $user = new \RealDebrid\User();
 ```
 
@@ -57,7 +57,7 @@ $user = new \RealDebrid\User();
 
 Login to real-debrid.com. A cookie is saved and used for the other requests to real-debrid.com.
 
-```
+```php
 $user->login('username', 'password');
 ````
 
@@ -65,7 +65,7 @@ $user->login('username', 'password');
 
 Get all valid hosters supported by real-debrid.com.
 
-```
+```php
 $user->valid_hosters();
 ```
 
@@ -73,13 +73,13 @@ $user->valid_hosters();
 
 Get informations about the logged account.
 
-```
+```php
 $user->account();
 ```
 
 ### Download
 
-```
+```php
 $download = new \RealDebrid\Download();
 ```
 
@@ -87,14 +87,14 @@ $download = new \RealDebrid\Download();
 
 Unrestrict a link and optionally tell the password to the file.
 
-```
+```php
 $download->unrestrict('http://uptobox.com/ABCDEFGH');
 $download->unrestrict('http://uptobox.com/ABCDEFGH', 'password');
 ```
 
 ### Torrent
 
-```
+```php
 $torrent = new \RealDebrid\Torrent();
 ```
 
@@ -102,7 +102,7 @@ $torrent = new \RealDebrid\Torrent();
 
 Add a torrent file (using the magnet link) to the real-debrid.com service and convert it into a direct link available for download.
 
-```
+```php
 $torrent->add('magnet:xxxxxx');
 ```
 
@@ -110,7 +110,7 @@ $torrent->add('magnet:xxxxxx');
 
 Get user torrents status.
 
-```
+```php
 $torrent->status();
 ```
 
