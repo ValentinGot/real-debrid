@@ -26,6 +26,25 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 You need **PHP >= 5.3.0**
 
+## Basic usage
+
+```
+// Login
+$user = new \RealDebrid\User();
+$user->login('username', 'password');
+
+// Unrestrict link
+$download = new \RealDebrid\Download();
+$download->unrestrict('http://yourhoster.com/ABCDEFGH');
+
+// Upload torrent (only via magnet link)
+$torrent = new \RealDebrid\Torrent();
+$torrent->add('magnet:xxxxxx');
+
+// Retrieve uploaded torrent link
+$status = $torrent->status();
+```
+
 ## API Reference
 
 ### User
