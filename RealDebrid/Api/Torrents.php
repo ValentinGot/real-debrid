@@ -4,6 +4,7 @@ namespace RealDebrid\Api;
 use RealDebrid\Request\Torrents\AddMagnet;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
 use RealDebrid\Request\Torrents\InfoRequest;
+use RealDebrid\Request\Torrents\SelectFilesRequest;
 use RealDebrid\Request\Torrents\TorrentsRequest;
 
 /**
@@ -63,8 +64,15 @@ class Torrents extends EndPoint {
         return $this->request(new AddMagnet($this->token, $magnet, $host, $split));
     }
 
-    public function selectFiles() {
-
+    /**
+     * Select files of a torrent to start it
+     * Warning: To get file IDs, use /torrents/info/{id}
+     *
+     * @param string $id Torrent ID
+     * @param string $files Selected files IDs (comma separated) or "all"
+     */
+    public function selectFiles($id, $files = 'all') {
+        $this->request(new SelectFilesRequest($this->token, $id, $files));
     }
 
     public function delete($id) {
