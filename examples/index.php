@@ -19,4 +19,10 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 //----------------------------------------------
 
 //echo json_encode($realDebrid->traffic->get());
-echo json_encode($realDebrid->traffic->details());
+//echo json_encode($realDebrid->traffic->details());
+
+// /downloads
+//----------------------------------------------
+
+echo json_encode($realDebrid->downloads->get());
+//$realDebrid->downloads->delete('UF3VKXU2OCJS4');

@@ -42,12 +42,13 @@ abstract class AbstractRequest {
         $this->setResponseHandler($responseHandler);
 
         try {
-            $response = $this->request($client);
+            return $this->handleResponse($this->request($client), $client);
         } catch(ClientException $e) {
-            throw ExceptionStatusCodeFactory::create($e->getResponse());
+            if ($e->getRequest()->getMethod() !== RequestType::DELETE && json_decode($e->getResponse()->getBody())->error_code != 7)
+                throw ExceptionStatusCodeFactory::create($e->getResponse());
         }
 
-        return $this->handleResponse($response, $client);
+        return null;
     }
 
     public function getUrl() {
