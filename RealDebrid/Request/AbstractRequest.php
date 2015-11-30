@@ -74,7 +74,6 @@ abstract class AbstractRequest {
 
     protected function handleResponse(ResponseInterface $response, ClientInterface $client) {
         $handler = $this->getResponseHandler();
-        $handler->setToken($this->token);
 
         return $handler->handle($response, $client);
     }

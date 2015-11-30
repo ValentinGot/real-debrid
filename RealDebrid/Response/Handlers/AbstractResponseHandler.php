@@ -12,15 +12,6 @@ use RealDebrid\Auth\Token;
  * @author Valentin GOT
  */
 class AbstractResponseHandler {
-    private $token;
-
-    public function getToken() {
-        return $this->token;
-    }
-
-    public function setToken(Token $token) {
-        $this->token = $token;
-    }
 
     protected function getJson(ResponseInterface $response) {
         return json_decode($response->getBody());

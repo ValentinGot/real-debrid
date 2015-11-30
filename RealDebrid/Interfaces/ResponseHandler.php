@@ -15,5 +15,4 @@ use RealDebrid\Auth\Token;
  */
 interface ResponseHandler {
     public function handle(ResponseInterface $response, ClientInterface $client);
-    public function setToken(Token $token);
 }
