@@ -29,6 +29,8 @@ abstract class AbstractRequest {
      */
     private $responseHandler;
 
+    protected $queryParams = array();
+
     abstract public function getRequestType();
     abstract public function getUri();
 
@@ -50,7 +52,7 @@ abstract class AbstractRequest {
 
     public function getUrl() {
         // FIXME Create an UriBuilder to replace parameters
-        return $this->getUri();
+        return $this->getUri() . '?' . http_build_query($this->queryParams);
     }
 
     public function setToken(Token $token = null) {
