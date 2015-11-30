@@ -26,6 +26,12 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 You need **PHP >= 5.3.0**
 
+### Authentication
+
+To retrieve your token, you must authenticate to [Real-Debrid](https://real-debrid.com/) and then go to the following URL :
+
+https://real-debrid.com/apitoken
+
 ## Basic usage
 
 ```php
