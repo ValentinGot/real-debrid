@@ -24,5 +24,12 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /downloads
 //----------------------------------------------
 
-echo json_encode($realDebrid->downloads->get());
+//echo json_encode($realDebrid->downloads->get());
 //$realDebrid->downloads->delete('UF3VKXU2OCJS4');
+
+// /torrents
+//----------------------------------------------
+
+//echo json_encode($realDebrid->torrents->get());
+echo json_encode($realDebrid->torrents->torrent('2KB2OULS7HKUK'));
+//echo json_encode($realDebrid->torrents->availableHosts());

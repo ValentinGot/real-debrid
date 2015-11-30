@@ -4,6 +4,7 @@ namespace RealDebrid;
 
 use GuzzleHttp\ClientInterface;
 use RealDebrid\Api\Downloads;
+use RealDebrid\Api\Torrents;
 use RealDebrid\Api\Traffic;
 use RealDebrid\Api\Unrestrict;
 use RealDebrid\Api\User;
@@ -38,6 +39,11 @@ class RealDebrid {
     public $downloads;
 
     /**
+     * @var Torrents
+     */
+    public $torrents;
+
+    /**
      * @var Token
      */
     private $token;
@@ -61,5 +67,6 @@ class RealDebrid {
         $this->unrestrict = new Unrestrict($this->token, $this->client);
         $this->traffic = new Traffic($this->token, $this->client);
         $this->downloads = new Downloads($this->token, $this->client);
+        $this->torrents = new Torrents($this->token, $this->client);
     }
 }
