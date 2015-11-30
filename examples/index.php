@@ -13,4 +13,10 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /unrestrict
 //----------------------------------------------
 
-$realDebrid->unrestrict->link('https://mega.nz/#!Z0snjBCa!7_6P4JygN7FZWOp-cQu544n5QTN0mwEQVhKSQ-NqH0Y');
+//$realDebrid->unrestrict->link('https://mega.nz/#!Z0snjBCa!7_6P4JygN7FZWOp-cQu544n5QTN0mwEQVhKSQ-NqH0Y');
+
+// /traffic
+//----------------------------------------------
+
+//echo json_encode($realDebrid->traffic->get());
+echo json_encode($realDebrid->traffic->details());

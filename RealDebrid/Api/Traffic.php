@@ -1,6 +1,9 @@
 <?php
 
 namespace RealDebrid\Api;
+use Carbon\Carbon;
+use RealDebrid\Request\Traffic\DetailsRequest;
+use RealDebrid\Request\Traffic\TrafficRequest;
 
 /**
  * Class Traffic
@@ -16,17 +19,17 @@ class Traffic extends EndPoint {
      * @return \stdClass Traffic informations
      */
     public function get() {
-        return $this->request();
+        return $this->request(new TrafficRequest($this->token));
     }
 
     /**
      * Get traffic details on each hoster used during a defined period
      *
-     * @param string|null $start Start period, default: a week ago
-     * @param string|null $end End period, default: today
-     * @return mixed
+     * @param Carbon|null $start Start period, default: a week ago
+     * @param Carbon|null $end End period, default: today
+     * @return \stdClass Traffic details
      */
-    public function details($start = null, $end = null) {
-        return $this->request();
+    public function details(Carbon $start = null, Carbon $end = null) {
+        return $this->request(new DetailsRequest($this->token, $start, $end));
     }
 }

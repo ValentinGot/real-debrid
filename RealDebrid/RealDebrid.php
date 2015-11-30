@@ -3,6 +3,7 @@
 namespace RealDebrid;
 
 use GuzzleHttp\ClientInterface;
+use RealDebrid\Api\Traffic;
 use RealDebrid\Api\Unrestrict;
 use RealDebrid\Api\User;
 use RealDebrid\Auth\Token;
@@ -26,6 +27,11 @@ class RealDebrid {
     public $unrestrict;
 
     /**
+     * @var Traffic
+     */
+    public $traffic;
+
+    /**
      * @var Token
      */
     private $token;
@@ -47,5 +53,6 @@ class RealDebrid {
     private function createWrappers() {
         $this->user = new User($this->token, $this->client);
         $this->unrestrict = new Unrestrict($this->token, $this->client);
+        $this->traffic = new Traffic($this->token, $this->client);
     }
 }
