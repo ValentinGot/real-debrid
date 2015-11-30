@@ -15,6 +15,12 @@ use RealDebrid\Request\RequestType;
 class DeleteRequest extends AbstractRequest {
     private $id;
 
+    /**
+     * Delete a link from downloads list
+     *
+     * @param Token $token Access token
+     * @param string $id Download ID
+     */
     public function __construct(Token $token, $id) {
         parent::__construct();
 

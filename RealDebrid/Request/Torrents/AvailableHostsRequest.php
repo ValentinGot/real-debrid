@@ -14,6 +14,11 @@ use RealDebrid\Request\RequestType;
  */
 class AvailableHostsRequest extends AbstractRequest {
 
+    /**
+     * Get available hosts to upload the torrent to
+     *
+     * @param Token $token Access token
+     */
     public function __construct(Token $token) {
         parent::__construct();
 

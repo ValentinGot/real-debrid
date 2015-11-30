@@ -14,6 +14,11 @@ use RealDebrid\Request\RequestType;
  */
 class TrafficRequest extends AbstractRequest {
 
+    /**
+     * Get traffic informations for limited hosters (limits, current usage, extra packages)
+     *
+     * @param Token $token Access token
+     */
     public function __construct(Token $token) {
         parent::__construct();
 

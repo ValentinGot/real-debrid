@@ -1,6 +1,7 @@
 <?php
 
 namespace RealDebrid\Api;
+use RealDebrid\Request\Torrents\AddMagnet;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
 use RealDebrid\Request\Torrents\InfoRequest;
 use RealDebrid\Request\Torrents\TorrentsRequest;
@@ -46,5 +47,27 @@ class Torrents extends EndPoint {
         return $this->request(new AvailableHostsRequest($this->token));
     }
 
+    public function addTorrent() {
+        //return $this->request();
+    }
 
+    /**
+     * Add a magnet link to download
+     *
+     * @param string $magnet Magnet link
+     * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
+     * @param int|null $split Split size (under max_split_size of concerned hoster retrieved from /torrents/availableHosts)
+     * @return \stdClass Magnet information
+     */
+    public function addMagnet($magnet, $host = null, $split = null) {
+        return $this->request(new AddMagnet($this->token, $magnet, $host, $split));
+    }
+
+    public function selectFiles() {
+
+    }
+
+    public function delete($id) {
+
+    }
 }

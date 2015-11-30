@@ -15,6 +15,12 @@ use RealDebrid\Request\RequestType;
 class InfoRequest extends AbstractRequest {
     private $id;
 
+    /**
+     * Get all informations on the asked torrent
+     *
+     * @param Token $token Access token
+     * @param string $id Torrent ID
+     */
     public function __construct(Token $token, $id) {
         parent::__construct();
 

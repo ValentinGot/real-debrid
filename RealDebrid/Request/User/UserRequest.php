@@ -14,6 +14,11 @@ use RealDebrid\Request\RequestType;
  */
 class UserRequest extends AbstractRequest {
 
+    /**
+     * Returns some information on the current user.
+     *
+     * @param Token $token Access token
+     */
     public function __construct(Token $token) {
         parent::__construct();
 

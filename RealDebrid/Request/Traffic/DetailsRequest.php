@@ -15,6 +15,13 @@ use RealDebrid\Request\RequestType;
  */
 class DetailsRequest extends AbstractRequest {
 
+    /**
+     * Get traffic details on each hoster used during a defined period
+     *
+     * @param Token $token Access token
+     * @param Carbon|null $start Start period, default: a week ago
+     * @param Carbon|null $end End period, default: today
+     */
     public function __construct(Token $token, Carbon $start = null, Carbon $end = null) {
         parent::__construct();
 
