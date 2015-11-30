@@ -4,6 +4,7 @@ namespace RealDebrid;
 
 use GuzzleHttp\ClientInterface;
 use RealDebrid\Api\Downloads;
+use RealDebrid\Api\Forum;
 use RealDebrid\Api\Hosts;
 use RealDebrid\Api\Torrents;
 use RealDebrid\Api\Traffic;
@@ -50,6 +51,11 @@ class RealDebrid {
     public $hosts;
 
     /**
+     * @var Forum
+     */
+    public $forum;
+
+    /**
      * @var Token
      */
     private $token;
@@ -75,5 +81,6 @@ class RealDebrid {
         $this->downloads = new Downloads($this->token, $this->client);
         $this->torrents = new Torrents($this->token, $this->client);
         $this->hosts = new Hosts($this->token, $this->client);
+        $this->forum = new Forum($this->token, $this->client);
     }
 }

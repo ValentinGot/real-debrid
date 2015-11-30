@@ -38,7 +38,13 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /hosts
 //----------------------------------------------
 
-echo json_encode($realDebrid->hosts->get());
+//echo json_encode($realDebrid->hosts->get());
 //echo json_encode($realDebrid->hosts->status());
 //echo json_encode($realDebrid->hosts->regex());
 //echo json_encode($realDebrid->hosts->domains());
+
+// /forum
+//----------------------------------------------
+
+//echo json_encode($realDebrid->forum->forums());
+//echo json_encode($realDebrid->forum->topics(4));
