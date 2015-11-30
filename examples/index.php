@@ -48,3 +48,8 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 
 //echo json_encode($realDebrid->forum->forums());
 //echo json_encode($realDebrid->forum->topics(4));
+
+// /settings
+//----------------------------------------------
+
+echo json_encode($realDebrid->settings->get());
