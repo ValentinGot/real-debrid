@@ -3,6 +3,7 @@
 namespace RealDebrid\Api;
 use RealDebrid\Request\Torrents\AddMagnet;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
+use RealDebrid\Request\Torrents\DeleteRequest;
 use RealDebrid\Request\Torrents\InfoRequest;
 use RealDebrid\Request\Torrents\SelectFilesRequest;
 use RealDebrid\Request\Torrents\TorrentsRequest;
@@ -75,7 +76,12 @@ class Torrents extends EndPoint {
         $this->request(new SelectFilesRequest($this->token, $id, $files));
     }
 
+    /**
+     * Delete a torrent from torrents list
+     *
+     * @param string $id Torrent ID
+     */
     public function delete($id) {
-
+        $this->request(new DeleteRequest($this->token, $id));
     }
 }
