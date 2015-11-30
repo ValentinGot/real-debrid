@@ -1,5 +1,3 @@
-.idea
-vendor
-cookie.txt
+.idea/
+vendor/
 composer.lock
-index.php
