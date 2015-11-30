@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0"
+    "php": ">=5.3.0",
+    "guzzlehttp/guzzle": "^6.1"
   },
   "require-dev": {
     "phpdocumentor/phpdocumentor": "2.*"
