@@ -1,0 +1,226 @@
+{
+	"id": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+	"name": "Real-Debrid API",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "8e66204c-cfd5-9468-6ddd-cbcaeb059236",
+			"name": "Downloads",
+			"description": "",
+			"order": [
+				"40deaeb0-4178-219f-fe55-8fc5ea9e2b71",
+				"6d20d078-8195-a560-72e6-7053154666fb"
+			],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "352bb361-a84e-d6dd-ef43-5be6a2a7a70a",
+			"name": "Forum",
+			"description": "",
+			"order": [],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "6be0c0f6-4b61-1ec4-e4f5-67bc39c5cd30",
+			"name": "Hosts",
+			"description": "",
+			"order": [],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "66aee2ec-25a7-1630-b2fc-d6621b595139",
+			"name": "Settings",
+			"description": "",
+			"order": [],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "10c13451-a56a-1df0-aaa2-a5d881c1b48e",
+			"name": "Torrents",
+			"description": "",
+			"order": [],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "2536fafa-3da8-b33c-7cbe-bef3a0bb66e2",
+			"name": "Traffic",
+			"description": "",
+			"order": [
+				"f5a06b71-5421-49bd-745b-f563a28c63aa",
+				"9c7ab919-89ca-a3b8-cef8-eb9a911c42d9"
+			],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "ea03804b-e29b-e3e5-c8bd-2de860eaad2d",
+			"name": "Unrestrict",
+			"description": "",
+			"order": [
+				"5e5a583b-254f-ba38-5e53-6ce582597633"
+			],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		},
+		{
+			"id": "7b2eb5dc-6e6b-e602-7f3c-530fed739043",
+			"name": "User",
+			"description": "",
+			"order": [
+				"cb97fddc-748a-1523-c71a-aefc4f0efc28"
+			],
+			"owner": 0,
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f"
+		}
+	],
+	"timestamp": 1448896305692,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "40deaeb0-4178-219f-fe55-8fc5ea9e2b71",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\n",
+			"url": "{{BASE_URL}}/downloads",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"data": [],
+			"dataMode": "params",
+			"name": "Downloads",
+			"description": "Get user downloads list",
+			"descriptionFormat": "html",
+			"time": 1448902342395,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8e66204c-cfd5-9468-6ddd-cbcaeb059236"
+		},
+		{
+			"id": "5e5a583b-254f-ba38-5e53-6ce582597633",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\nX-HTTP-Verb: POST\n",
+			"url": "{{BASE_URL}}/unrestrict/link",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1448902153389,
+			"name": "Link",
+			"description": "Unrestrict a hoster link and get a new unrestricted link",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"responses": [],
+			"rawModeData": "{\n    \"link\": \"https://mega.nz/#!Z0snjBCa!7_6P4JygN7FZWOp-cQu544n5QTN0mwEQVhKSQ-NqH0Y\"\n}"
+		},
+		{
+			"id": "6d20d078-8195-a560-72e6-7053154666fb",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\n",
+			"url": "{{BASE_URL}}/downloads/delete/PFNRM2M7YNMF6",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1448902424351,
+			"name": "Delete download",
+			"description": "Delete a link from downloads list, do not return anything with a 204 HTTP code",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"responses": []
+		},
+		{
+			"id": "9c7ab919-89ca-a3b8-cef8-eb9a911c42d9",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\n",
+			"url": "{{BASE_URL}}/traffic/details",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"data": [],
+			"dataMode": "params",
+			"name": "Traffic details",
+			"description": "Get traffic details on each hoster used during a defined period",
+			"descriptionFormat": "html",
+			"time": 1448902320067,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "2536fafa-3da8-b33c-7cbe-bef3a0bb66e2"
+		},
+		{
+			"id": "cb97fddc-748a-1523-c71a-aefc4f0efc28",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\n",
+			"url": "{{BASE_URL}}/user",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "link",
+					"value": "https://mega.nz/#!Z0snjBCa!7_6P4JygN7FZWOp-cQu544n5QTN0mwEQVhKSQ-NqH0Y",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": null,
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "remote",
+					"value": null,
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1448901679305,
+			"name": "User",
+			"description": "Returns some information on the current user.",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"responses": []
+		},
+		{
+			"id": "f5a06b71-5421-49bd-745b-f563a28c63aa",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{TOKEN}}\n",
+			"url": "{{BASE_URL}}/traffic",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1448902301868,
+			"name": "Traffic",
+			"description": "Get traffic informations for limited hosters (limits, current usage, extra packages)",
+			"collectionId": "d72344ce-1fb4-ea46-d6cc-541bc0b28f9f",
+			"responses": []
+		}
+	]
+}
