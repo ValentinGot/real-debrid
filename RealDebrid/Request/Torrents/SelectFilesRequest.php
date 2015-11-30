@@ -14,6 +14,7 @@ use RealDebrid\Request\RequestType;
  */
 class SelectFilesRequest extends AbstractRequest {
     private $id;
+    private $body = array();
 
     /**
      * Select files of a torrent to start it
@@ -28,7 +29,7 @@ class SelectFilesRequest extends AbstractRequest {
 
         $this->setToken($token);
         $this->id = $id;
-        $this->queryParams['files'] = $files;
+        $body['files'] = $files;
     }
 
     public function getId() {
@@ -41,5 +42,9 @@ class SelectFilesRequest extends AbstractRequest {
 
     public function getUri() {
         return "torrents/selectFiles/:id";
+    }
+
+    public function getPostBody() {
+        return $this->body;
     }
 }
