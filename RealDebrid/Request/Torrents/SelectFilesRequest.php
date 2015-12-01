@@ -22,14 +22,14 @@ class SelectFilesRequest extends AbstractRequest {
      * Warning: To get file IDs, use /torrents/info/{id}
      * @param Token $token Access token
      * @param string $id Torrent ID
-     * @param string $files Selected files IDs (comma separated) or "all"
+     * @param array $files Array of selected files IDs
      */
-    public function __construct(Token $token, $id, $files) {
+    public function __construct(Token $token, $id, array $files) {
         parent::__construct();
 
         $this->setToken($token);
         $this->id = $id;
-        $this->addToBody('files', $files);
+        $this->addToBody('files', (count($files) > 0) ? implode(',', $files) : 'all');
     }
 
     public function getId() {

@@ -83,9 +83,9 @@ class Torrents extends EndPoint {
      *
      * Warning: To get file IDs, use /torrents/info/{id}
      * @param string $id Torrent ID
-     * @param string $files Selected files IDs (comma separated) or "all"
+     * @param array $files Array of selected files IDs
      */
-    public function selectFiles($id, $files = 'all') {
+    public function selectFiles($id, array $files = array()) {
         $this->request(new SelectFilesRequest($this->token, $id, $files));
     }
 
