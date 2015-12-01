@@ -155,10 +155,14 @@ All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unre
 
 All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` namespace.
 
+```php
+\RealDebrid\RealDebrid()->unrestrict->get(): Returns some information on the current user
+```
+
 ## Response handlers
 
 ## License
 
-The Real-Debrid API is released under the Apache public license.
+The Real-Debrid API is released under the MIT license.
 
 https://github.com/ValentinGot/real-debrid/blob/master/LICENSE
