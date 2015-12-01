@@ -159,8 +159,6 @@ All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` na
 \RealDebrid\RealDebrid()->unrestrict->get(): Returns some information on the current user
 ```
 
-## Response handlers
-
 ## License
 
 The Real-Debrid API is released under the MIT license.
