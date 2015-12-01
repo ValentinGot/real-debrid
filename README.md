@@ -26,11 +26,11 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 ### System Requirements
 
-You need **PHP >= 5.3.0**
+You need **PHP >= 5.3.0**.
 
 ### Authentication
 
-To retrieve your token, you must authenticate to [Real-Debrid](https://real-debrid.com/) and then go to the following URL :
+To retrieve your token, you must authenticate to [Real-Debrid](https://real-debrid.com/) and then go to the following URL:
 
 https://real-debrid.com/apitoken
 
@@ -50,7 +50,7 @@ $token = new Token('MY_TOKEN');
 $realDebrid = new RealDebrid($token);
 ```
 
-### Use API
+### Using the API
 
 Here is some examples on how to use the Real-Debrid API.
 
@@ -59,10 +59,10 @@ Here is some examples on how to use the Real-Debrid API.
 $userInformation = $realDebrid->user->get();
 
 // Unrestrict a link
-$link = $realDebrid->unrestrict->link('https://www.youtube.com/watch?v=nlcIKh6sBtc');
+$link = $realDebrid->unrestrict->link('http://MY_LINK');
 
 // Add a magnet link and start the torrent
-$torrent = $realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:637CE466AEC75A977D8BD02923ACF2788B2FA782&dn=game+of+thrones+s05e01+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce');
+$torrent = $realDebrid->torrents->addMagnet('magnet:MY_MAGNET_LINK');
 $realDebrid->torrents->selectFiles($torrent->id);
 
 // Retrieve torrents list
@@ -74,6 +74,8 @@ $torrentQueue = $realDebrid->torrents->get();
 Methods are grouped by namespaces (e.g. "unrestrict", "user").
 
 ### Downloads
+
+All **Downloads** methods are available under ```php \RealDebrid\RealDebrid->downloads``` namespace.
 
 ### Forum
 
