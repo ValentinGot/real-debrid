@@ -109,10 +109,10 @@ All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settin
 
 ```php
 \RealDebrid\RealDebrid()->settings->get(): Get current user settings with possible values to update
-\RealDebrid\RealDebrid()->settings->update($name, $value): Update a user setting
-\RealDebrid\RealDebrid()->settings->convertPoints(): Convert fidelity points
-\RealDebrid\RealDebrid()->settings->disableLogs(): Disable user logs (**This action is currently irreversible, take care**)
-\RealDebrid\RealDebrid()->settings->changePassword(): Send the verification email to change the password
+\RealDebrid\RealDebrid()->settings->update($name, $value): Update a user setting. NOT WORKING YET
+\RealDebrid\RealDebrid()->settings->convertPoints(): Convert fidelity points. NOT WORKING YET
+\RealDebrid\RealDebrid()->settings->disableLogs(): Disable user logs ("This action is currently irreversible, take care"). NOT WORKING YET
+\RealDebrid\RealDebrid()->settings->changePassword(): Send the verification email to change the password. NOT WORKING YET
 \RealDebrid\RealDebrid()->settings->addAvatar($path): Upload a new user avatar image
 \RealDebrid\RealDebrid()->settings->deleteAvatar(): Reset user avatar image to default
 ```
@@ -120,6 +120,16 @@ All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settin
 ### Torrents
 
 All **Torrents** methods are available under ```\RealDebrid\RealDebrid()->torrents``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->torrents->get($filter = false, $page = 1, $limit = 50, $offset = null): Get user torrents list
+\RealDebrid\RealDebrid()->torrents->torrent($id): Get all information on the asked torrent
+\RealDebrid\RealDebrid()->torrents->availableHosts(): Get available hosts to upload the torrent to
+\RealDebrid\RealDebrid()->torrents->addTorrent(): Add a torrent file to download. NOT WORKING YET
+\RealDebrid\RealDebrid()->torrents->addMagnet($magnet, $host = null, $split = null): Add a magnet link to download
+\RealDebrid\RealDebrid()->torrents->selectFiles($id, array $files = array()): Select files of a torrent to start it
+\RealDebrid\RealDebrid()->torrents->delete($id): Delete a torrent from torrents list
+```
 
 ### Traffic
 
