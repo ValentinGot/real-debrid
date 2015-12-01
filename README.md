@@ -95,6 +95,13 @@ All **Forum** methods are available under ```\RealDebrid\RealDebrid()->forum``` 
 
 All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` namespace.
 
+```php
+\RealDebrid\RealDebrid()->hosts->get(): Get supported hosts
+\RealDebrid\RealDebrid()->hosts->status(): Get status of supported hosters or not and their status on competitors
+\RealDebrid\RealDebrid()->hosts->regex(): Get all supported links Regex, useful to find supported links inside a document
+\RealDebrid\RealDebrid()->hosts->domains(): Get all hoster domains supported on the service
+```
+
 ### Settings
 
 All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settings``` namespace.
