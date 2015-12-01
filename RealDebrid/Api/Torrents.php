@@ -4,6 +4,7 @@ namespace RealDebrid\Api;
 use RealDebrid\Request\Torrents\AddMagnet;
 use RealDebrid\Request\Torrents\AddMagnetRequest;
 use RealDebrid\Request\Torrents\AddTorrent;
+use RealDebrid\Request\Torrents\AddTorrentRequest;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
 use RealDebrid\Request\Torrents\DeleteRequest;
 use RealDebrid\Request\Torrents\InfoRequest;
@@ -58,11 +59,11 @@ class Torrents extends EndPoint {
      * Add a torrent file to download
      *
      * The files must be selected with the selectFiles method to start the torrent
+     * @param string $path Path to the torrent file
      * @return \stdClass Torrent information
      */
-    public function addTorrent() {
-        // TODO add torrent
-        //return $this->request(new AddTorrentRequest($this->token));
+    public function addTorrent($path) {
+        return $this->request(new AddTorrentRequest($this->token, $path));
     }
 
     /**

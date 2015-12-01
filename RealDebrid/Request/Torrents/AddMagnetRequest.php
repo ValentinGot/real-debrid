@@ -18,6 +18,7 @@ class AddMagnetRequest extends AbstractRequest {
     /**
      * Add a magnet link to download
      *
+     * The files must be selected with the selectFiles method to start the torrent
      * @param Token $token Access token
      * @param string $magnet Magnet link
      * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
