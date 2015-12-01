@@ -14,7 +14,8 @@
   "require": {
     "php": ">=5.3.0",
     "guzzlehttp/guzzle": "^6.1",
-    "nesbot/carbon": "^1.21"
+    "nesbot/carbon": "^1.21",
+    "illuminate/support": "^5.1"
   },
   "require-dev": {
     "phpdocumentor/phpdocumentor": "2.*"
