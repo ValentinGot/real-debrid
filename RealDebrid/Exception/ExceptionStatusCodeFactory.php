@@ -5,13 +5,20 @@ namespace RealDebrid\Exception;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class ExceptionStatusCodeFactory
+ * ExceptionStatusCodeFactory
  *
+ * Handle HTTP requests errors
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */
 class ExceptionStatusCodeFactory {
 
+    /**
+     * Return a new exception depending on the HTTP status code
+     *
+     * @param ResponseInterface $response Server-side response
+     * @return ActionAlreadyDoneException|BadRequestException|BadTokenException|PermissionDeniedException|RealDebridException|UnknownResourceException
+     */
     public static function create(ResponseInterface $response) {
         $error = json_decode($response->getBody());
 

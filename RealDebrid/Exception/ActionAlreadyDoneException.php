@@ -3,8 +3,9 @@
 namespace RealDebrid\Exception;
 
 /**
- * Class ActionAlreadyDoneException
+ * ActionAlreadyDoneException
  *
+ * The action has already been done. HTTP Status Code: 202
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */

@@ -55,9 +55,11 @@ abstract class AbstractRequest {
     /**
      * Make the API request and handle the response before returning it
      *
-     * @param ClientInterface $client Client interface
+     * @param ClientInterface $client Client interface for sending HTTP requests
      * @param ResponseHandler|null $responseHandler Override the default response handler with one of your own
      * @return mixed|null The handled response
+     * @throws \RealDebrid\Exception\ActionAlreadyDoneException
+     * @throws \RealDebrid\Exception\BadRequestException
      * @throws \RealDebrid\Exception\BadTokenException
      * @throws \RealDebrid\Exception\PermissionDeniedException
      * @throws \RealDebrid\Exception\RealDebridException

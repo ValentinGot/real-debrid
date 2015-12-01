@@ -7,26 +7,30 @@ use RealDebrid\Auth\Token;
 use RealDebrid\Request\AbstractRequest;
 
 /**
- * Class EndPoint
+ * API EndPoint
  *
+ * Extended by all API classes to instantiate it and making the HTTP requests
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @filesource
  */
 class EndPoint {
 
     /**
-     * @var Token
+     * @var Token Access token to authenticate HTTP requests
      */
     protected $token;
 
     /**
-     * @var ClientInterface
+     * @var ClientInterface Client interface for sending HTTP requests
      */
     private $client;
 
     /**
      * EndPoint constructor.
      *
+     * Initialize the API
      * @param Token $token Access Token
      * @param ClientInterface $client Client interface
      */
@@ -39,7 +43,7 @@ class EndPoint {
      * Requests the abstract request.
      *
      * @param AbstractRequest $request
-     * @return null
+     * @return mixed|null The handled response
      * @throws \RealDebrid\Exception\BadTokenException
      * @throws \RealDebrid\Exception\PermissionDeniedException
      * @throws \RealDebrid\Exception\RealDebridException

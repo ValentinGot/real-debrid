@@ -17,13 +17,14 @@ class UriBuilder {
     }
 
     /**
-     * Formats the uri for a Request object. Parts of the uri that start with an
+     * Formats the uri for a Request object.
+     *
+     * Parts of the uri that start with an
      * ":" are the parameters of the uri. This method initiates the formatting process
      * for such an uri by getting the parameters first, and with the name of a parameter,
      * i'ts value can be retrieved. The value is either stored inside a public property of
      * the request object. Or it can be retrieved by a getter.
      * It also add the query parameters add the end of the URI
-     *
      * @param AbstractRequest $request
      * @return string
      */
@@ -55,9 +56,9 @@ class UriBuilder {
 
     /**
      * Gets the values for all the parameters that are retrieved by getParametersInUri.
+     *
      * When all the parameters are retrieved, it returns an associative array of [parameter => value]
      * If one parameter fails to be retrieved, it results in a MalformedParameterException.
-     *
      * @param array $parameters
      * @return array
      * @throws MalformedParameterException
@@ -75,12 +76,10 @@ class UriBuilder {
 
     /**
      * Get the value for the parameter that is prefixed with a ":" inside the url.
+     *
      * It can be retrieved by a getter (get+ParameterName) or by assigning the value
      * to a public property with the same name as the url parameter.
-     *
-     * $url = "torrents/info/:id"
-     * becomes "torrents/info/ABCDEFG" when $request::username is set to "ABCDEFG"
-     *
+     * $url = "torrents/info/:id" becomes "torrents/info/ABCDEFG" when $request::username is set to "ABCDEFG"
      * @param $parameter
      * @return mixed
      * @throws MalformedParameterException
@@ -114,8 +113,7 @@ class UriBuilder {
     }
 
     /**
-     * Formats the uri, it replaces the parameters with the values it has retrieved from
-     * the request object.
+     * Formats the uri, it replaces the parameters with the values it has retrieved from the request object.
      *
      * @param $values
      * @return mixed

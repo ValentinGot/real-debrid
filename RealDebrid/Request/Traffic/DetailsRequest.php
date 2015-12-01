@@ -8,8 +8,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class DetailsRequest
+ * GET /traffic/details
  *
+ * Get traffic details on each hoster used during a defined period
  * @package RealDebrid\Request\Traffic
  * @author Valentin GOT
  */

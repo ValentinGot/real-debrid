@@ -3,8 +3,9 @@
 namespace RealDebrid\Exception;
 
 /**
- * Class PermissionDenied
+ * PermissionDenied
  *
+ * Permission denied (account locked or not premium). HTTP Status Code: 403
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */

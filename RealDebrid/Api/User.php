@@ -5,10 +5,13 @@ namespace RealDebrid\Api;
 use RealDebrid\Request\User\UserRequest;
 
 /**
- * Class User
+ * /user namespace
  *
+ * Provides a set of methods to retrieve some information about a Real-Debrid user
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class User extends EndPoint {
 

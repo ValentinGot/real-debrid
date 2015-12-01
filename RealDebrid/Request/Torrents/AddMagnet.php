@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class AddMagnet
+ * POST /torrents/addMagnet
  *
+ * Add a magnet link to download
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */

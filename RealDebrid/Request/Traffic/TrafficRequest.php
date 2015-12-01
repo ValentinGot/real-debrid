@@ -7,15 +7,16 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class TrafficRequest
+ * GET /traffic
  *
+ * Get traffic information for limited hosters (limits, current usage, extra packages)
  * @package RealDebrid\Request\Traffic
  * @author Valentin GOT
  */
 class TrafficRequest extends AbstractRequest {
 
     /**
-     * Get traffic informations for limited hosters (limits, current usage, extra packages)
+     * Get traffic information for limited hosters (limits, current usage, extra packages)
      *
      * @param Token $token Access token
      */

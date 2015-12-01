@@ -3,8 +3,9 @@
 namespace RealDebrid\Exception;
 
 /**
- * Class BadTokenException
+ * BadTokenException
  *
+ * Bad token (expired or invalid). HTTP Status Code: 404
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */

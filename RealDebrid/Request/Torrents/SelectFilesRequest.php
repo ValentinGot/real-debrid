@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class SelectFilesRequest
+ * POST /torrents/selectFiles/{id}
  *
+ * Select files of a torrent to start it
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
@@ -18,8 +19,8 @@ class SelectFilesRequest extends AbstractRequest {
 
     /**
      * Select files of a torrent to start it
-     * Warning: To get file IDs, use /torrents/info/{id}
      *
+     * Warning: To get file IDs, use /torrents/info/{id}
      * @param Token $token Access token
      * @param string $id Torrent ID
      * @param string $files Selected files IDs (comma separated) or "all"

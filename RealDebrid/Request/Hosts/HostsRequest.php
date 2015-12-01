@@ -6,8 +6,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class HostsRequest
+ * GET /hosts
  *
+ * Get supported hosts
  * @package RealDebrid\Request\Hosts
  * @author Valentin GOT
  */

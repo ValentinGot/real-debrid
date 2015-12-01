@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class DomainsRequest
+ * GET /hosts/domains
  *
+ * Get all hoster domains supported on the service
  * @package RealDebrid\Request\Hosts
  * @author Valentin GOT
  */

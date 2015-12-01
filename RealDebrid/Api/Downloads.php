@@ -6,17 +6,20 @@ use RealDebrid\Request\Downloads\DeleteRequest;
 use RealDebrid\Request\Downloads\DownloadsRequest;
 
 /**
- * Class Downloads
+ * /downloads namespace
  *
+ * Provides a set of methods to retrieve or delete download information
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Downloads extends EndPoint {
 
     /**
      * Get user downloads list
-     * Warning: You can not use both offset and page at the same time, page is prioritzed in case it happens.
      *
+     * Warning: You can not use both offset and page at the same time, page is prioritized in case it happens.
      * @param int $page Starting offset (must be within 0 and X-Total-Count HTTP header)
      * @param int $limit Pagination system
      * @param int|null $offset Entries returned per page / request (must be within 0 and 100, default: 50)

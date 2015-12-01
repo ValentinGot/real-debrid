@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class UpdateRequest
+ * POST /settings/update
  *
+ * Update a user setting
  * @package RealDebrid\Request\Settings
  * @author Valentin GOT
  */

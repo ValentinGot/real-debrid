@@ -7,13 +7,19 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class AddTorrent
+ * PUT /torrents/addTorrent
  *
+ * Add a torrent file to download
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
 class AddTorrent extends AbstractRequest {
 
+    /**
+     * Add a torrent file to download
+     *
+     * @param Token $token Access token
+     */
     public function __construct(Token $token) {
         parent::__construct();
 

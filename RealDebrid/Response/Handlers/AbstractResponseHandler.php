@@ -6,8 +6,9 @@ use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Auth\Token;
 
 /**
- * Class AbstractResponseHandler
+ * AbstractResponseHandler
  *
+ * Parent response handler
  * @package RealDebrid\Response\Handlers
  * @author Valentin GOT
  */

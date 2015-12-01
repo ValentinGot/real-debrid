@@ -5,10 +5,13 @@ namespace RealDebrid\Api;
 use RealDebrid\Request\Unrestrict\LinkRequest;
 
 /**
- * Class Unrestrict
+ * /unrestrict namespace
  *
+ * Provides a set of methods to unrestrict your hoster links
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Unrestrict extends EndPoint {
 

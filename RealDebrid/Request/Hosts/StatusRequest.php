@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class StatusRequest
+ * GET /hosts/status
  *
+ * Get status of supported hosters or not and their status on competitors
  * @package RealDebrid\Request\Hosts
  * @author Valentin GOT
  */

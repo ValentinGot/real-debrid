@@ -3,13 +3,19 @@
 namespace RealDebrid\Exception;
 
 /**
- * Class RealDebridException
+ * RealDebridException
  *
+ * Handle Real-Debrid error codes
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */
 class RealDebridException extends \Exception {
 
+    /**
+     * Creates a new RealDebridException depending on the error_code
+     *
+     * @param \stdClass $error Real-Debrid error
+     */
     public function __construct(\stdClass $error) {
         parent::__construct($this->getErrorMessage($error->error_code), $error->error_code);
     }

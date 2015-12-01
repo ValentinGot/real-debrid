@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class TorrentsRequest
+ * GET /torrents
  *
+ * Get user torrents list
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
@@ -16,8 +17,8 @@ class TorrentsRequest extends AbstractRequest {
 
     /**
      * Get user torrents list
-     * Warning: You can not use both offset and page at the same time, page is prioritzed in case it happens.
      *
+     * Warning: You can not use both offset and page at the same time, page is prioritzed in case it happens.
      * @param Token $token Access token
      * @param bool|false $filter TRUE to list only active torrents; FALSE otherwise
      * @param int $page Pagination system

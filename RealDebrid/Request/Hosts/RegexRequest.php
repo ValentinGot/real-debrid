@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class RegexRequest
+ * GET /hosts/regex
  *
+ * Get all supported links Regex, usefull to find supported links inside a document
  * @package RealDebrid\Request\Hosts
  * @author Valentin GOT
  */

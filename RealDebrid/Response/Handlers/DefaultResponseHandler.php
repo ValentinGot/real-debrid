@@ -7,8 +7,9 @@ use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Interfaces\ResponseHandler;
 
 /**
- * Class DefaultResponseHandler
+ * DefaultResponseHandler
  *
+ * Default response handler
  * @package RealDebrid\Response\Handlers
  * @author Valentin GOT
  */

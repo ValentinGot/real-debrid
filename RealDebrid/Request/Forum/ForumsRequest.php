@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class ForumsRequest
+ * GET /forum
  *
+ * Get the list of all forums with their category names
  * @package RealDebrid\Request\Forum
  * @author Valentin GOT
  */

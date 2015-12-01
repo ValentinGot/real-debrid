@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class AvailableHostsRequest
+ * GET /torrents/availableHosts
  *
+ * Get available hosts to upload the torrent to
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */

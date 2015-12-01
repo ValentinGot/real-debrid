@@ -9,17 +9,20 @@ use RealDebrid\Request\Torrents\SelectFilesRequest;
 use RealDebrid\Request\Torrents\TorrentsRequest;
 
 /**
- * Class Torrents
+ * /torrents namespace
  *
+ * Provides a set of methods for torrents downloading
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Torrents extends EndPoint {
 
     /**
      * Get user torrents list
-     * Warning: You can not use both offset and page at the same time, page is prioritzed in case it happens.
      *
+     * Warning: You can not use both offset and page at the same time, page is prioritized in case it happens.
      * @param bool|false $filter TRUE to list only active torrents; FALSE otherwise
      * @param int $page Pagination system
      * @param int $limit Entries returned per page / request (must be within 0 and 100, default: 50)
@@ -31,7 +34,7 @@ class Torrents extends EndPoint {
     }
 
     /**
-     * Get all informations on the asked torrent
+     * Get all information on the asked torrent
      *
      * @param string $id Torrent ID
      * @return \stdClass Torrent information
@@ -49,7 +52,11 @@ class Torrents extends EndPoint {
         return $this->request(new AvailableHostsRequest($this->token));
     }
 
+    /**
+     * Add a torrent file to download
+     */
     public function addTorrent() {
+        // TODO add torrent
         //return $this->request();
     }
 
@@ -67,8 +74,8 @@ class Torrents extends EndPoint {
 
     /**
      * Select files of a torrent to start it
-     * Warning: To get file IDs, use /torrents/info/{id}
      *
+     * Warning: To get file IDs, use /torrents/info/{id}
      * @param string $id Torrent ID
      * @param string $files Selected files IDs (comma separated) or "all"
      */

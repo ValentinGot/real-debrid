@@ -7,10 +7,13 @@ use RealDebrid\Request\Hosts\RegexRequest;
 use RealDebrid\Request\Hosts\StatusRequest;
 
 /**
- * Class Hosts
+ * /hosts namespace
  *
+ * Provides a set of methods to checkout the supported hosts, their status, ...
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Hosts extends EndPoint {
 
@@ -33,7 +36,7 @@ class Hosts extends EndPoint {
     }
 
     /**
-     * Get all supported links Regex, usefull to find supported links inside a document
+     * Get all supported links Regex, useful to find supported links inside a document
      *
      * @return \stdClass Supported links regex
      */

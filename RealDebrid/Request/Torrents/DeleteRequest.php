@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class DeleteRequest
+ * DELETE /torrents/delete/{id}
  *
+ * Delete a torrent from torrents list
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */

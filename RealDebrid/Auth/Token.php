@@ -3,12 +3,17 @@
 namespace RealDebrid\Auth;
 
 /**
- * Class Token
+ * Access token
  *
+ * Real-Debrid access token to authenticate your HTTP requests
  * @package RealDebrid\Auth
  * @author Valentin GOT
  */
 class Token {
+
+    /**
+     * @var string The token
+     */
     private $token;
 
     /**

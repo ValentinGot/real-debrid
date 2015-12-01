@@ -4,17 +4,44 @@ namespace RealDebrid\Api;
 use RealDebrid\Request\Settings\SettingsRequest;
 
 /**
- * Class Settings
+ * /settings namespace
  *
+ * Provides a set of methods to retrieve or update your Real-Debrid settings
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Settings extends EndPoint {
+
+    /**
+     * The download port setting
+     */
     const DOWNLOAD_PORT = 'download_port';
+
+    /**
+     * The Real-Debrid locale
+     */
     const LOCALE = 'locale';
+
+    /**
+     * The streaming language preference
+     */
     const STREAMING_LANGUAGE_PREFERENCE = 'streaming_language_preference';
+
+    /**
+     * The streaming quality preference
+     */
     const STREAMING_QUALITY = 'streaming_quality';
+
+    /**
+     * The streaming quality preference (on mobiles)
+     */
     const MOBILE_STREAMING_QUALITY = 'mobile_streaming_quality';
+
+    /**
+     * The streaming cast audio preference
+     */
     const STREAMING_CAST_AUDIO_PREFERENCE = 'streaming_cast_audio_preference';
 
     /**
@@ -45,6 +72,7 @@ class Settings extends EndPoint {
 
     /**
      * Disable user logs
+     *
      * Warning: This action is currently irreversible, take care
      */
     public function disableLogs() {

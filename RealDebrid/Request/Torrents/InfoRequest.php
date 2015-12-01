@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class InfoRequest
+ * GET /torrents/info/{id}
  *
+ * Get all information on the asked torrent
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
@@ -16,7 +17,7 @@ class InfoRequest extends AbstractRequest {
     private $id;
 
     /**
-     * Get all informations on the asked torrent
+     * Get all information on the asked torrent
      *
      * @param Token $token Access token
      * @param string $id Torrent ID

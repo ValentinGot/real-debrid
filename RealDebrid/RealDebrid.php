@@ -14,68 +14,71 @@ use RealDebrid\Api\User;
 use RealDebrid\Auth\Token;
 
 /**
- * Class RealDebrid
+ * A simple API interface for real-debrid.com
  *
+ * It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or add some torrent files
  * @package RealDebrid
  * @author Valentin GOT
+ * @license MIT
+ * @link http://api.real-debrid.com/ The Real-Debrid API documentation
  */
 class RealDebrid {
 
     /**
-     * @var User
+     * @var User /user namespace
      */
     public $user;
 
     /**
-     * @var Unrestrict
+     * @var Unrestrict /unrestrict namespace
      */
     public $unrestrict;
 
     /**
-     * @var Traffic
+     * @var Traffic /traffic namespace
      */
     public $traffic;
 
     /**
-     * @var Downloads
+     * @var Downloads /downloads namespace
      */
     public $downloads;
 
     /**
-     * @var Torrents
+     * @var Torrents /torrents namespace
      */
     public $torrents;
 
     /**
-     * @var Hosts
+     * @var Hosts /hosts namespace
      */
     public $hosts;
 
     /**
-     * @var Forum
+     * @var Forum /forum namespace
      */
     public $forum;
 
     /**
-     * @var Settings
+     * @var Settings /settings namespace
      */
     public $settings;
 
     /**
-     * @var Token
+     * @var Token Access token
      */
     private $token;
 
     /**
-     * @var \GuzzleHttp\Client
+     * @var \GuzzleHttp\Client Client interface for sending HTTP requests
      */
     private $client;
 
     /**
      * RealDebrid constructor.
      *
-     * @param Token $token Accss token
-     * @param ClientInterface|null $client Client interface
+     * @param Token $token Access token
+     * @param ClientInterface|null $client Client interface for sending HTTP requests
      */
     public function __construct(Token $token, ClientInterface $client = null) {
         $this->client = $client;

@@ -7,8 +7,9 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class LinkRequest
+ * POST /unrestrict/link
  *
+ * Unrestrict a hoster link and get a new unrestricted link
  * @package RealDebrid\Request\Unrestrict
  * @author Valentin GOT
  */

@@ -7,15 +7,16 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * Class UserRequest
+ * GET /user
  *
+ * Returns some information on the current user
  * @package RealDebrid\Request\User
  * @author Valentin GOT
  */
 class UserRequest extends AbstractRequest {
 
     /**
-     * Returns some information on the current user.
+     * Returns some information on the current user
      *
      * @param Token $token Access token
      */

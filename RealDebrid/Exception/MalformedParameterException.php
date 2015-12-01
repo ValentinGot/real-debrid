@@ -3,8 +3,9 @@
 namespace RealDebrid\Exception;
 
 /**
- * Class MalformedParameterException
+ * MalformedParameterException
  *
+ * Trying to access a getter that does not exists on the request object
  * @package RealDebrid\Exception
  * @author Valentin GOT
  */

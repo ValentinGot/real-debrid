@@ -6,17 +6,20 @@ use RealDebrid\Request\Traffic\DetailsRequest;
 use RealDebrid\Request\Traffic\TrafficRequest;
 
 /**
- * Class Traffic
+ * /traffic namespace
  *
+ * Provides a set of methods to retrieve hoster traffic status
  * @package RealDebrid\Api
  * @author Valentin GOT
+ * @license MIT
+ * @api
  */
 class Traffic extends EndPoint {
 
     /**
-     * Get traffic informations for limited hosters (limits, current usage, extra packages)
+     * Get traffic information for limited hosters (limits, current usage, extra packages)
      *
-     * @return \stdClass Traffic informations
+     * @return \stdClass Traffic information
      */
     public function get() {
         return $this->request(new TrafficRequest($this->token));
