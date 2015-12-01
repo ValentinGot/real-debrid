@@ -23,14 +23,14 @@ class DetailsRequest extends AbstractRequest {
      * @param Carbon $start Start period, default: a week ago
      * @param Carbon $end End period, default: today
      */
-    public function __construct(Token $token, Carbon $start, Carbon $end) {
+    public function __construct(Token $token, Carbon $start = null, Carbon $end = null) {
         parent::__construct();
 
         $this->setToken($token);
         if (!is_null($start))
-            $this->queryParams['start'] = $start->format('Y-m-d');
+            $this->addQueryParam('start', $start->format('Y-m-d'));
         if (!is_null($end))
-            $this->queryParams['end'] = $start->format('Y-m-d');
+            $this->addQueryParam('end', $start->format('Y-m-d'));
     }
 
     public function getRequestType() {

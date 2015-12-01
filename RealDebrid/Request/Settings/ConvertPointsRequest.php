@@ -1,33 +1,28 @@
 <?php
 
 namespace RealDebrid\Request\Settings;
-
 use RealDebrid\Auth\Token;
 use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * POST /settings/update
+ * POST /settings/convertPoints
  *
- * Update a user setting
+ * Convert fidelity points
  * @package RealDebrid\Request\Settings
  * @author Valentin GOT
  */
-class UpdateRequest extends AbstractRequest {
+class ConvertPointsRequest extends AbstractRequest {
 
     /**
-     * Update a user setting
+     * Convert fidelity points
      *
      * @param Token $token
-     * @param string $name Setting name
-     * @param string $value Possible values are available in /settings
      */
-    public function __construct(Token $token, $name, $value) {
+    public function __construct(Token $token) {
         parent::__construct();
 
         $this->setToken($token);
-        $this->addToBody('setting_name', $name);
-        $this->addToBody('setting_value', $value);
     }
 
     public function getRequestType() {
@@ -35,6 +30,6 @@ class UpdateRequest extends AbstractRequest {
     }
 
     public function getUri() {
-        return "settings/update";
+        return "settings/convertPoints";
     }
 }

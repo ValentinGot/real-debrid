@@ -7,27 +7,23 @@ use RealDebrid\Request\AbstractRequest;
 use RealDebrid\Request\RequestType;
 
 /**
- * POST /settings/update
+ * POST /settings/changePassword
  *
- * Update a user setting
+ * Send the verification email to change the password
  * @package RealDebrid\Request\Settings
  * @author Valentin GOT
  */
-class UpdateRequest extends AbstractRequest {
+class ChangePasswordRequest extends AbstractRequest {
 
     /**
-     * Update a user setting
+     * Send the verification email to change the password
      *
      * @param Token $token
-     * @param string $name Setting name
-     * @param string $value Possible values are available in /settings
      */
-    public function __construct(Token $token, $name, $value) {
+    public function __construct(Token $token) {
         parent::__construct();
 
         $this->setToken($token);
-        $this->addToBody('setting_name', $name);
-        $this->addToBody('setting_value', $value);
     }
 
     public function getRequestType() {
@@ -35,6 +31,6 @@ class UpdateRequest extends AbstractRequest {
     }
 
     public function getUri() {
-        return "settings/update";
+        return "settings/changePassword";
     }
 }

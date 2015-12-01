@@ -32,11 +32,11 @@ class TopicsRequest extends AbstractRequest {
 
         $this->setToken($token);
         $this->id = $id;
-        $this->queryParams['meta'] = ($meta) ? '1' : '0';
-        $this->queryParams['page'] = $page;
-        $this->queryParams['limit'] = $limit;
+        $this->addQueryParam('meta', ($meta) ? '1' : '0');
+        $this->addQueryParam('page', $page);
+        $this->addQueryParam('limit', $limit);
         if (!is_null($offset))
-            $this->queryParams['offset'] = $offset;
+            $this->addQueryParam('offset', $offset);
     }
 
     public function getId() {

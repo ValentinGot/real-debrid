@@ -13,13 +13,15 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /unrestrict
 //----------------------------------------------
 
-//$realDebrid->unrestrict->link('https://mega.nz/#!Z0snjBCa!7_6P4JygN7FZWOp-cQu544n5QTN0mwEQVhKSQ-NqH0Y');
+//echo json_encode($realDebrid->unrestrict->link('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0As'));
 
 // /traffic
 //----------------------------------------------
 
 //echo json_encode($realDebrid->traffic->get());
 //echo json_encode($realDebrid->traffic->details());
+//echo json_encode($realDebrid->traffic->details(\Carbon\Carbon::createFromDate(2015, 11, 24)));
+//echo json_encode($realDebrid->traffic->details(\Carbon\Carbon::createFromDate(2015, 11, 24), \Carbon\Carbon::now()));
 
 // /downloads
 //----------------------------------------------
@@ -52,4 +54,5 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /settings
 //----------------------------------------------
 
-echo json_encode($realDebrid->settings->get());
+//echo json_encode($realDebrid->settings->get());
+//$realDebrid->settings->deleteAvatar();

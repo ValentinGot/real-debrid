@@ -4,6 +4,8 @@ namespace RealDebrid\Request;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Auth\Token;
 use RealDebrid\Exception\ExceptionStatusCodeFactory;
@@ -29,7 +31,15 @@ abstract class AbstractRequest {
      */
     private $responseHandler;
 
-    protected $queryParams = array();
+    /**
+     * @var Collection
+     */
+    protected $body;
+
+    /**
+     * @var Collection
+     */
+    protected $queryParams;
 
     /**
      * Retrieve the HTTP verb
@@ -49,6 +59,9 @@ abstract class AbstractRequest {
      * AbstractRequest constructor.
      */
     public function __construct() {
+        $this->body = new Collection();
+        $this->queryParams = new Collection();
+
         $this->setResponseHandler(new DefaultResponseHandler());
     }
 
@@ -95,8 +108,15 @@ abstract class AbstractRequest {
         return $this->responseHandler;
     }
 
+    /**
+     * @return Collection
+     */
     public function getQueryParams() {
         return $this->queryParams;
+    }
+
+    public function addQueryParam($key, $value) {
+        $this->queryParams->put($key, $value);
     }
 
     protected function handleResponse(ResponseInterface $response, ClientInterface $client) {
@@ -111,19 +131,18 @@ abstract class AbstractRequest {
 
     private function getOptions() {
         $options = array(
-           "headers" => $this->getHeaders()
+           RequestOptions::HEADERS => $this->getHeaders()
         );
 
         if ($this->needsPostBody())
-            $options['body'] = json_encode($this->getPostBody());
+            $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
 
         return $options;
     }
 
     private function getHeaders() {
         return array(
-            "Content-Type" => "application/json",
-            'Authorization' => (is_null($this->token)) ? "" : "Bearer " . $this->token,
+            'Authorization' => (is_null($this->token)) ? "" : "Bearer " . $this->token
         );
     }
 
@@ -131,7 +150,11 @@ abstract class AbstractRequest {
         return in_array($this->getRequestType(), array(RequestType::POST, RequestType::PUT));
     }
 
-    private function getPostBody() {
-        return array();
+    protected function getPostBody() {
+        return $this->body->toArray();
+    }
+
+    protected function addToBody($key, $value) {
+        $this->body->put($key, $value);
     }
 }

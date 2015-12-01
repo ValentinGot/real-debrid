@@ -14,7 +14,6 @@ use RealDebrid\Request\RequestType;
  * @author Valentin GOT
  */
 class AddMagnetRequest extends AbstractRequest {
-    private $body = array();
 
     /**
      * Add a magnet link to download
@@ -28,11 +27,11 @@ class AddMagnetRequest extends AbstractRequest {
         parent::__construct();
 
         $this->setToken($token);
-        $body['magnet'] = $magnet;
+        $this->addToBody('magnet', $magnet);
         if (!empty($host))
-            $body['host'] = $host;
+            $this->addToBody('host', $host);
         if (!empty($split))
-            $body['split'] = $split;
+            $this->addToBody('split', $split);
     }
 
     public function getRequestType() {
@@ -41,9 +40,5 @@ class AddMagnetRequest extends AbstractRequest {
 
     public function getUri() {
         return "torrents/addMagnet";
-    }
-
-    public function getPostBody() {
-        return $this->body;
     }
 }

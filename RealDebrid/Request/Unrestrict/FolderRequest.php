@@ -14,7 +14,6 @@ use RealDebrid\Request\RequestType;
  * @author Valentin GOT
  */
 class FolderRequest extends AbstractRequest {
-    private $body = array();
 
     /**
      * Unrestrict a hoster folder link and get individual links
@@ -26,7 +25,7 @@ class FolderRequest extends AbstractRequest {
         parent::__construct();
 
         $this->setToken($token);
-        $body['link'] = $link;
+        $this->addToBody('link', $link);
     }
 
     public function getRequestType() {
@@ -35,9 +34,5 @@ class FolderRequest extends AbstractRequest {
 
     public function getUri() {
         return "unrestrict/folder";
-    }
-
-    protected function getPostBody() {
-        return $this->body;
     }
 }

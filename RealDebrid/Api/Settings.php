@@ -1,7 +1,13 @@
 <?php
 
 namespace RealDebrid\Api;
+use RealDebrid\Request\Settings\AvatarDeleteRequest;
+use RealDebrid\Request\Settings\AvatarFileRequest;
+use RealDebrid\Request\Settings\ChangePasswordRequest;
+use RealDebrid\Request\Settings\ConvertPointsRequest;
+use RealDebrid\Request\Settings\DisableLogsRequest;
 use RealDebrid\Request\Settings\SettingsRequest;
+use RealDebrid\Request\Settings\UpdateRequest;
 
 /**
  * /settings namespace
@@ -60,14 +66,14 @@ class Settings extends EndPoint {
      * @param string $value Possible values are available in /settings
      */
     public function update($name, $value) {
-
+        $this->request(new UpdateRequest($this->token, $name, $value));
     }
 
     /**
      * Convert fidelity points
      */
     public function convertPoints() {
-
+        $this->request(new ConvertPointsRequest($this->token));
     }
 
     /**
@@ -76,14 +82,14 @@ class Settings extends EndPoint {
      * Warning: This action is currently irreversible, take care
      */
     public function disableLogs() {
-
+        $this->request(new DisableLogsRequest($this->token));
     }
 
     /**
      * Send the verification email to change the password
      */
     public function changePassword() {
-
+        $this->request(new ChangePasswordRequest($this->token));
     }
 
     /**
@@ -91,12 +97,13 @@ class Settings extends EndPoint {
      */
     public function addAvatar() {
         // TODO Upload avatar
+        //$this->request(new AvatarFileRequest($this->token));
     }
 
     /**
      * Reset user avatar image to default
      */
     public function deleteAvatar() {
-
+        $this->request(new AvatarDeleteRequest($this->token));
     }
 }
