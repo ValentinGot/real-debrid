@@ -4,7 +4,7 @@
   "description": "A simple API interface for real-debrid.com",
   "keywords": ["real-debrid.com", "unrestrict", "torrent"],
   "homepage": "https://github.com/ValentinGot/real-debrid",
-  "license": "Apache License 2.O",
+  "license": "MIT",
   "authors": [
     {
       "name": "Valentin GOT",
