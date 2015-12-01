@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6YFGRGHDXP5O74EA'));
+$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('MY_TOKEN'));
 
 // /user
 //----------------------------------------------
@@ -129,7 +129,7 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 //$realDebrid->settings->changePassword();
 
 // Upload avatar
-$realDebrid->settings->addAvatar('C:\Users\v.got\Downloads\silver-150.png');
+//$realDebrid->settings->addAvatar('C:\fakepath\avatar.png');
 
 // Delete avatar
 //$realDebrid->settings->deleteAvatar();
