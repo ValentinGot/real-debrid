@@ -144,6 +144,13 @@ All **Traffic** methods are available under ```\RealDebrid\RealDebrid()->traffic
 
 All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unrestrict``` namespace.
 
+```php
+\RealDebrid\RealDebrid()->unrestrict->link($link, $password = null, $remote = null): Unrestrict a hoster link and get a new unrestricted link
+\RealDebrid\RealDebrid()->unrestrict->folder($link): Unrestrict a hoster folder link and get individual links
+\RealDebrid\RealDebrid()->unrestrict->containerFile(): Decrypt a container file (RSDF, CCF, CCF3, DLC). UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->unrestrict->containerLink($link): Decrypt a container file from a link
+```
+
 ### User
 
 All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` namespace.
