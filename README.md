@@ -86,6 +86,11 @@ All **Downloads** methods are available under ```\RealDebrid\RealDebrid()->downl
 
 All **Forum** methods are available under ```\RealDebrid\RealDebrid()->forum``` namespace.
 
+```php
+\RealDebrid\RealDebrid()->forum->forums(): Get the list of all forums with their category names
+\RealDebrid\RealDebrid()->forum->topics($id, $meta = true, $page = 1, $limit = 50, $offset = null): Get the list of all topics inside the concerned forum
+```
+
 ### Hosts
 
 All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` namespace.
