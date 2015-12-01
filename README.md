@@ -32,6 +32,8 @@ To retrieve your token, you must authenticate to [Real-Debrid](https://real-debr
 
 https://real-debrid.com/apitoken
 
+You must have a Real-Debrid premium account to access most of the API features.
+
 ## Basic usage
 
 ```php
