@@ -53,6 +53,7 @@ $realDebrid = new RealDebrid($token);
 ### Using the API
 
 Here is some examples on how to use the Real-Debrid API.
+If you want more examples, you can go to the [/examples](https://github.com/ValentinGot/real-debrid/tree/master/examples) folder.
 
 ```php
 // Retrieve user information
@@ -105,6 +106,16 @@ All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` 
 ### Settings
 
 All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settings``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->settings->get(): Get current user settings with possible values to update
+\RealDebrid\RealDebrid()->settings->update($name, $value): Update a user setting
+\RealDebrid\RealDebrid()->settings->convertPoints(): Convert fidelity points
+\RealDebrid\RealDebrid()->settings->disableLogs(): Disable user logs (**This action is currently irreversible, take care**)
+\RealDebrid\RealDebrid()->settings->changePassword(): Send the verification email to change the password
+\RealDebrid\RealDebrid()->settings->addAvatar($path): Upload a new user avatar image
+\RealDebrid\RealDebrid()->settings->deleteAvatar(): Reset user avatar image to default
+```
 
 ### Torrents
 
