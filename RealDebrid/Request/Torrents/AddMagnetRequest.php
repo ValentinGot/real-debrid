@@ -13,7 +13,7 @@ use RealDebrid\Request\RequestType;
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
-class AddMagnet extends AbstractRequest {
+class AddMagnetRequest extends AbstractRequest {
     private $body = array();
 
     /**

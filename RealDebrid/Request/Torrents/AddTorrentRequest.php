@@ -13,7 +13,7 @@ use RealDebrid\Request\RequestType;
  * @package RealDebrid\Request\Torrents
  * @author Valentin GOT
  */
-class AddTorrent extends AbstractRequest {
+class AddTorrentRequest extends AbstractRequest {
 
     /**
      * Add a torrent file to download
