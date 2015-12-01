@@ -14,6 +14,9 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 //----------------------------------------------
 
 //echo json_encode($realDebrid->unrestrict->link('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0As'));
+//echo json_encode($realDebrid->unrestrict->link('https://www.youtube.com/watch?v=gd7iyNv1qEA'));
+//echo json_encode($realDebrid->unrestrict->link('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0As', 'password'));
+//echo json_encode($realDebrid->unrestrict->folder('https://mega.nz/#F!F90nET7a!Dg0pH7gTTG_jmrRBemM77g'));
 
 // /traffic
 //----------------------------------------------
@@ -26,16 +29,54 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /downloads
 //----------------------------------------------
 
+// First 50 downloads
 //echo json_encode($realDebrid->downloads->get());
-//$realDebrid->downloads->delete('UF3VKXU2OCJS4');
+
+// Page 2, 50 downloads
+//echo json_encode($realDebrid->downloads->get(2));
+
+// Page 2, 5 downloads
+//echo json_encode($realDebrid->downloads->get(2, 5));
+
+// 5 downloads from offset 1
+//echo json_encode($realDebrid->downloads->get(null, 5, 1));
+
+// Delete a link from download list
+//$realDebrid->downloads->delete('YIGVDNFEBBGCA');
 
 // /torrents
 //----------------------------------------------
 
+// First 50 torrents
 //echo json_encode($realDebrid->torrents->get());
-//echo json_encode($realDebrid->torrents->torrent('2KB2OULS7HKUK'));
+
+// First 50 active torrents
+//echo json_encode($realDebrid->torrents->get(true));
+
+// Page 2, 50 torrents
+//echo json_encode($realDebrid->torrents->get(false, 2));
+
+// Page 2, 5 torrents
+//echo json_encode($realDebrid->torrents->get(false, 2, 5));
+
+// 5 torrents from offset 1
+//echo json_encode($realDebrid->torrents->get(false, null, 5, 1));
+
+// Torrent information
+//echo json_encode($realDebrid->torrents->torrent('427EGNLB6FDY2'));
+
+// Available hosts to upload a torrent
 //echo json_encode($realDebrid->torrents->availableHosts());
-//$realDebrid->torrents->delete('URKH6JUQYKXPU');
+
+// Add torrent file
+
+// Add torrent magnet
+//echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce'));
+//echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce', 1));
+//echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce', 1, 10));
+
+// Delete a link from torrents list
+//$realDebrid->torrents->delete('NQWCZ4BPWGRGE');
 
 // /hosts
 //----------------------------------------------
@@ -49,7 +90,21 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 //----------------------------------------------
 
 //echo json_encode($realDebrid->forum->forums());
+
+// Forum '4'
 //echo json_encode($realDebrid->forum->topics(4));
+
+// Forum '4', no meta
+//echo json_encode($realDebrid->forum->topics(4, false));
+
+// Forum '4', no meta, page 2
+//echo json_encode($realDebrid->forum->topics(4, false, 1, 5));
+
+// Forum '4', no meta, page 2, limit 5
+//echo json_encode($realDebrid->forum->topics(4, false, 1, 5));
+
+// Forum '4', no meta, limit 5, offset 1
+//echo json_encode($realDebrid->forum->topics(4, false, null, 5, 1));
 
 // /settings
 //----------------------------------------------

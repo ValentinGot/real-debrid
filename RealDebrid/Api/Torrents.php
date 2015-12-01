@@ -57,6 +57,7 @@ class Torrents extends EndPoint {
     /**
      * Add a torrent file to download
      *
+     * The files must be selected with the selectFiles method to start the torrent
      * @return \stdClass Torrent information
      */
     public function addTorrent() {
@@ -67,6 +68,7 @@ class Torrents extends EndPoint {
     /**
      * Add a magnet link to download
      *
+     * The files must be selected with the selectFiles method to start the torrent
      * @param string $magnet Magnet link
      * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
      * @param int|null $split Split size (under max_split_size of concerned hoster retrieved from /torrents/availableHosts)
