@@ -19,11 +19,13 @@ class ContainerFileRequest extends AbstractRequest {
      * Decrypt a container file (RSDF, CCF, CCF3, DLC)
      *
      * @param Token $token Access token
+     * @param string $path Path to the container file
      */
-    public function __construct(Token $token) {
+    public function __construct(Token $token, $path) {
         parent::__construct();
 
         $this->setToken($token);
+        $this->setFilePath($path);
     }
 
     public function getRequestType() {

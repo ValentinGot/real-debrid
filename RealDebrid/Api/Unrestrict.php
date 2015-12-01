@@ -43,11 +43,11 @@ class Unrestrict extends EndPoint {
     /**
      * Decrypt a container file (RSDF, CCF, CCF3, DLC)
      *
+     * @param string $path Path to the container file
      * @return array URLs
      */
-    public function containerFile() {
-        // TODO containerFile
-        //return $this->request(new ContainerFileRequest($this->token));
+    public function containerFile($path) {
+        return $this->request(new ContainerFileRequest($this->token, $path));
     }
 
     /**
