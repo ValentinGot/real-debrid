@@ -1,6 +1,8 @@
 # [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
-A simple API interface for real-debrid.com.
+> A simple API interface for real-debrid.com.
+
+It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or download some torrent files.
 
 ## Getting started
 
@@ -24,98 +26,141 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 ### System Requirements
 
-You need **PHP >= 5.3.0**
+You need **PHP >= 5.3.0**.
+
+### Authentication
+
+To retrieve your token, you must authenticate to [Real-Debrid](https://real-debrid.com/) and then go to the following URL:
+
+https://real-debrid.com/apitoken
+
+You must have a Real-Debrid premium account to access most of the API features.
 
 ## Basic usage
 
+This section provides a quick introduction to Real-Debrid API interface and some examples.
+
+### Creating a client
+
 ```php
-// Login
-$user = new \RealDebrid\User();
-$user->login('username', 'password');
+use \RealDebrid\RealDebrid;
+use \RealDebrid\Auth\Token;
 
-// Unrestrict link
-$download = new \RealDebrid\Download();
-$download->unrestrict('http://yourhoster.com/ABCDEFGH');
-
-// Upload torrent (only via magnet link)
-$torrent = new \RealDebrid\Torrent();
-$torrent->add('magnet:xxxxxx');
-
-// Retrieve uploaded torrent link
-$status = $torrent->status();
+$token = new Token('MY_TOKEN');
+$realDebrid = new RealDebrid($token);
 ```
 
-## API Reference
+### Using the API
+
+Here is some examples on how to use the Real-Debrid API.
+If you want more examples, you can go to the [/examples](https://github.com/ValentinGot/real-debrid/tree/master/examples) folder.
+
+```php
+// Retrieve user information
+$userInformation = $realDebrid->user->get();
+
+// Unrestrict a link
+$link = $realDebrid->unrestrict->link('http://MY_LINK');
+
+// Add a magnet link and start the torrent
+$torrent = $realDebrid->torrents->addMagnet('magnet:MY_MAGNET_LINK');
+$realDebrid->torrents->selectFiles($torrent->id);
+
+// Retrieve torrents list
+$torrentQueue = $realDebrid->torrents->get();
+```
+
+## Available requests
+
+Methods are grouped by namespaces (e.g. "unrestrict", "user").
+
+### Downloads
+
+All **Downloads** methods are available under ```\RealDebrid\RealDebrid()->downloads``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->downloads->get($page = 1, $limit = 50, $offset = null): Get user downloads list
+\RealDebrid\RealDebrid()->downloads->delete($id): Delete a link from downloads list
+```
+
+### Forum
+
+All **Forum** methods are available under ```\RealDebrid\RealDebrid()->forum``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->forum->forums(): Get the list of all forums with their category names
+\RealDebrid\RealDebrid()->forum->topics($id, $meta = true, $page = 1, $limit = 50, $offset = null): Get the list of all topics inside the concerned forum
+```
+
+### Hosts
+
+All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->hosts->get(): Get supported hosts
+\RealDebrid\RealDebrid()->hosts->status(): Get status of supported hosters or not and their status on competitors
+\RealDebrid\RealDebrid()->hosts->regex(): Get all supported links Regex, useful to find supported links inside a document
+\RealDebrid\RealDebrid()->hosts->domains(): Get all hoster domains supported on the service
+```
+
+### Settings
+
+All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settings``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->settings->get(): Get current user settings with possible values to update
+\RealDebrid\RealDebrid()->settings->update($name, $value): Update a user setting. UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->settings->convertPoints(): Convert fidelity points. UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->settings->disableLogs(): Disable user logs ("This action is currently irreversible, take care"). UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->settings->changePassword(): Send the verification email to change the password. UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->settings->addAvatar($path): Upload a new user avatar image
+\RealDebrid\RealDebrid()->settings->deleteAvatar(): Reset user avatar image to default
+```
+
+### Torrents
+
+All **Torrents** methods are available under ```\RealDebrid\RealDebrid()->torrents``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->torrents->get($filter = false, $page = 1, $limit = 50, $offset = null): Get user torrents list
+\RealDebrid\RealDebrid()->torrents->torrent($id): Get all information on the asked torrent
+\RealDebrid\RealDebrid()->torrents->availableHosts(): Get available hosts to upload the torrent to
+\RealDebrid\RealDebrid()->torrents->addTorrent(): Add a torrent file to download. UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->torrents->addMagnet($magnet, $host = null, $split = null): Add a magnet link to download
+\RealDebrid\RealDebrid()->torrents->selectFiles($id, array $files = array()): Select files of a torrent to start it
+\RealDebrid\RealDebrid()->torrents->delete($id): Delete a torrent from torrents list
+```
+
+### Traffic
+
+All **Traffic** methods are available under ```\RealDebrid\RealDebrid()->traffic``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->traffic->get(): Get traffic information for limited hosters (limits, current usage, extra packages)
+\RealDebrid\RealDebrid()->traffic->details(Carbon $start = null, Carbon $end = null): Get traffic details on each hoster used during a defined period
+```
+
+### Unrestrict
+
+All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unrestrict``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->unrestrict->link($link, $password = null, $remote = null): Unrestrict a hoster link and get a new unrestricted link
+\RealDebrid\RealDebrid()->unrestrict->folder($link): Unrestrict a hoster folder link and get individual links
+\RealDebrid\RealDebrid()->unrestrict->containerFile(): Decrypt a container file (RSDF, CCF, CCF3, DLC). UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->unrestrict->containerLink($link): Decrypt a container file from a link
+```
 
 ### User
 
-```php
-$user = new \RealDebrid\User();
-```
-
-#### Login
-
-Login to real-debrid.com. A cookie is saved and used for the other requests to real-debrid.com.
+All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` namespace.
 
 ```php
-$user->login('username', 'password');
-````
-
-#### Valid hosters
-
-Get all valid hosters supported by real-debrid.com.
-
-```php
-$user->valid_hosters();
-```
-
-#### Account
-
-Get informations about the logged account.
-
-```php
-$user->account();
-```
-
-### Download
-
-```php
-$download = new \RealDebrid\Download();
-```
-
-#### Unrestrict 
-
-Unrestrict a link and optionally tell the password to the file.
-
-```php
-$download->unrestrict('http://uptobox.com/ABCDEFGH');
-$download->unrestrict('http://uptobox.com/ABCDEFGH', 'password');
-```
-
-### Torrent
-
-```php
-$torrent = new \RealDebrid\Torrent();
-```
-
-#### Add
-
-Add a torrent file (using the magnet link) to the real-debrid.com service and convert it into a direct link available for download.
-
-```php
-$torrent->add('magnet:xxxxxx');
-```
-
-#### Status
-
-Get user torrents status.
-
-```php
-$torrent->status();
+\RealDebrid\RealDebrid()->unrestrict->get(): Returns some information on the current user
 ```
 
 ## License
 
-The Real-Debrid API is released under the Apache public license.
+The Real-Debrid API is released under the MIT license.
 
 https://github.com/ValentinGot/real-debrid/blob/master/LICENSE

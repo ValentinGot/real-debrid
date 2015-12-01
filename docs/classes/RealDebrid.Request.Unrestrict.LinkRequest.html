@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/RealDebrid.html">\RealDebrid</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">174</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1563841550"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1563841550" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1595051570"></a>
+                                <a href="../namespaces/RealDebrid.html" style="margin-left: 30px; padding-left: 0">RealDebrid</a>
+            </div>
+            <div id="namespace-1595051570" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1188185743"></a>
+                                <a href="../namespaces/RealDebrid.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
+            </div>
+            <div id="namespace-1188185743" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Api.Downloads.html">Downloads</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.EndPoint.html">EndPoint</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Forum.html">Forum</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Hosts.html">Hosts</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Settings.html">Settings</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Torrents.html">Torrents</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Traffic.html">Traffic</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.Unrestrict.html">Unrestrict</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Api.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-422101064"></a>
+                                <a href="../namespaces/RealDebrid.Auth.html" style="margin-left: 30px; padding-left: 0">Auth</a>
+            </div>
+            <div id="namespace-422101064" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Auth.Token.html">Token</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-219682597"></a>
+                                <a href="../namespaces/RealDebrid.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-219682597" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Exception.ActionAlreadyDoneException.html">ActionAlreadyDoneException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.BadRequestException.html">BadRequestException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.BadTokenException.html">BadTokenException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.ExceptionStatusCodeFactory.html">ExceptionStatusCodeFactory</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.MalformedParameterException.html">MalformedParameterException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.PermissionDeniedException.html">PermissionDeniedException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.RealDebridException.html">RealDebridException</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Exception.UnknownResourceException.html">UnknownResourceException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-678487100"></a>
+                                <a href="../namespaces/RealDebrid.Interfaces.html" style="margin-left: 30px; padding-left: 0">Interfaces</a>
+            </div>
+            <div id="namespace-678487100" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/RealDebrid.Interfaces.ResponseHandler.html">ResponseHandler</a></li>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1981353253"></a>
+                                <a href="../namespaces/RealDebrid.Request.html" style="margin-left: 30px; padding-left: 0">Request</a>
+            </div>
+            <div id="namespace-1981353253" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-86878850"></a>
+                                <a href="../namespaces/RealDebrid.Request.Downloads.html" style="margin-left: 30px; padding-left: 0">Downloads</a>
+            </div>
+            <div id="namespace-86878850" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Downloads.DeleteRequest.html">DeleteRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Downloads.DownloadsRequest.html">DownloadsRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-445703074"></a>
+                                <a href="../namespaces/RealDebrid.Request.Forum.html" style="margin-left: 30px; padding-left: 0">Forum</a>
+            </div>
+            <div id="namespace-445703074" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Forum.ForumsRequest.html">ForumsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Forum.TopicsRequest.html">TopicsRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-145133650"></a>
+                                <a href="../namespaces/RealDebrid.Request.Hosts.html" style="margin-left: 30px; padding-left: 0">Hosts</a>
+            </div>
+            <div id="namespace-145133650" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Hosts.DomainsRequest.html">DomainsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Hosts.HostsRequest.html">HostsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Hosts.RegexRequest.html">RegexRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Hosts.StatusRequest.html">StatusRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-815111339"></a>
+                                <a href="../namespaces/RealDebrid.Request.Settings.html" style="margin-left: 30px; padding-left: 0">Settings</a>
+            </div>
+            <div id="namespace-815111339" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.AvatarDeleteRequest.html">AvatarDeleteRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.AvatarFileRequest.html">AvatarFileRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.ChangePasswordRequest.html">ChangePasswordRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.ConvertPointsRequest.html">ConvertPointsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.DisableLogsRequest.html">DisableLogsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.SettingsRequest.html">SettingsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Settings.UpdateRequest.html">UpdateRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-265161638"></a>
+                                <a href="../namespaces/RealDebrid.Request.Torrents.html" style="margin-left: 30px; padding-left: 0">Torrents</a>
+            </div>
+            <div id="namespace-265161638" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.AddMagnetRequest.html">AddMagnetRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.AddTorrentRequest.html">AddTorrentRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.AvailableHostsRequest.html">AvailableHostsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.DeleteRequest.html">DeleteRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.InfoRequest.html">InfoRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.SelectFilesRequest.html">SelectFilesRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Torrents.TorrentsRequest.html">TorrentsRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-243645413"></a>
+                                <a href="../namespaces/RealDebrid.Request.Traffic.html" style="margin-left: 30px; padding-left: 0">Traffic</a>
+            </div>
+            <div id="namespace-243645413" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Traffic.DetailsRequest.html">DetailsRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Traffic.TrafficRequest.html">TrafficRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1238613856"></a>
+                                <a href="../namespaces/RealDebrid.Request.Unrestrict.html" style="margin-left: 30px; padding-left: 0">Unrestrict</a>
+            </div>
+            <div id="namespace-1238613856" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.Unrestrict.ContainerFileRequest.html">ContainerFileRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Unrestrict.ContainerLinkRequest.html">ContainerLinkRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Unrestrict.FolderRequest.html">FolderRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.Unrestrict.LinkRequest.html">LinkRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-705461041"></a>
+                                <a href="../namespaces/RealDebrid.Request.User.html" style="margin-left: 30px; padding-left: 0">User</a>
+            </div>
+            <div id="namespace-705461041" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.User.UserRequest.html">UserRequest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Request.AbstractRequest.html">AbstractRequest</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.RequestType.html">RequestType</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Request.UriBuilder.html">UriBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-963220634"></a>
+                                <a href="../namespaces/RealDebrid.Response.html" style="margin-left: 30px; padding-left: 0">Response</a>
+            </div>
+            <div id="namespace-963220634" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1976270496"></a>
+                                <a href="../namespaces/RealDebrid.Response.Handlers.html" style="margin-left: 30px; padding-left: 0">Handlers</a>
+            </div>
+            <div id="namespace-1976270496" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.Response.Handlers.AbstractResponseHandler.html">AbstractResponseHandler</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.Response.Handlers.DefaultResponseHandler.html">DefaultResponseHandler</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RealDebrid.RealDebrid.html">RealDebrid</a></li>
+                                                    <li class="class"><a href="../classes/RealDebrid.RealDebridHttpClient.html">RealDebridHttpClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/RealDebrid.Request.Unrestrict.html">\RealDebrid\Request\Unrestrict</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\RealDebrid\Request\Unrestrict</small>LinkRequest</h1>
+                    <p><em>POST /unrestrict/link</em></p>
+                    <p>Unrestrict a hoster link and get a new unrestricted link</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/RealDebrid.Request.Unrestrict.LinkRequest.html#method_getRequestType" class="">getRequestType()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.Unrestrict.LinkRequest.html#method_getUri" class="">getUri()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.Unrestrict.LinkRequest.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_make" class="">make()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getUrl" class="">getUrl()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_setToken" class="">setToken()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_setResponseHandler" class="">setResponseHandler()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getResponseHandler" class="">getResponseHandler()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getQueryParams" class="">getQueryParams()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_addQueryParam" class="">addQueryParam()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_handleResponse" class="">handleResponse()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getPostBody" class="">getPostBody()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_addToBody" class="">addToBody()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_setFilePath" class="">setFilePath()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#property_body" class="">$body</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#property_filePath" class="">$filePath</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#property_queryParams" class="">$queryParams</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_request" class="">request()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getOptions" class="">getOptions()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_getHeaders" class="">getHeaders()</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#method_needsPostBody" class="">needsPostBody()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#property_token" class="">$token</a><br />
+                                                                    <a href="../classes/RealDebrid.Request.AbstractRequest.html#property_responseHandler" class="">$responseHandler</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Request.Unrestrict.LinkRequest.html"><div class="path-wrapper">Request\Unrestrict\LinkRequest.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Request\Unrestrict</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/RealDebrid.Request.AbstractRequest.html">\RealDebrid\Request\AbstractRequest</a></div>
+                                                                                                    <div class="namespace-wrapper">\RealDebrid\Request\Unrestrict\LinkRequest</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Valentin GOT</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_body" name="property_body" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$body</h3>
+                <pre class="signature">$body : \Illuminate\Support\Collection</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Illuminate\Support\Collection
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_filePath" name="property_filePath" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$filePath</h3>
+                <pre class="signature">$filePath : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_queryParams" name="property_queryParams" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$queryParams</h3>
+                <pre class="signature">$queryParams : \Illuminate\Support\Collection</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Illuminate\Support\Collection
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_token" name="property_token" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$token</h3>
+                <pre class="signature">$token : \RealDebrid\Auth\Token</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/RealDebrid.Auth.Token.html">\RealDebrid\Auth\Token</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_responseHandler" name="property_responseHandler" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$responseHandler</h3>
+                <pre class="signature">$responseHandler : \RealDebrid\Interfaces\ResponseHandler</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/RealDebrid.Interfaces.ResponseHandler.html">\RealDebrid\Interfaces\ResponseHandler</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRequestType" name="method_getRequestType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRequestType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRequestType() : string</pre>
+                <p><em>Retrieve the HTTP verb</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>HTTP verb</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUri" name="method_getUri" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUri()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUri() : string</pre>
+                <p><em>Retrieve the URI</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>URI</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\RealDebrid\Auth\Token  <span class="argument">$token</span>, string  <span class="argument">$link</span>, string  <span class="argument">$password</span>, string  <span class="argument">$remote</span>) </pre>
+                <p><em>Unrestrict a hoster link and get a new unrestricted link</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/RealDebrid.Auth.Token.html">\RealDebrid\Auth\Token</a></td>
+                                <td>$token </td>
+                                <td><p>Access token</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$link </td>
+                                <td><p>The original hoster link</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$password </td>
+                                <td><p>Password to unlock the file access hoster side</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$remote </td>
+                                <td><p>Use Remote traffic, dedicated servers and account sharing protections lifted</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_make" name="method_make" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">make()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">make(\GuzzleHttp\ClientInterface  <span class="argument">$client</span>, \RealDebrid\Interfaces\ResponseHandler|null  <span class="argument">$responseHandler = null</span>) : mixed|null</pre>
+                <p><em>Make the API request and handle the response before returning it</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\GuzzleHttp\ClientInterface</td>
+                                <td>$client </td>
+                                <td><p>Client interface for sending HTTP requests</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/RealDebrid.Interfaces.ResponseHandler.html">\RealDebrid\Interfaces\ResponseHandler</a>|null</td>
+                                <td>$responseHandler </td>
+                                <td><p>Override the default response handler with one of your own</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\RealDebrid\Exception\ActionAlreadyDoneException</dt>
+                            <dd></dd>
+                                                    <dt>\RealDebrid\Exception\BadRequestException</dt>
+                            <dd></dd>
+                                                    <dt>\RealDebrid\Exception\BadTokenException</dt>
+                            <dd></dd>
+                                                    <dt>\RealDebrid\Exception\PermissionDeniedException</dt>
+                            <dd></dd>
+                                                    <dt>\RealDebrid\Exception\RealDebridException</dt>
+                            <dd></dd>
+                                                    <dt>\RealDebrid\Exception\UnknownResourceException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed|null
+                                            &mdash; <p>The handled response</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getUrl" name="method_getUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getUrl() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setToken" name="method_setToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setToken(\RealDebrid\Auth\Token  <span class="argument">$token = null</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/RealDebrid.Auth.Token.html">\RealDebrid\Auth\Token</a></td>
+                                <td>$token </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setResponseHandler" name="method_setResponseHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setResponseHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setResponseHandler(\RealDebrid\Interfaces\ResponseHandler  <span class="argument">$responseHandler = null</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/RealDebrid.Interfaces.ResponseHandler.html">\RealDebrid\Interfaces\ResponseHandler</a></td>
+                                <td>$responseHandler </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getResponseHandler" name="method_getResponseHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getResponseHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getResponseHandler() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getQueryParams" name="method_getQueryParams" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getQueryParams()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getQueryParams() : \Illuminate\Support\Collection</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Illuminate\Support\Collection
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addQueryParam" name="method_addQueryParam" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addQueryParam()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addQueryParam(  <span class="argument">$key</span>,   <span class="argument">$value</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_handleResponse" name="method_handleResponse" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">handleResponse()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">handleResponse(\Psr\Http\Message\ResponseInterface  <span class="argument">$response</span>, \GuzzleHttp\ClientInterface  <span class="argument">$client</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Psr\Http\Message\ResponseInterface</td>
+                                <td>$response </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>\GuzzleHttp\ClientInterface</td>
+                                <td>$client </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPostBody" name="method_getPostBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getPostBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPostBody() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addToBody" name="method_addToBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">addToBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addToBody(  <span class="argument">$key</span>,   <span class="argument">$value</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setFilePath" name="method_setFilePath" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setFilePath()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setFilePath(  <span class="argument">$filePath</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$filePath </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_request" name="method_request" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">request(\GuzzleHttp\ClientInterface  <span class="argument">$client</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\GuzzleHttp\ClientInterface</td>
+                                <td>$client </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getOptions" name="method_getOptions" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">getOptions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getOptions() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHeaders" name="method_getHeaders" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">getHeaders()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHeaders() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_needsPostBody" name="method_needsPostBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">needsPostBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">needsPostBody() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/RealDebrid.Request.AbstractRequest.html"><div class="path-wrapper">\RealDebrid\Request\AbstractRequest</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">LinkRequest.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Request\Unrestrict\LinkRequest.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/RealDebrid.html">\RealDebrid</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on December 1st, 2015 at 17:31.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
