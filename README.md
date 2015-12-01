@@ -75,21 +75,40 @@ Methods are grouped by namespaces (e.g. "unrestrict", "user").
 
 ### Downloads
 
-All **Downloads** methods are available under ```php \RealDebrid\RealDebrid->downloads``` namespace.
+All **Downloads** methods are available under ```\RealDebrid\RealDebrid()->downloads``` namespace.
+
+```php
+\RealDebrid\RealDebrid()->downloads->get($page = 1, $limit = 50, $offset = null): Get user downloads list
+\RealDebrid\RealDebrid()->downloads->delete($id): Delete a link from downloads list
+```
 
 ### Forum
 
+All **Forum** methods are available under ```\RealDebrid\RealDebrid()->forum``` namespace.
+
 ### Hosts
+
+All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` namespace.
 
 ### Settings
 
+All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settings``` namespace.
+
 ### Torrents
+
+All **Torrents** methods are available under ```\RealDebrid\RealDebrid()->torrents``` namespace.
 
 ### Traffic
 
+All **Traffic** methods are available under ```\RealDebrid\RealDebrid()->traffic``` namespace.
+
 ### Unrestrict
 
+All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unrestrict``` namespace.
+
 ### User
+
+All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` namespace.
 
 ## Response handlers
 
