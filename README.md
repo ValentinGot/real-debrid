@@ -4,6 +4,8 @@
 
 It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or download some torrent files.
 
+Documentation: https://valentingot.github.io/real-debrid
+
 ## Getting started
 
 ### Install
