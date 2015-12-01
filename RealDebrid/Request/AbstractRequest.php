@@ -31,13 +31,38 @@ abstract class AbstractRequest {
 
     protected $queryParams = array();
 
+    /**
+     * Retrieve the HTTP verb
+     *
+     * @return string HTTP verb
+     */
     abstract public function getRequestType();
+
+    /**
+     * Retrieve the URI
+     *
+     * @return string URI
+     */
     abstract public function getUri();
 
+    /**
+     * AbstractRequest constructor.
+     */
     public function __construct() {
         $this->setResponseHandler(new DefaultResponseHandler());
     }
 
+    /**
+     * Make the API request and handle the response before returning it
+     *
+     * @param ClientInterface $client Client interface
+     * @param ResponseHandler|null $responseHandler Override the default response handler with one of your own
+     * @return mixed|null The handled response
+     * @throws \RealDebrid\Exception\BadTokenException
+     * @throws \RealDebrid\Exception\PermissionDeniedException
+     * @throws \RealDebrid\Exception\RealDebridException
+     * @throws \RealDebrid\Exception\UnknownResourceException
+     */
     public function make(ClientInterface $client, ResponseHandler $responseHandler = null) {
         $this->setResponseHandler($responseHandler);
 

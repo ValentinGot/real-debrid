@@ -11,6 +11,11 @@ namespace RealDebrid\Auth;
 class Token {
     private $token;
 
+    /**
+     * Token constructor.
+     *
+     * @param string $token Token value
+     */
     public function __construct($token) {
         $this->token = $token;
     }

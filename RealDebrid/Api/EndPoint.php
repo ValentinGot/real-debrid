@@ -24,11 +24,27 @@ class EndPoint {
      */
     private $client;
 
+    /**
+     * EndPoint constructor.
+     *
+     * @param Token $token Access Token
+     * @param ClientInterface $client Client interface
+     */
     public function __construct(Token $token, ClientInterface $client) {
         $this->token = $token;
         $this->client = $client;
     }
 
+    /**
+     * Requests the abstract request.
+     *
+     * @param AbstractRequest $request
+     * @return null
+     * @throws \RealDebrid\Exception\BadTokenException
+     * @throws \RealDebrid\Exception\PermissionDeniedException
+     * @throws \RealDebrid\Exception\RealDebridException
+     * @throws \RealDebrid\Exception\UnknownResourceException
+     */
     protected function request(AbstractRequest $request) {
         return $request->make($this->client);
     }

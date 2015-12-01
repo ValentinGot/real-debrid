@@ -71,6 +71,12 @@ class RealDebrid {
      */
     private $client;
 
+    /**
+     * RealDebrid constructor.
+     *
+     * @param Token $token Accss token
+     * @param ClientInterface|null $client Client interface
+     */
     public function __construct(Token $token, ClientInterface $client = null) {
         $this->client = $client;
         if (is_null($client))
@@ -80,6 +86,9 @@ class RealDebrid {
         $this->createWrappers();
     }
 
+    /**
+     * Creates the wrappers for all public properties and sets them
+     */
     private function createWrappers() {
         $this->user = new User($this->token, $this->client);
         $this->unrestrict = new Unrestrict($this->token, $this->client);

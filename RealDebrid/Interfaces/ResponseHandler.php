@@ -14,5 +14,13 @@ use RealDebrid\Auth\Token;
  * @interface
  */
 interface ResponseHandler {
+
+    /**
+     * Handle a call response
+     *
+     * @param ResponseInterface $response Response interface
+     * @param ClientInterface $client Client interface
+     * @return mixed The handled response
+     */
     public function handle(ResponseInterface $response, ClientInterface $client);
 }

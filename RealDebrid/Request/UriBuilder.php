@@ -16,6 +16,17 @@ class UriBuilder {
         $this->request = $request;
     }
 
+    /**
+     * Formats the uri for a Request object. Parts of the uri that start with an
+     * ":" are the parameters of the uri. This method initiates the formatting process
+     * for such an uri by getting the parameters first, and with the name of a parameter,
+     * i'ts value can be retrieved. The value is either stored inside a public property of
+     * the request object. Or it can be retrieved by a getter.
+     * It also add the query parameters add the end of the URI
+     *
+     * @param AbstractRequest $request
+     * @return string
+     */
     public static function format(AbstractRequest $request) {
         $builder = new static($request);
 
