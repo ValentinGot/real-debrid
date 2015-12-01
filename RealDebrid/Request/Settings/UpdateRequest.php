@@ -18,7 +18,7 @@ class UpdateRequest extends AbstractRequest {
     /**
      * Update a user setting
      *
-     * @param Token $token
+     * @param Token $token Access token
      * @param string $name Setting name
      * @param string $value Possible values are available in /settings
      */

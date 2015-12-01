@@ -94,10 +94,11 @@ class Settings extends EndPoint {
 
     /**
      * Upload a new user avatar image
+     *
+     * @param string $path Path to the avatar file
      */
-    public function addAvatar() {
-        // TODO Upload avatar
-        //$this->request(new AvatarFileRequest($this->token));
+    public function addAvatar($path) {
+        $this->request(new AvatarFileRequest($this->token, $path));
     }
 
     /**

@@ -37,6 +37,11 @@ abstract class AbstractRequest {
     protected $body;
 
     /**
+     * @var string
+     */
+    protected $filePath;
+
+    /**
      * @var Collection
      */
     protected $queryParams;
@@ -135,8 +140,10 @@ abstract class AbstractRequest {
            RequestOptions::HEADERS => $this->getHeaders()
         );
 
-        if ($this->needsPostBody())
+        if ($this->needsPostBody() && $this->body->count() > 0)
             $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
+        if (!empty($this->filePath))
+            $options[RequestOptions::BODY] = fopen($this->filePath, 'r');
 
         return $options;
     }
@@ -157,5 +164,9 @@ abstract class AbstractRequest {
 
     protected function addToBody($key, $value) {
         $this->body->put($key, $value);
+    }
+
+    protected function setFilePath($filePath) {
+        $this->filePath = $filePath;
     }
 }

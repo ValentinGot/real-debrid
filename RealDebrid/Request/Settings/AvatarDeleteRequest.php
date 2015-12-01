@@ -18,7 +18,7 @@ class AvatarDeleteRequest extends AbstractRequest {
     /**
      * Reset user avatar image to default
      *
-     * @param Token $token
+     * @param Token $token Access token
      */
     public function __construct(Token $token) {
         parent::__construct();

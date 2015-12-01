@@ -18,12 +18,14 @@ class AvatarFileRequest extends AbstractRequest {
     /**
      * Upload a new user avatar image
      *
-     * @param Token $token
+     * @param Token $token Access token
+     * @param string $path File to the avatar file
      */
-    public function __construct(Token $token) {
+    public function __construct(Token $token, $path) {
         parent::__construct();
 
         $this->setToken($token);
+        $this->setFilePath($path);
     }
 
     public function getRequestType() {

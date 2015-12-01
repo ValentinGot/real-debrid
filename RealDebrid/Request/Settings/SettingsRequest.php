@@ -18,7 +18,7 @@ class SettingsRequest extends AbstractRequest {
     /**
      * Get current user settings with possible values to update
      *
-     * @param Token $token
+     * @param Token $token Access token
      */
     public function __construct(Token $token) {
         parent::__construct();

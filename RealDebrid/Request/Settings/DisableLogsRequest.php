@@ -19,7 +19,7 @@ class DisableLogsRequest extends AbstractRequest {
      * Disable user logs
      *
      * Warning: This action is currently irreversible, take care.
-     * @param Token $token
+     * @param Token $token Access token
      */
     public function __construct(Token $token) {
         parent::__construct();

@@ -18,7 +18,7 @@ class ChangePasswordRequest extends AbstractRequest {
     /**
      * Send the verification email to change the password
      *
-     * @param Token $token
+     * @param Token $token Access token
      */
     public function __construct(Token $token) {
         parent::__construct();

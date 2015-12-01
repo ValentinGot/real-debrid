@@ -17,7 +17,7 @@ class ConvertPointsRequest extends AbstractRequest {
     /**
      * Convert fidelity points
      *
-     * @param Token $token
+     * @param Token $token Access token
      */
     public function __construct(Token $token) {
         parent::__construct();

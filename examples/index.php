@@ -71,9 +71,13 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // Add torrent file
 
 // Add torrent magnet
-//echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce'));
+//echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:637CE466AEC75A977D8BD02923ACF2788B2FA782&dn=game+of+thrones+s05e01+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce'));
 //echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce', 1));
 //echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:DA36686169A9696D875FB413F8B034C06C48AB1B&dn=game+of+thrones+s05e02+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce', 1, 10));
+
+// Select files
+//$realDebrid->torrents->selectFiles('3BQR3NVCVDB2M');
+//$realDebrid->torrents->selectFiles('NKGCN7RWCPGXC', [1, 3]);
 
 // Delete a link from torrents list
 //$realDebrid->torrents->delete('NQWCZ4BPWGRGE');
@@ -109,5 +113,23 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('LWP3OAYCCX6
 // /settings
 //----------------------------------------------
 
+// User settings
 //echo json_encode($realDebrid->settings->get());
+
+// Update setting
+// FIXME Throwing an unknown_method error
+//$realDebrid->settings->update(\RealDebrid\Api\Settings::DOWNLOAD_PORT, 'secured');
+
+// Convert fidelity points
+// FIXME Throwing an unknown_method error
+//$realDebrid->settings->convertPoints();
+
+// Change password
+// FIXME Throwing an unknown_method error
+//$realDebrid->settings->changePassword();
+
+// Upload avatar
+$realDebrid->settings->addAvatar('C:\Users\v.got\Downloads\silver-150.png');
+
+// Delete avatar
 //$realDebrid->settings->deleteAvatar();
