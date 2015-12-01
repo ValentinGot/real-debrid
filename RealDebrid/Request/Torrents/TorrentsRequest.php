@@ -31,7 +31,8 @@ class TorrentsRequest extends AbstractRequest {
         $this->setToken($token);
         if ($filter)
             $this->addQueryParam('filter', 'active');
-        $this->addQueryParam('page', $page);
+        if (!is_null($page))
+            $this->addQueryParam('page', $page);
         $this->addQueryParam('limit', $limit);
         if (!is_null($offset))
             $this->addQueryParam('offset', $offset);

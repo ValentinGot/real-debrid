@@ -29,7 +29,8 @@ class DownloadsRequest extends AbstractRequest {
         parent::__construct();
 
         $this->setToken($token);
-        $this->addQueryParam('page', $page);
+        if (!is_null($page))
+            $this->addQueryParam('page', $page);
         $this->addQueryParam('limit', $limit);
         if (!is_null($offset))
             $this->addQueryParam('offset', $offset);
