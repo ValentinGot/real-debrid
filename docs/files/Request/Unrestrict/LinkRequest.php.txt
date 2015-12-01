@@ -14,25 +14,24 @@ use RealDebrid\Request\RequestType;
  * @author Valentin GOT
  */
 class LinkRequest extends AbstractRequest {
-    private $body = array();
 
     /**
      * Unrestrict a hoster link and get a new unrestricted link
      *
      * @param Token $token Access token
      * @param string $link The original hoster link
-     * @param string|null $password Password to unlock the file access hoster side
-     * @param string|null $remote Use Remote traffic, dedicated servers and account sharing protections lifted
+     * @param string $password Password to unlock the file access hoster side
+     * @param string $remote Use Remote traffic, dedicated servers and account sharing protections lifted
      */
-    public function __construct(Token $token, $link, $password = null, $remote = null) {
+    public function __construct(Token $token, $link, $password, $remote) {
         parent::__construct();
 
         $this->setToken($token);
-        $body['link'] = $link;
+        $this->addToBody('link', $link);
         if (!empty($password))
-            $body['password'] = $password;
+            $this->addToBody('password', $password);
         if (!empty($remote))
-        $body['remote'] = $remote;
+            $this->addToBody('remote', $remote);
     }
 
     public function getRequestType() {
@@ -41,9 +40,5 @@ class LinkRequest extends AbstractRequest {
 
     public function getUri() {
         return "unrestrict/link";
-    }
-
-    protected function getPostBody() {
-        return $this->body;
     }
 }

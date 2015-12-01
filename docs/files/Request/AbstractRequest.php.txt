@@ -4,6 +4,8 @@ namespace RealDebrid\Request;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Auth\Token;
 use RealDebrid\Exception\ExceptionStatusCodeFactory;
@@ -29,7 +31,20 @@ abstract class AbstractRequest {
      */
     private $responseHandler;
 
-    protected $queryParams = array();
+    /**
+     * @var Collection
+     */
+    protected $body;
+
+    /**
+     * @var string
+     */
+    protected $filePath;
+
+    /**
+     * @var Collection
+     */
+    protected $queryParams;
 
     /**
      * Retrieve the HTTP verb
@@ -49,6 +64,9 @@ abstract class AbstractRequest {
      * AbstractRequest constructor.
      */
     public function __construct() {
+        $this->body = new Collection();
+        $this->queryParams = new Collection();
+
         $this->setResponseHandler(new DefaultResponseHandler());
     }
 
@@ -71,6 +89,7 @@ abstract class AbstractRequest {
         try {
             return $this->handleResponse($this->request($client), $client);
         } catch(ClientException $e) {
+            // HACK for /downloads/delete/{id} URL which is throwing an error_code 7 even if it works
             if ($e->getRequest()->getMethod() !== RequestType::DELETE && json_decode($e->getResponse()->getBody())->error_code != 7)
                 throw ExceptionStatusCodeFactory::create($e->getResponse());
         }
@@ -95,8 +114,15 @@ abstract class AbstractRequest {
         return $this->responseHandler;
     }
 
+    /**
+     * @return Collection
+     */
     public function getQueryParams() {
         return $this->queryParams;
+    }
+
+    public function addQueryParam($key, $value) {
+        $this->queryParams->put($key, $value);
     }
 
     protected function handleResponse(ResponseInterface $response, ClientInterface $client) {
@@ -111,19 +137,20 @@ abstract class AbstractRequest {
 
     private function getOptions() {
         $options = array(
-           "headers" => $this->getHeaders()
+           RequestOptions::HEADERS => $this->getHeaders()
         );
 
-        if ($this->needsPostBody())
-            $options['body'] = json_encode($this->getPostBody());
+        if ($this->needsPostBody() && $this->body->count() > 0)
+            $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
+        if (!empty($this->filePath))
+            $options[RequestOptions::BODY] = fopen($this->filePath, 'r');
 
         return $options;
     }
 
     private function getHeaders() {
         return array(
-            "Content-Type" => "application/json",
-            'Authorization' => (is_null($this->token)) ? "" : "Bearer " . $this->token,
+            'Authorization' => (is_null($this->token)) ? "" : "Bearer " . $this->token
         );
     }
 
@@ -131,7 +158,15 @@ abstract class AbstractRequest {
         return in_array($this->getRequestType(), array(RequestType::POST, RequestType::PUT));
     }
 
-    private function getPostBody() {
-        return array();
+    protected function getPostBody() {
+        return $this->body->toArray();
+    }
+
+    protected function addToBody($key, $value) {
+        $this->body->put($key, $value);
+    }
+
+    protected function setFilePath($filePath) {
+        $this->filePath = $filePath;
     }
 }

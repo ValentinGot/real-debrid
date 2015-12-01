@@ -14,12 +14,11 @@ use RealDebrid\Request\RequestType;
  * @author Valentin GOT
  */
 class UpdateRequest extends AbstractRequest {
-    private $body = array();
 
     /**
      * Update a user setting
      *
-     * @param Token $token
+     * @param Token $token Access token
      * @param string $name Setting name
      * @param string $value Possible values are available in /settings
      */
@@ -27,8 +26,8 @@ class UpdateRequest extends AbstractRequest {
         parent::__construct();
 
         $this->setToken($token);
-        $body['setting_name'] = $name;
-        $body['setting_value'] = $value;
+        $this->addToBody('setting_name', $name);
+        $this->addToBody('setting_value', $value);
     }
 
     public function getRequestType() {
@@ -37,9 +36,5 @@ class UpdateRequest extends AbstractRequest {
 
     public function getUri() {
         return "settings/update";
-    }
-
-    public function getPostBody() {
-        return $this->body;
     }
 }

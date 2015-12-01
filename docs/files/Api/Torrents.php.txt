@@ -2,6 +2,9 @@
 
 namespace RealDebrid\Api;
 use RealDebrid\Request\Torrents\AddMagnet;
+use RealDebrid\Request\Torrents\AddMagnetRequest;
+use RealDebrid\Request\Torrents\AddTorrent;
+use RealDebrid\Request\Torrents\AddTorrentRequest;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
 use RealDebrid\Request\Torrents\DeleteRequest;
 use RealDebrid\Request\Torrents\InfoRequest;
@@ -54,22 +57,26 @@ class Torrents extends EndPoint {
 
     /**
      * Add a torrent file to download
+     *
+     * The files must be selected with the selectFiles method to start the torrent
+     * @param string $path Path to the torrent file
+     * @return \stdClass Torrent information
      */
-    public function addTorrent() {
-        // TODO add torrent
-        //return $this->request();
+    public function addTorrent($path) {
+        return $this->request(new AddTorrentRequest($this->token, $path));
     }
 
     /**
      * Add a magnet link to download
      *
+     * The files must be selected with the selectFiles method to start the torrent
      * @param string $magnet Magnet link
      * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
      * @param int|null $split Split size (under max_split_size of concerned hoster retrieved from /torrents/availableHosts)
      * @return \stdClass Magnet information
      */
     public function addMagnet($magnet, $host = null, $split = null) {
-        return $this->request(new AddMagnet($this->token, $magnet, $host, $split));
+        return $this->request(new AddMagnetRequest($this->token, $magnet, $host, $split));
     }
 
     /**
@@ -77,9 +84,9 @@ class Torrents extends EndPoint {
      *
      * Warning: To get file IDs, use /torrents/info/{id}
      * @param string $id Torrent ID
-     * @param string $files Selected files IDs (comma separated) or "all"
+     * @param array $files Array of selected files IDs
      */
-    public function selectFiles($id, $files = 'all') {
+    public function selectFiles($id, array $files = array()) {
         $this->request(new SelectFilesRequest($this->token, $id, $files));
     }
 

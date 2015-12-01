@@ -34,8 +34,8 @@ class UriBuilder {
         $parts = $builder->getParametersInUri();
         $values = $builder->getValuesFromUriParameters($parts);
         $uri = $builder->formatUri($values);
-        if (count($request->getQueryParams()) > 0)
-            $uri .=  '?' . http_build_query($request->getQueryParams());
+        if (!$request->getQueryParams()->isEmpty())
+            $uri .=  '?' . http_build_query($request->getQueryParams()->toArray());
 
         return $uri;
     }
