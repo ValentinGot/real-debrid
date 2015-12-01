@@ -69,6 +69,7 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('MY_TOKEN'))
 //echo json_encode($realDebrid->torrents->availableHosts());
 
 // Add torrent file
+//echo json_encode($realDebrid->torrents->addTorrent('C:\Users\v.got\Downloads\[kat.cr]game.of.thrones.s05e01.720p.hdtv.x264.immerse.torrent'));
 
 // Add torrent magnet
 //echo json_encode($realDebrid->torrents->addMagnet('magnet:?xt=urn:btih:637CE466AEC75A977D8BD02923ACF2788B2FA782&dn=game+of+thrones+s05e01+720p+hdtv+x264+immerse&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce'));
