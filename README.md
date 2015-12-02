@@ -127,7 +127,7 @@ All **Torrents** methods are available under ```\RealDebrid\RealDebrid()->torren
 \RealDebrid\RealDebrid()->torrents->get($filter = false, $page = 1, $limit = 50, $offset = null): Get user torrents list
 \RealDebrid\RealDebrid()->torrents->torrent($id): Get all information on the asked torrent
 \RealDebrid\RealDebrid()->torrents->availableHosts(): Get available hosts to upload the torrent to
-\RealDebrid\RealDebrid()->torrents->addTorrent(): Add a torrent file to download. UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->torrents->addTorrent(): Add a torrent file to download
 \RealDebrid\RealDebrid()->torrents->addMagnet($magnet, $host = null, $split = null): Add a magnet link to download
 \RealDebrid\RealDebrid()->torrents->selectFiles($id, array $files = array()): Select files of a torrent to start it
 \RealDebrid\RealDebrid()->torrents->delete($id): Delete a torrent from torrents list
@@ -149,7 +149,7 @@ All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unre
 ```php
 \RealDebrid\RealDebrid()->unrestrict->link($link, $password = null, $remote = null): Unrestrict a hoster link and get a new unrestricted link
 \RealDebrid\RealDebrid()->unrestrict->folder($link): Unrestrict a hoster folder link and get individual links
-\RealDebrid\RealDebrid()->unrestrict->containerFile(): Decrypt a container file (RSDF, CCF, CCF3, DLC). UNDER DEVELOPMENT
+\RealDebrid\RealDebrid()->unrestrict->containerFile(): Decrypt a container file (RSDF, CCF, CCF3, DLC)
 \RealDebrid\RealDebrid()->unrestrict->containerLink($link): Decrypt a container file from a link
 ```
 
