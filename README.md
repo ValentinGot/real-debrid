@@ -1,6 +1,6 @@
 # [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
-[![PHP version](https://badge.fury.io/ph/vgot%2Freal-debrid.svg)](https://badge.fury.io/ph/vgot%2Freal-debrid)
+[![GitHub version](https://badge.fury.io/gh/ValentinGot%2Freal-debrid.svg)](https://badge.fury.io/gh/ValentinGot%2Freal-debrid)
 
 > A simple API interface for real-debrid.com.
 
