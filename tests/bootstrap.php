@@ -12,3 +12,14 @@ function getToken() {
 function getRealDebrid() {
     return RealDebridSingleton::getInstance();
 }
+
+function mock_client($statusCode, $expectedResponse = '[]') {
+    $client = Mockery::mock(\GuzzleHttp\ClientInterface::class);
+    $response = Mockery::mock(\Psr\Http\Message\ResponseInterface::class);
+
+    $client->shouldReceive('request')->once()->andReturn($response);
+    $response->shouldReceive('getStatusCode')->once()->andReturn($statusCode);
+    $response->shouldReceive('getBody')->once()->andReturn($expectedResponse);
+
+    return $client;
+}
