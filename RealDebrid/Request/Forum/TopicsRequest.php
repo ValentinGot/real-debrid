@@ -36,7 +36,7 @@ class TopicsRequest extends AbstractRequest {
         if (!is_null($page))
             $this->addQueryParam('page', $page);
         $this->addQueryParam('limit', $limit);
-        if (!is_null($offset))
+        if (!is_null($offset) && is_null($page))
             $this->addQueryParam('offset', $offset);
     }
 
