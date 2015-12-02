@@ -4,6 +4,7 @@ namespace RealDebrid\Api;
 
 use GuzzleHttp\ClientInterface;
 use RealDebrid\Auth\Token;
+use RealDebrid\Interfaces\ResponseHandler;
 use RealDebrid\Request\AbstractRequest;
 
 /**
@@ -43,13 +44,14 @@ class EndPoint {
      * Requests the abstract request.
      *
      * @param AbstractRequest $request
+     * @param ResponseHandler $responseHandler
      * @return mixed|null The handled response
      * @throws \RealDebrid\Exception\BadTokenException
      * @throws \RealDebrid\Exception\PermissionDeniedException
      * @throws \RealDebrid\Exception\RealDebridException
      * @throws \RealDebrid\Exception\UnknownResourceException
      */
-    protected function request(AbstractRequest $request) {
-        return $request->make($this->client);
+    protected function request(AbstractRequest $request, ResponseHandler $responseHandler = null) {
+        return $request->make($this->client, $responseHandler);
     }
 }

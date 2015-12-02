@@ -3,6 +3,7 @@
 namespace RealDebrid\Api;
 
 use RealDebrid\Request\User\UserRequest;
+use RealDebrid\Response\Handlers\User\UserHandler;
 
 /**
  * /user namespace
@@ -21,6 +22,6 @@ class User extends EndPoint {
      * @return \stdClass Some information on the current user
      */
     public function get() {
-        return $this->request(new UserRequest($this->token));
+        return $this->request(new UserRequest($this->token), new UserHandler());
     }
 }
