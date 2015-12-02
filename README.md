@@ -1,5 +1,7 @@
 # [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
+|version|
+
 > A simple API interface for real-debrid.com.
 
 It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or download some torrent files.
