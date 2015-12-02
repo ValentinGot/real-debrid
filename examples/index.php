@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
 $dotenv->load();
 
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 
 $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token(getenv('TOKEN')));
 
