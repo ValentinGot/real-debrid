@@ -9,6 +9,10 @@ namespace RealDebrid\Response;
  * @author Valentin GOT
  */
 class AbstractResponse {
+
+    /**
+     * @var \stdClass
+     */
     private $json;
 
     public function __construct($json) {

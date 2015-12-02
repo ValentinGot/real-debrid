@@ -1,6 +1,7 @@
 <?php
 
 namespace RealDebrid\Response;
+use Carbon\Carbon;
 
 /**
  * User
@@ -9,14 +10,50 @@ namespace RealDebrid\Response;
  * @author Valentin GOT
  */
 class User extends AbstractResponse {
+
+    /**
+     * @var integer
+     */
     private $id;
+
+    /**
+     * @var string
+     */
     private $username;
+
+    /**
+     * @var string
+     */
     private $email;
+
+    /**
+     * @var integer
+     */
     private $points;
+
+    /**
+     * @var string
+     */
     private $locale;
+
+    /**
+     * @var string
+     */
     private $avatar;
+
+    /**
+     * @var string
+     */
     private $type;
+
+    /**
+     * @var integer
+     */
     private $premium;
+
+    /**
+     * @var Carbon
+     */
     private $expiration;
 
     public function __construct($json) {
@@ -30,7 +67,7 @@ class User extends AbstractResponse {
         $this->avatar = $json->avatar;
         $this->type = $json->type;
         $this->premium = $json->premium;
-        $this->expiration = $json->expiration;
+        $this->expiration = new Carbon($json->expiration);
     }
 
     public function getId() {
