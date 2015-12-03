@@ -31,7 +31,7 @@ class AddMagnetRequest extends AbstractRequest {
         $this->addToBody('magnet', $magnet);
         if (!empty($host))
             $this->addToBody('host', $host);
-        if (!empty($split))
+        if (!empty($host) && !empty($split))
             $this->addToBody('split', $split);
     }
 

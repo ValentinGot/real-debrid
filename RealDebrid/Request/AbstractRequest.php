@@ -131,6 +131,13 @@ abstract class AbstractRequest {
         $this->queryParams->put($key, $value);
     }
 
+    /**
+     * @return Collection
+     */
+    public function getBody() {
+        return $this->body;
+    }
+
     protected function getPostBody() {
         return $this->body->toArray();
     }
