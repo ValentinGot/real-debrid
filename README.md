@@ -30,7 +30,7 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 ### System Requirements
 
-You need **PHP >= 5.3.0**.
+You need **PHP >= 5.6.0**.
 
 ### Authentication
 
