@@ -6,3 +6,5 @@ php:
   - nightly
 
 install: composer install
+
+script: phpunit --bootstrap tests\bootstrap.php --no-configuration tests
