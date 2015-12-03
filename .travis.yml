@@ -7,4 +7,4 @@ php:
 
 install: composer install
 
-script: phpunit --bootstrap tests\bootstrap.php --no-configuration tests
+script: phpunit --bootstrap tests/bootstrap.php --no-configuration tests/
