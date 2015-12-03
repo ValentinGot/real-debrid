@@ -1,7 +1,8 @@
 # [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
-[![GitHub version](https://badge.fury.io/gh/ValentinGot%2Freal-debrid.svg)](https://badge.fury.io/gh/ValentinGot%2Freal-debrid)
+[![Latest Stable Version](https://poser.pugx.org/vgot/real-debrid/v/stable)](https://packagist.org/packages/vgot/real-debrid)
 [![Build Status](https://travis-ci.org/ValentinGot/real-debrid.svg)](https://travis-ci.org/ValentinGot/real-debrid)
+[![codecov.io](https://codecov.io/github/ValentinGot/real-debrid/coverage.svg?branch=master)](https://codecov.io/github/ValentinGot/real-debrid?branch=master)
 
 > A simple API interface for real-debrid.com.
 
