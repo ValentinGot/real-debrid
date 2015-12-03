@@ -1,5 +1,9 @@
 # [Real-Debrid API](https://github.com/ValentinGot/real-debrid)
 
+[![Latest Stable Version](https://poser.pugx.org/vgot/real-debrid/v/stable)](https://packagist.org/packages/vgot/real-debrid)
+[![Build Status](https://travis-ci.org/ValentinGot/real-debrid.svg)](https://travis-ci.org/ValentinGot/real-debrid)
+[![codecov.io](https://codecov.io/github/ValentinGot/real-debrid/coverage.svg?branch=master)](https://codecov.io/github/ValentinGot/real-debrid?branch=master)
+
 > A simple API interface for real-debrid.com.
 
 It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or download some torrent files.
@@ -28,7 +32,7 @@ $ git clone https://github.com/ValentinGot/real-debrid.git
 
 ### System Requirements
 
-You need **PHP >= 5.3.0**.
+You need **PHP >= 5.6.0**.
 
 ### Authentication
 

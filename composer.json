@@ -2,9 +2,9 @@
   "name": "vgot/real-debrid",
   "type": "library",
   "description": "A simple API interface for real-debrid.com",
-  "keywords": ["real-debrid.com", "unrestrict", "torrent"],
+  "keywords": ["real-debrid.com", "unrestrict", "torrent", "download", "api.real-debrid.com", "magnet"],
   "homepage": "https://github.com/ValentinGot/real-debrid",
-  "license": "Apache License 2.O",
+  "license": "MIT",
   "authors": [
     {
       "name": "Valentin GOT",
@@ -12,13 +12,16 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
+    "php": ">=5.6.0",
     "guzzlehttp/guzzle": "^6.1",
     "nesbot/carbon": "^1.21",
     "illuminate/support": "^5.1"
   },
   "require-dev": {
-    "phpdocumentor/phpdocumentor": "2.*"
+    "phpdocumentor/phpdocumentor": "2.*",
+    "phpunit/phpunit": "5.0.10",
+    "vlucas/phpdotenv": "2.0.x-dev",
+    "mockery/mockery": "0.9.4"
   },
   "autoload": {
     "psr-0": { "RealDebrid": "." }

@@ -22,16 +22,6 @@ use RealDebrid\Response\Handlers\DefaultResponseHandler;
 abstract class AbstractRequest {
 
     /**
-     * @var Token
-     */
-    private $token = null;
-
-    /**
-     * @var ResponseHandler
-     */
-    private $responseHandler;
-
-    /**
      * @var Collection
      */
     protected $body;
@@ -45,6 +35,16 @@ abstract class AbstractRequest {
      * @var Collection
      */
     protected $queryParams;
+
+    /**
+     * @var Token
+     */
+    private $token = null;
+
+    /**
+     * @var ResponseHandler
+     */
+    private $responseHandler;
 
     /**
      * Retrieve the HTTP verb
@@ -105,13 +105,19 @@ abstract class AbstractRequest {
         $this->token = $token;
     }
 
+    public function getResponseHandler() {
+        return $this->responseHandler;
+    }
+
+    protected function handleResponse(ResponseInterface $response, ClientInterface $client) {
+        $handler = $this->getResponseHandler();
+
+        return $handler->handle($response, $client);
+    }
+
     public function setResponseHandler(ResponseHandler $responseHandler = null) {
         if ($responseHandler)
             $this->responseHandler = $responseHandler;
-    }
-
-    public function getResponseHandler() {
-        return $this->responseHandler;
     }
 
     /**
@@ -125,10 +131,27 @@ abstract class AbstractRequest {
         $this->queryParams->put($key, $value);
     }
 
-    protected function handleResponse(ResponseInterface $response, ClientInterface $client) {
-        $handler = $this->getResponseHandler();
+    /**
+     * @return Collection
+     */
+    public function getBody() {
+        return $this->body;
+    }
 
-        return $handler->handle($response, $client);
+    public function getFilePath() {
+        return $this->filePath;
+    }
+
+    protected function getPostBody() {
+        return $this->body->toArray();
+    }
+
+    protected function addToBody($key, $value) {
+        $this->body->put($key, $value);
+    }
+
+    protected function setFilePath($filePath) {
+        $this->filePath = $filePath;
     }
 
     private function request(ClientInterface $client) {
@@ -140,7 +163,7 @@ abstract class AbstractRequest {
            RequestOptions::HEADERS => $this->getHeaders()
         );
 
-        if ($this->needsPostBody() && $this->body->count() > 0)
+        if ($this->needsPostBody())
             $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
         if (!empty($this->filePath))
             $options[RequestOptions::BODY] = fopen($this->filePath, 'r');
@@ -155,18 +178,6 @@ abstract class AbstractRequest {
     }
 
     private function needsPostBody() {
-        return in_array($this->getRequestType(), array(RequestType::POST, RequestType::PUT));
-    }
-
-    protected function getPostBody() {
-        return $this->body->toArray();
-    }
-
-    protected function addToBody($key, $value) {
-        $this->body->put($key, $value);
-    }
-
-    protected function setFilePath($filePath) {
-        $this->filePath = $filePath;
+        return in_array($this->getRequestType(), array(RequestType::POST, RequestType::PUT)) && $this->body->count() > 0;
     }
 }

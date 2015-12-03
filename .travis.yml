@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 5.6
+
+before_install:
+  - pip install --user codecov
+
+install: composer install
+
+script: phpunit --bootstrap tests/bootstrap.php --no-configuration tests/
+
+after_success:
+  - codecov

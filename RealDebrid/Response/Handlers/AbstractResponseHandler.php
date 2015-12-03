@@ -3,7 +3,6 @@
 namespace RealDebrid\Response\Handlers;
 
 use Psr\Http\Message\ResponseInterface;
-use RealDebrid\Auth\Token;
 
 /**
  * AbstractResponseHandler

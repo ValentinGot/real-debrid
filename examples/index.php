@@ -1,14 +1,17 @@
 <?php
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+$dotenv->load();
 
 header('Content-Type: application/json');
 
-$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('MY_TOKEN'));
+$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token(getenv('TOKEN')));
 
 // /user
 //----------------------------------------------
 
-//echo json_encode($realDebrid->user->get());
+//echo '<pre>' . var_export($realDebrid->user->get(), true) . '</pre>';
 
 // /unrestrict
 //----------------------------------------------
