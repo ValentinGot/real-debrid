@@ -138,6 +138,10 @@ abstract class AbstractRequest {
         return $this->body;
     }
 
+    public function getFilePath() {
+        return $this->filePath;
+    }
+
     protected function getPostBody() {
         return $this->body->toArray();
     }
