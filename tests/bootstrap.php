@@ -2,8 +2,12 @@
 require __DIR__ . '/../vendor/autoload.php';
 require 'RealDebridSingleton.php';
 
-$dotenv = new \Dotenv\Dotenv(dirname(__DIR__));
-$dotenv->load();
+try {
+    $dotenv = new \Dotenv\Dotenv(dirname(__DIR__));
+    $dotenv->load();
+} catch (InvalidArgumentException $e) {
+    // Do nothing
+}
 
 function getToken() {
     return getenv('TOKEN');
