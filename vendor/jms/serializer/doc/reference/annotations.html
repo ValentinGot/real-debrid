@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Annotations &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Annotations</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/jms/serializer/doc/reference/annotations.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="annotations">
+<h1>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exclusionpolicy">
+<h2>&#64;ExclusionPolicy<a class="headerlink" href="#exclusionpolicy" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a class to indicate the exclusion strategy
+that should be used for the class.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Policy</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>all</td>
+<td>all properties are excluded by default; only properties marked
+with &#64;Expose will be serialized/unserialized</td>
+</tr>
+<tr class="row-odd"><td>none</td>
+<td>no properties are excluded by default; all properties except
+those marked with &#64;Exclude will be serialized/unserialized</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exclude">
+<h2>&#64;Exclude<a class="headerlink" href="#exclude" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to indicate that the property should
+not be serialized/unserialized. Works only in combination with NoneExclusionPolicy.</p>
+</div>
+<div class="section" id="expose">
+<h2>&#64;Expose<a class="headerlink" href="#expose" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to indicate that the property should
+be serialized/unserialized. Works only in combination with AllExclusionPolicy.</p>
+</div>
+<div class="section" id="serializedname">
+<h2>&#64;SerializedName<a class="headerlink" href="#serializedname" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to define the serialized name for a
+property. If this is not defined, the property will be translated from camel-case
+to a lower-cased underscored name, e.g. camelCase -&gt; camel_case.</p>
+</div>
+<div class="section" id="since">
+<h2>&#64;Since<a class="headerlink" href="#since" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to specify starting from which
+version this property is available. If an earlier version is serialized, then
+this property is excluded automatically. The version must be in a format that is
+understood by PHP&#8217;s <code class="docutils literal"><span class="pre">version_compare</span></code> function.</p>
+</div>
+<div class="section" id="until">
+<h2>&#64;Until<a class="headerlink" href="#until" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to specify until which version this
+property was available. If a later version is serialized, then this property is
+excluded automatically. The version must be in a format that is understood by
+PHP&#8217;s <code class="docutils literal"><span class="pre">version_compare</span></code> function.</p>
+</div>
+<div class="section" id="groups">
+<h2>&#64;Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to specifiy to if the property
+should be serialized when only serializing specific groups (see
+<a class="reference internal" href="../cookbook/exclusion_strategies.html"><em>Exclusion Strategies</em></a>).</p>
+</div>
+<div class="section" id="maxdepth">
+<h2>&#64;MaxDepth<a class="headerlink" href="#maxdepth" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to limit the depth to which the
+content will be serialized. It is very useful when a property will contain a
+large object graph.</p>
+</div>
+<div class="section" id="accesstype">
+<h2>&#64;AccessType<a class="headerlink" href="#accesstype" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property, or a class to specify in which way
+the properties should be accessed. By default, the serializer will retrieve, or
+set the value via reflection, but you may change this to use a public method instead:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\AccessType</span><span class="p">;</span>
+
+<span class="sd">/** @AccessType(&quot;public_method&quot;) */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessor">
+<h2>&#64;Accessor<a class="headerlink" href="#accessor" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to specify which public method should
+be called to retrieve, or set the value of the given property:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\Accessor</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/** @Accessor(getter=&quot;getTrimmedName&quot;,setter=&quot;setName&quot;) */</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTrimmedName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessororder">
+<h2>&#64;AccessorOrder<a class="headerlink" href="#accessororder" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a class to control the order of properties. By
+default the order is undefined, but you may change it to either &#8220;alphabetical&#8221;, or
+&#8220;custom&#8221;.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\AccessorOrder</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @AccessorOrder(&quot;alphabetical&quot;)</span>
+<span class="sd"> *</span>
+<span class="sd"> * Resulting Property Order: id, name</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @AccessorOrder(&quot;custom&quot;, custom = {&quot;name&quot;, &quot;id&quot;})</span>
+<span class="sd"> *</span>
+<span class="sd"> * Resulting Property Order: name, id</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @AccessorOrder(&quot;custom&quot;, custom = {&quot;name&quot;, &quot;SomeMethod&quot; ,&quot;id&quot;})</span>
+<span class="sd"> *</span>
+<span class="sd"> * Resulting Property Order: name, mood, id</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Serializer\VirtualProperty</span>
+<span class="sd">     * @Serializer\SerializedName(&quot;mood&quot;)</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSomeMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;happy&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtualproperty">
+<h2>&#64;VirtualProperty<a class="headerlink" href="#virtualproperty" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a method to indicate that the data returned by
+the method should appear like a property of the object.</p>
+<p><strong>Note</strong>: This only works for serialization and is completely ignored during
+deserialization.</p>
+</div>
+<div class="section" id="inline">
+<h2>&#64;Inline<a class="headerlink" href="#inline" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to indicate that the data of the property
+should be inlined.</p>
+<p><strong>Note</strong>: This only works for serialization, the serializer will not be able to deserialize
+objects with this annotation. Also, AccessorOrder will be using the name of the property
+to determine the order.</p>
+</div>
+<div class="section" id="readonly">
+<h2>&#64;ReadOnly<a class="headerlink" href="#readonly" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to indicate that the data of the property
+is read only and cannot be set during deserialization.</p>
+<p>A property can be marked as non read only with <code class="docutils literal"><span class="pre">&#64;ReadOnly(false)</span></code> annotation (useful when a class is marked as read only).</p>
+</div>
+<div class="section" id="preserialize">
+<h2>&#64;PreSerialize<a class="headerlink" href="#preserialize" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a method which is supposed to be called before
+the serialization of the object starts.</p>
+</div>
+<div class="section" id="postserialize">
+<h2>&#64;PostSerialize<a class="headerlink" href="#postserialize" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a method which is then called directly after the
+object has been serialized.</p>
+</div>
+<div class="section" id="postdeserialize">
+<h2>&#64;PostDeserialize<a class="headerlink" href="#postdeserialize" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a method which is supposed to be called after
+the object has been deserialized.</p>
+</div>
+<div class="section" id="handlercallback">
+<h2>&#64;HandlerCallback<a class="headerlink" href="#handlercallback" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a method if serialization/deserialization is handled
+by the object iself.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Article</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @HandlerCallback(&quot;xml&quot;, direction = &quot;serialization&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">serializeToXml</span><span class="p">(</span><span class="nx">XmlSerializationVisitor</span> <span class="nv">$visitor</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// custom logic here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="discriminator">
+<h2>&#64;Discriminator<a class="headerlink" href="#discriminator" title="Permalink to this headline">¶</a></h2>
+<p>This annotation allows deserialization of relations which are polymorphic, but
+where a common base class exists. The <code class="docutils literal"><span class="pre">&#64;Discriminator</span></code> annotation has to be applied
+to the least super type:</p>
+<div class="highlight-python"><div class="highlight"><pre>/**
+ * @Discriminator(field = &quot;type&quot;, map = {&quot;car&quot;: &quot;Car&quot;, &quot;moped&quot;: &quot;Moped&quot;})
+ */
+abstract class Vehicle { }
+class Car extends Vehicle { }
+class Moped extends Vehicle { }
+</pre></div>
+</div>
+</div>
+<div class="section" id="type">
+<h2>&#64;Type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to specify the type of that property.
+For deserialization, this annotation must be defined. For serialization, you may
+define it in order to enhance the produced output; for example, you may want to
+force a certain format to be used for DateTime types.</p>
+<p>Available Types:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>boolean</td>
+<td>Primitive boolean</td>
+</tr>
+<tr class="row-odd"><td>integer</td>
+<td>Primitive integer</td>
+</tr>
+<tr class="row-even"><td>double</td>
+<td>Primitive double</td>
+</tr>
+<tr class="row-odd"><td>string</td>
+<td>Primitive string</td>
+</tr>
+<tr class="row-even"><td>array</td>
+<td>An array with arbitrary keys, and values.</td>
+</tr>
+<tr class="row-odd"><td>array&lt;T&gt;</td>
+<td>A list of type T (T can be any available type).
+Examples:
+array&lt;string&gt;, array&lt;MyNamespaceMyObject&gt;, etc.</td>
+</tr>
+<tr class="row-even"><td>array&lt;K, V&gt;</td>
+<td>A map of keys of type K to values of type V.
+Examples: array&lt;string, string&gt;,
+array&lt;string, MyNamespaceMyObject&gt;, etc.</td>
+</tr>
+<tr class="row-odd"><td>DateTime</td>
+<td>PHP&#8217;s DateTime object (default format/timezone)</td>
+</tr>
+<tr class="row-even"><td>DateTime&lt;&#8217;format&#8217;&gt;</td>
+<td>PHP&#8217;s DateTime object (custom format/default
+timezone)</td>
+</tr>
+<tr class="row-odd"><td>DateTime&lt;&#8217;format&#8217;, &#8216;zone&#8217;&gt;</td>
+<td>PHP&#8217;s DateTime object (custom format/timezone)</td>
+</tr>
+<tr class="row-even"><td>T</td>
+<td>Where T is a fully qualified class name.</td>
+</tr>
+<tr class="row-odd"><td>ArrayCollection&lt;T&gt;</td>
+<td>Similar to array&lt;T&gt;, but will be deserialized
+into Doctrine&#8217;s ArrayCollection class.</td>
+</tr>
+<tr class="row-even"><td>ArrayCollection&lt;K, V&gt;</td>
+<td>Similar to array&lt;K, V&gt;, but will be deserialized
+into Doctrine&#8217;s ArrayCollection class.</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">MyNamespace</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\Type</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">BlogPost</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;ArrayCollection&lt;MyNamespace\Comment&gt;&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$comments</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;string&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$title</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;MyNamespace\Author&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$author</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;DateTime&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$createdAt</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;DateTime&lt;&#39;Y-m-d&#39;&gt;&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$updatedAt</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;boolean&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$published</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;array&lt;string, string&gt;&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$keyValueStore</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlroot">
+<h2>&#64;XmlRoot<a class="headerlink" href="#xmlroot" title="Permalink to this headline">¶</a></h2>
+<p>This allows you to specify the name of the top-level element.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlRoot</span><span class="p">;</span>
+
+<span class="sd">/** @XmlRoot(&quot;user&quot;) */</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;Johannes&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;user&gt;</span>
+    <span class="nt">&lt;name&gt;</span><span class="cp">&lt;![CDATA[Johannes]]&gt;</span><span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;/user&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&#64;XmlRoot only applies to the root element, but is for example not taken into
+account for collections. You can define the entry name for collections using
+&#64;XmlList, or &#64;XmlMap.</p>
+</div>
+</div>
+<div class="section" id="xmlattribute">
+<h2>&#64;XmlAttribute<a class="headerlink" href="#xmlattribute" title="Permalink to this headline">¶</a></h2>
+<p>This allows you to mark properties which should be set as attributes,
+and not as child elements.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlAttribute</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/** @XmlAttribute */</span>
+    <span class="k">private</span> <span class="nv">$id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s1">&#39;Johannes&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;result</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;name&gt;</span><span class="cp">&lt;![CDATA[Johannes]]&gt;</span><span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;/result&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlvalue">
+<h2>&#64;XmlValue<a class="headerlink" href="#xmlvalue" title="Permalink to this headline">¶</a></h2>
+<p>This allows you to mark properties which should be set as the value of the
+current element. Note that this has the limitation that any additional
+properties of that object must have the &#64;XmlAttribute annotation.
+XMlValue also has property cdata. Which has the same meaning as the one in
+XMLElement.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlAttribute</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlValue</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlRoot</span><span class="p">;</span>
+
+<span class="sd">/** @XmlRoot(&quot;price&quot;) */</span>
+<span class="k">class</span> <span class="nc">Price</span>
+<span class="p">{</span>
+    <span class="sd">/** @XmlAttribute */</span>
+    <span class="k">private</span> <span class="nv">$currency</span> <span class="o">=</span> <span class="s1">&#39;EUR&#39;</span><span class="p">;</span>
+
+    <span class="sd">/** @XmlValue */</span>
+    <span class="k">private</span> <span class="nv">$amount</span> <span class="o">=</span> <span class="mf">1.23</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;price</span> <span class="na">currency=</span><span class="s">&quot;EUR&quot;</span><span class="nt">&gt;</span>1.23<span class="nt">&lt;/price&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmllist">
+<h2>&#64;XmlList<a class="headerlink" href="#xmllist" title="Permalink to this headline">¶</a></h2>
+<p>This allows you to define several properties of how arrays should be
+serialized. This is very similar to &#64;XmlMap, and should be used if the
+keys of the array are not important.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlList</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlRoot</span><span class="p">;</span>
+
+<span class="sd">/** @XmlRoot(&quot;post&quot;) */</span>
+<span class="k">class</span> <span class="nc">Post</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @XmlList(inline = true, entry = &quot;comment&quot;)</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$comments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nx">Comment</span><span class="p">(</span><span class="s1">&#39;Foo&#39;</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">Comment</span><span class="p">(</span><span class="s1">&#39;Bar&#39;</span><span class="p">),</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Comment</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$text</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$text</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">text</span> <span class="o">=</span> <span class="nv">$text</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;post&gt;</span>
+    <span class="nt">&lt;comment&gt;</span>
+        <span class="nt">&lt;text&gt;</span><span class="cp">&lt;![CDATA[Foo]]&gt;</span><span class="nt">&lt;/text&gt;</span>
+    <span class="nt">&lt;/comment&gt;</span>
+    <span class="nt">&lt;comment&gt;</span>
+        <span class="nt">&lt;text&gt;</span><span class="cp">&lt;![CDATA[Bar]]&gt;</span><span class="nt">&lt;/text&gt;</span>
+    <span class="nt">&lt;/comment&gt;</span>
+<span class="nt">&lt;/post&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlmap">
+<h2>&#64;XmlMap<a class="headerlink" href="#xmlmap" title="Permalink to this headline">¶</a></h2>
+<p>Similar to &#64;XmlList, but the keys of the array are meaningful.</p>
+</div>
+<div class="section" id="xmlkeyvaluepairs">
+<h2>&#64;XmlKeyValuePairs<a class="headerlink" href="#xmlkeyvaluepairs" title="Permalink to this headline">¶</a></h2>
+<p>This allows you to use the keys of an array as xml tags.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When a key is an invalid xml tag name (e.g. 1_foo) the tag name <em>entry</em> will be used instead of the key.</p>
+</div>
+</div>
+<div class="section" id="xmlattributemap">
+<h2>&#64;XmlAttributeMap<a class="headerlink" href="#xmlattributemap" title="Permalink to this headline">¶</a></h2>
+<p>This is similar to the &#64;XmlKeyValuePairs, but instead of creating child elements, it creates attributes.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlAttribute</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Input</span>
+<span class="p">{</span>
+    <span class="sd">/** @XmlAttributeMap */</span>
+    <span class="k">private</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;firstname&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Adrien&#39;</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;result</span> <span class="na">name=</span><span class="s">&quot;firstname&quot;</span> <span class="na">value=</span><span class="s">&quot;Adrien&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlelement">
+<h2>&#64;XmlElement<a class="headerlink" href="#xmlelement" title="Permalink to this headline">¶</a></h2>
+<p>This annotation can be defined on a property to add additional xml serialization/deserialization properties.</p>
+<div class="highlight-php"><div class="highlight"><pre>&lt;?php
+
+use JMS\Serializer\Annotation\XmlElement;
+
+/**
+ * @XmlNamespace(uri=&quot;http://www.w3.org/2005/Atom&quot;, prefix=&quot;atom&quot;)
+ */
+class User
+{
+    /**
+    * @XmlElement(cdata=false, namespace=&quot;http://www.w3.org/2005/Atom&quot;)
+    */
+    private $id = &#39;my_id;
+}
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;atom:id&gt;</span>my_id<span class="nt">&lt;/atom:id&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xmlnamespace">
+<h2>&#64;XmlNamespace<a class="headerlink" href="#xmlnamespace" title="Permalink to this headline">¶</a></h2>
+<p>This annotation allows you to specify Xml namespace/s and prefix used.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">JMS\Serializer\Annotation\XmlNamespace</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @XmlNamespace(uri=&quot;http://example.com/namespace&quot;)</span>
+<span class="sd"> * @XmlNamespace(uri=&quot;http://www.w3.org/2005/Atom&quot;, prefix=&quot;atom&quot;)</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">BlogPost</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;JMS\Serializer\Tests\Fixtures\Author&quot;)</span>
+<span class="sd">     * @Groups({&quot;post&quot;})</span>
+<span class="sd">     * @XmlElement(namespace=&quot;http://www.w3.org/2005/Atom&quot;)</span>
+<span class="sd">     */</span>
+     <span class="k">private</span> <span class="nv">$author</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Author</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @Type(&quot;string&quot;)</span>
+<span class="sd">     * @SerializedName(&quot;full_name&quot;)</span>
+<span class="sd">     */</span>
+     <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Resulting XML:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;blog-post</span> <span class="na">xmlns=</span><span class="s">&quot;http://example.com/namespace&quot;</span> <span class="na">xmlns:atom=</span><span class="s">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;atom:author&gt;</span>
+        <span class="nt">&lt;full_name&gt;</span><span class="cp">&lt;![CDATA[Foo Bar]]&gt;</span><span class="nt">&lt;/full_name&gt;</span>
+    <span class="nt">&lt;/atom:author&gt;</span>
+<span class="nt">&lt;/blog&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

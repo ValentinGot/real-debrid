@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Handlers &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Handlers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/vendor/jms/serializer/doc/handlers.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="handlers">
+<h1>Handlers<a class="headerlink" href="#handlers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Handlers allow you to change the serialization, or deserialization process
+for a single type/format combination.</p>
+<p>Handlers are simple callback which receive three arguments: the visitor,
+the data, and the type.</p>
+</div>
+<div class="section" id="simple-callables">
+<h2>Simple Callables<a class="headerlink" href="#simple-callables" title="Permalink to this headline">¶</a></h2>
+<p>You can register simple callables on the builder object:</p>
+<div class="highlight-python"><div class="highlight"><pre>$builder
+    -&gt;configureHandlers(function(JMS\Serializer\Handler\HandlerRegistry $registry) {
+        $registry-&gt;registerHandler(&#39;serialization&#39;, &#39;MyObject&#39;, &#39;json&#39;,
+            function($visitor, MyObject $obj, array $type) {
+                return $obj-&gt;getName();
+            }
+        );
+    })
+;
+</pre></div>
+</div>
+</div>
+<div class="section" id="subscribing-handlers">
+<h2>Subscribing Handlers<a class="headerlink" href="#subscribing-handlers" title="Permalink to this headline">¶</a></h2>
+<p>Subscribing handlers contain the configuration themselves which makes them easier to share with other users,
+and easier to set-up in general:</p>
+<div class="highlight-python"><div class="highlight"><pre>use JMS\Serializer\Handler\SubscribingHandlerInterface;
+use JMS\Serializer\GraphNavigator;
+use JMS\Serializer\JsonSerializationVisitor;
+use JMS\Serializer\Context;
+
+class MyHandler implements SubscribingHandlerInterface
+{
+    public static function getSubscribingMethods()
+    {
+        return array(
+            array(
+                &#39;direction&#39; =&gt; GraphNavigator::DIRECTION_SERIALIZATION,
+                &#39;format&#39; =&gt; &#39;json&#39;,
+                &#39;type&#39; =&gt; &#39;DateTime&#39;,
+                &#39;method&#39; =&gt; &#39;serializeDateTimeToJson&#39;,
+            ),
+        );
+    }
+
+    public function serializeDateTimeToJson(JsonSerializationVisitor $visitor, \DateTime $date, array $type, Context $context)
+    {
+        return $date-&gt;format($type[&#39;params&#39;][0]);
+    }
+}
+</pre></div>
+</div>
+<p>Also, this type of handler is registered via the builder object:</p>
+<div class="highlight-python"><div class="highlight"><pre>$builder
+    -&gt;configureHandlers(function(JMS\Serializer\Handler\HandlerRegistry $registry) {
+        $registry-&gt;registerSubscribingHandler(new MyHandler());
+    })
+;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

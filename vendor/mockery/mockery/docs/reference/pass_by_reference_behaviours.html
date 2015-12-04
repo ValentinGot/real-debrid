@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preserving Pass-By-Reference Method Parameter Behaviour &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Preserving Pass-By-Reference Method Parameter Behaviour</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/pass_by_reference_behaviours.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preserving-pass-by-reference-method-parameter-behaviour">
+<span id="index-0"></span><h1>Preserving Pass-By-Reference Method Parameter Behaviour<a class="headerlink" href="#preserving-pass-by-reference-method-parameter-behaviour" title="Permalink to this headline">¶</a></h1>
+<p>PHP Class method may accept parameters by reference. In this case, changes
+made to the parameter (a reference to the original variable passed to the
+method) are reflected in the original variable. A simple example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Foo</span>
+<span class="x">{</span>
+
+<span class="x">    public function bar(&amp;$a)</span>
+<span class="x">    {</span>
+<span class="x">        $a++;</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+
+<span class="x">$baz = 1;</span>
+<span class="x">$foo = new Foo;</span>
+<span class="x">$foo-&gt;bar($baz);</span>
+
+<span class="x">echo $baz; // will echo the integer 2</span>
+</pre></div>
+</div>
+<p>In the example above, the variable $baz is passed by reference to
+<code class="docutils literal"><span class="pre">Foo::bar()</span></code> (notice the <code class="docutils literal"><span class="pre">&amp;</span></code> symbol in front of the parameter?).  Any
+change <code class="docutils literal"><span class="pre">bar()</span></code> makes to the parameter reference is reflected in the original
+variable, <code class="docutils literal"><span class="pre">$baz</span></code>.</p>
+<p>Mockery 0.7+ handles references correctly for all methods where it can analyse
+the parameter (using <code class="docutils literal"><span class="pre">Reflection</span></code>) to see if it is passed by reference. To
+mock how a reference is manipulated by the class method, you can use a closure
+argument matcher to manipulate it, i.e. <code class="docutils literal"><span class="pre">\Mockery::on()</span></code> - see the
+&#8220;<a class="reference internal" href="argument_validation.html"><em>Argument Validation</em></a>&#8221; chapter.</p>
+<p>There is an exception for internal PHP classes where Mockery cannot analyse
+method parameters using <code class="docutils literal"><span class="pre">Reflection</span></code> (a limitation in PHP). To work around
+this, you can explicitly declare method parameters for an internal class using
+<code class="docutils literal"><span class="pre">/Mockery/Configuration::setInternalClassMethodParamMap()</span></code>.</p>
+<p>Here&#8217;s an example using <code class="docutils literal"><span class="pre">MongoCollection::insert()</span></code>. <code class="docutils literal"><span class="pre">MongoCollection</span></code> is
+an internal class offered by the mongo extension from PECL. Its <code class="docutils literal"><span class="pre">insert()</span></code>
+method accepts an array of data as the first parameter, and an optional
+options array as the second parameter. The original data array is updated
+(i.e. when a <code class="docutils literal"><span class="pre">insert()</span></code> pass-by-reference parameter) to include a new
+<code class="docutils literal"><span class="pre">_id</span></code> field. We can mock this behaviour using a configured parameter map (to
+tell Mockery to expect a pass by reference parameter) and a <code class="docutils literal"><span class="pre">Closure</span></code>
+attached to the expected method parameter to be updated.</p>
+<p>Here&#8217;s a PHPUnit unit test verifying that this pass-by-reference behaviour is
+preserved:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function testCanOverrideExpectedParametersOfInternalPHPClassesToPreserveRefs()</span>
+<span class="x">{</span>
+<span class="x">    \Mockery::getConfiguration()-&gt;setInternalClassMethodParamMap(</span>
+<span class="x">        &#39;MongoCollection&#39;,</span>
+<span class="x">        &#39;insert&#39;,</span>
+<span class="x">        array(&#39;&amp;$data&#39;, &#39;$options = array()&#39;)</span>
+<span class="x">    );</span>
+<span class="x">    $m = \Mockery::mock(&#39;MongoCollection&#39;);</span>
+<span class="x">    $m-&gt;shouldReceive(&#39;insert&#39;)-&gt;with(</span>
+<span class="x">        \Mockery::on(function(&amp;$data) {</span>
+<span class="x">            if (!is_array($data)) return false;</span>
+<span class="x">            $data[&#39;_id&#39;] = 123;</span>
+<span class="x">            return true;</span>
+<span class="x">        }),</span>
+<span class="x">        \Mockery::any()</span>
+<span class="x">    );</span>
+
+<span class="x">    $data = array(&#39;a&#39;=&gt;1,&#39;b&#39;=&gt;2);</span>
+<span class="x">    $m-&gt;insert($data);</span>
+
+<span class="x">    $this-&gt;assertTrue(isset($data[&#39;_id&#39;]));</span>
+<span class="x">    $this-&gt;assertEquals(123, $data[&#39;_id&#39;]);</span>
+
+<span class="x">    \Mockery::resetContainer();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

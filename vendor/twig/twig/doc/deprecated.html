@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Deprecated Features &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Deprecated Features</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/vendor/twig/twig/doc/deprecated.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="deprecated-features">
+<h1>Deprecated Features<a class="headerlink" href="#deprecated-features" title="Permalink to this headline">¶</a></h1>
+<p>This document lists all deprecated features in Twig. Deprecated features are
+kept for backward compatibility and removed in the next major release (a
+feature that was deprecated in Twig 1.x is removed in Twig 2.0).</p>
+<div class="section" id="deprecation-notices">
+<h2>Deprecation Notices<a class="headerlink" href="#deprecation-notices" title="Permalink to this headline">¶</a></h2>
+<p>As of Twig 1.21, Twig generates deprecation notices when a template uses
+deprecated features. See <a class="reference internal" href="recipes.html#deprecation-notices"><span>Displaying Deprecation Notices</span></a> for more information.</p>
+</div>
+<div class="section" id="token-parsers">
+<h2>Token Parsers<a class="headerlink" href="#token-parsers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, the token parser broker sub-system is deprecated. The
+following class and interface will be removed in 2.0:<ul>
+<li><code class="docutils literal"><span class="pre">Twig_TokenParserBrokerInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_TokenParserBroker</span></code></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, the ability to remove an extension is deprecated and the
+<code class="docutils literal"><span class="pre">Twig_Environment::removeExtension()</span></code> method will be removed in 2.0.</li>
+<li>As of Twig 1.23, the <code class="docutils literal"><span class="pre">Twig_ExtensionInterface::initRuntime()</span></code> method is
+deprecated. You have two options to avoid the deprecation notice: if you
+implement this method to store the environment for your custom filters,
+functions, or tests, use the <code class="docutils literal"><span class="pre">needs_environment</span></code> option instead; if you
+have more complex needs, explicitly implement
+<code class="docutils literal"><span class="pre">Twig_Extension_InitRuntimeInterface</span></code> (not recommended).</li>
+<li>As of Twig 1.23, the <code class="docutils literal"><span class="pre">Twig_ExtensionInterface::getGlobals()</span></code> method is
+deprecated. Implement <code class="docutils literal"><span class="pre">Twig_Extension_GlobalsInterface</span></code> to avoid
+deprecation notices.</li>
+</ul>
+</div>
+<div class="section" id="pear">
+<h2>PEAR<a class="headerlink" href="#pear" title="Permalink to this headline">¶</a></h2>
+<p>PEAR support has been discontinued in Twig 1.15.1, and no PEAR packages are
+provided anymore. Use Composer instead.</p>
+</div>
+<div class="section" id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, use <code class="docutils literal"><span class="pre">Twig_SimpleFilter</span></code> to add a filter. The following
+classes and interfaces will be removed in 2.0:<ul>
+<li><code class="docutils literal"><span class="pre">Twig_FilterInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_FilterCallableInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Filter</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Filter_Function</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Filter_Method</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Filter_Node</span></code></li>
+</ul>
+</li>
+<li>As of Twig 2.x, the <code class="docutils literal"><span class="pre">Twig_SimpleFilter</span></code> class is deprecated and will be
+removed in Twig 3.x (use <code class="docutils literal"><span class="pre">Twig_Filter</span></code> instead). In Twig 2.x,
+<code class="docutils literal"><span class="pre">Twig_SimpleFilter</span></code> is just an alias for <code class="docutils literal"><span class="pre">Twig_Filter</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, use <code class="docutils literal"><span class="pre">Twig_SimpleFunction</span></code> to add a function. The following
+classes and interfaces will be removed in 2.0:<ul>
+<li><code class="docutils literal"><span class="pre">Twig_FunctionInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_FunctionCallableInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Function</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Function_Function</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Function_Method</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Function_Node</span></code></li>
+</ul>
+</li>
+<li>As of Twig 2.x, the <code class="docutils literal"><span class="pre">Twig_SimpleFunction</span></code> class is deprecated and will be
+removed in Twig 3.x (use <code class="docutils literal"><span class="pre">Twig_Function</span></code> instead). In Twig 2.x,
+<code class="docutils literal"><span class="pre">Twig_SimpleFunction</span></code> is just an alias for <code class="docutils literal"><span class="pre">Twig_Function</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, use <code class="docutils literal"><span class="pre">Twig_SimpleTest</span></code> to add a test. The following classes
+and interfaces will be removed in 2.0:<ul>
+<li><code class="docutils literal"><span class="pre">Twig_TestInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_TestCallableInterface</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Test</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Test_Function</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Test_Method</span></code></li>
+<li><code class="docutils literal"><span class="pre">Twig_Test_Node</span></code></li>
+</ul>
+</li>
+<li>As of Twig 2.x, the <code class="docutils literal"><span class="pre">Twig_SimpleTest</span></code> class is deprecated and will be
+removed in Twig 3.x (use <code class="docutils literal"><span class="pre">Twig_Test</span></code> instead). In Twig 2.x,
+<code class="docutils literal"><span class="pre">Twig_SimpleTest</span></code> is just an alias for <code class="docutils literal"><span class="pre">Twig_Test</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">sameas</span></code> and <code class="docutils literal"><span class="pre">divisibleby</span></code> tests are deprecated in favor of <code class="docutils literal"><span class="pre">same</span>
+<span class="pre">as</span></code> and <code class="docutils literal"><span class="pre">divisible</span> <span class="pre">by</span></code> respectively.</li>
+</ul>
+</div>
+<div class="section" id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, the <code class="docutils literal"><span class="pre">raw</span></code> tag is deprecated. You should use <code class="docutils literal"><span class="pre">verbatim</span></code>
+instead.</li>
+</ul>
+</div>
+<div class="section" id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, <code class="docutils literal"><span class="pre">Node::toXml()</span></code> is deprecated and will be removed in Twig
+2.0.</li>
+</ul>
+</div>
+<div class="section" id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 2.x, the following interfaces are deprecated and empty (they will
+be removed in Twig 3.0):</li>
+<li><code class="docutils literal"><span class="pre">Twig_CompilerInterface</span></code>     (use <code class="docutils literal"><span class="pre">Twig_Compiler</span></code> instead)</li>
+<li><code class="docutils literal"><span class="pre">Twig_LexerInterface</span></code>        (use <code class="docutils literal"><span class="pre">Twig_Lexer</span></code> instead)</li>
+<li><code class="docutils literal"><span class="pre">Twig_NodeInterface</span></code>         (use <code class="docutils literal"><span class="pre">Twig_Node</span></code> instead)</li>
+<li><code class="docutils literal"><span class="pre">Twig_ParserInterface</span></code>       (use <code class="docutils literal"><span class="pre">Twig_Parser</span></code> instead)</li>
+<li><code class="docutils literal"><span class="pre">Twig_ExistsLoaderInterface</span></code> (merged with <code class="docutils literal"><span class="pre">Twig_LoaderInterface</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">Twig_TemplateInterface</span></code>     (use <code class="docutils literal"><span class="pre">Twig_Template</span></code> instead, and use
+those constants Twig_Template::ANY_CALL, Twig_Template::ARRAY_CALL,
+Twig_Template::METHOD_CALL)</li>
+</ul>
+</div>
+<div class="section" id="loaders">
+<h2>Loaders<a class="headerlink" href="#loaders" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, <code class="docutils literal"><span class="pre">Twig_Loader_String</span></code> is deprecated and will be removed in
+2.0. You can render a string via <code class="docutils literal"><span class="pre">Twig_Environment::createTemplate()</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="node-visitors">
+<h2>Node Visitors<a class="headerlink" href="#node-visitors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Because of the removal of <code class="docutils literal"><span class="pre">Twig_NodeInterface</span></code> in 2.0, you need to extend
+<code class="docutils literal"><span class="pre">Twig_BaseNodeVisitor</span></code> instead of implementing <code class="docutils literal"><span class="pre">Twig_NodeVisitorInterface</span></code>
+directly to make your node visitors compatible with both Twig 1.x and 2.x.</li>
+</ul>
+</div>
+<div class="section" id="globals">
+<h2>Globals<a class="headerlink" href="#globals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 2.x, the ability to register a global variable after the runtime
+or the extensions have been initialized is not possible anymore (but
+changing the value of an already registered global is possible).</li>
+<li>As of Twig 1.x, the <code class="docutils literal"><span class="pre">_self</span></code> global variable is deprecated except for usage
+in the <code class="docutils literal"><span class="pre">from</span></code> and the <code class="docutils literal"><span class="pre">import</span></code> tags. In Twig 2.0, <code class="docutils literal"><span class="pre">_self</span></code> is not
+exposed anymore but still usable in the <code class="docutils literal"><span class="pre">from</span></code> and the <code class="docutils literal"><span class="pre">import</span></code> tags.</li>
+</ul>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As of Twig 1.x, <code class="docutils literal"><span class="pre">Twig_Environment::clearTemplateCache()</span></code>, <code class="docutils literal"><span class="pre">Twig_Environment::writeCacheFile()</span></code>,
+<code class="docutils literal"><span class="pre">Twig_Environment::clearCacheFiles()</span></code>, <code class="docutils literal"><span class="pre">Twig_Environment::getCacheFilename()</span></code>, and
+<code class="docutils literal"><span class="pre">Twig_Environment::getTemplateClassPrefix()</span></code> are deprecated and will be removed in 2.0.</li>
+<li>As of Twig 1.x, <code class="docutils literal"><span class="pre">Twig_Template::getEnvironment()</span></code> and
+<code class="docutils literal"><span class="pre">Twig_TemplateInterface::getEnvironment()</span></code> are deprecated and will be
+removed in 2.0.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

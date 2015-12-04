@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../../../../index.html"/> 
+
+  
+  <script src="../../../../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Usage</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../../../../_sources/vendor/phpdocumentor/phpdocumentor/src/phpDocumentor/Plugin/Scrybe/docs/usage.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Installing is a matter of downloading the scrybe.phar that is available at:</p>
+<blockquote>
+<div><a class="reference external" href="http://www.phpdoc.org/scrybe.phar">http://www.phpdoc.org/scrybe.phar</a></div></blockquote>
+<p>And after that you could view what tasks are available by entering:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar list
+</pre></div>
+</div>
+<p>That exposes which output formats are currently supported. This list will be
+expanded in the future when more features are implemented.</p>
+</div>
+<div class="section" id="upgrading">
+<h2>Upgrading<a class="headerlink" href="#upgrading" title="Permalink to this headline">¶</a></h2>
+<p>Upgrading your installation of Scrybe is a matter of running the following
+command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar update
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is currently not shown in the command listing.</p>
+</div>
+</div>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>Scrybe is easy to use, for each output format there is a separate task.
+These tasks may have specific properties so it pays to review it with the
+<code class="docutils literal"><span class="pre">help</span></code> command like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar help [command]
+</pre></div>
+</div>
+<p>New commands are added as this project progresses to be sure to regularly check
+this  document.</p>
+<div class="section" id="converting-to-html">
+<h3>Converting to HTML<a class="headerlink" href="#converting-to-html" title="Permalink to this headline">¶</a></h3>
+<p>To convert your documentation to HTML you can run the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar manual:to-html [SOURCES] [...]
+</pre></div>
+</div>
+<p>By default it will output your documentation to a folder <em>build</em> and use
+<em>RestructuredText</em> as input format.</p>
+<p>To change this you can make use of the following command line options:</p>
+<div class="highlight-python"><div class="highlight"><pre>--target (-t)       target location for output (default: &#39;build&#39;)
+--input-format (-i) which input format does the documentation sources
+                    have? (default: &#39;rst&#39;)
+--title             The title of this document (default: &#39;Scrybe&#39;)
+--template          which template should be used to generate the
+                    documentation? (default: &#39;default&#39;)
+</pre></div>
+</div>
+<p>Thus, for example: to output your documentation from the docs folder to the
+<em>web</em> folder you can use the  following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar -t web docs
+</pre></div>
+</div>
+<p>Scrybe offers support for changing the look &amp; feel using Twig templates.
+To change a template you only need to provide the name of a subfolder of
+the folder <code class="docutils literal"><span class="pre">data/templates</span></code> in Scrybe using the &#8211;template option.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ php scrybe.phar --template default docs
+</pre></div>
+</div>
+<p>The default is, of course, <em>default</em>. Thus using <code class="docutils literal"><span class="pre">--template</span></code> in the above
+example is overkill but illustrates the point.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Scrybe uses the template name to look in the <code class="docutils literal"><span class="pre">data/templates/[TEMPLATE]</span></code>
+folder for a file called <code class="docutils literal"><span class="pre">layout.html.twig</span></code> and uses the <em>content</em> variable
+to insert the generated HTML contents.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creating Partial Mocks &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Creating Partial Mocks</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/partial_mocks.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-partial-mocks">
+<span id="index-0"></span><h1>Creating Partial Mocks<a class="headerlink" href="#creating-partial-mocks" title="Permalink to this headline">¶</a></h1>
+<p>Partial mocks are useful when you only need to mock several methods of an
+object leaving the remainder free to respond to calls normally (i.e.  as
+implemented). Mockery implements three distinct strategies for creating
+partials. Each has specific advantages and disadvantages so which strategy you
+use will depend on your own preferences and the source code in need of
+mocking.</p>
+<ol class="arabic simple">
+<li>Traditional Partial Mock</li>
+<li>Passive Partial Mock</li>
+<li>Proxied Partial Mock</li>
+</ol>
+<div class="section" id="traditional-partial-mock">
+<h2>Traditional Partial Mock<a class="headerlink" href="#traditional-partial-mock" title="Permalink to this headline">¶</a></h2>
+<p>A traditional partial mock, defines ahead of time which methods of a class are
+to be mocked and which are to be left unmocked (i.e. callable as normal).  The
+syntax for creating traditional mocks is:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;MyClass[foo,bar]&#39;);</span>
+</pre></div>
+</div>
+<p>In the above example, the <code class="docutils literal"><span class="pre">foo()</span></code> and <code class="docutils literal"><span class="pre">bar()</span></code> methods of MyClass will be
+mocked but no other MyClass methods are touched. You will need to define
+expectations for the <code class="docutils literal"><span class="pre">foo()</span></code> and <code class="docutils literal"><span class="pre">bar()</span></code> methods to dictate their mocked
+behaviour.</p>
+<p>Don&#8217;t forget that you can pass in constructor arguments since unmocked methods
+may rely on those!</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;MyNamespace\MyClass[foo]&#39;, array($arg1, $arg2));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="passive-partial-mock">
+<h2>Passive Partial Mock<a class="headerlink" href="#passive-partial-mock" title="Permalink to this headline">¶</a></h2>
+<p>A passive partial mock is more of a default state of being.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;MyClass&#39;)-&gt;makePartial();</span>
+</pre></div>
+</div>
+<p>In a passive partial, we assume that all methods will simply defer to the
+parent class (<code class="docutils literal"><span class="pre">MyClass</span></code>) original methods unless a method call matches a
+known expectation. If you have no matching expectation for a specific method
+call, that call is deferred to the class being mocked. Since the division
+between mocked and unmocked calls depends entirely on the expectations you
+define, there is no need to define which methods to mock in advance. The
+<code class="docutils literal"><span class="pre">makePartial()</span></code> method is identical to the original <code class="docutils literal"><span class="pre">shouldDeferMissing()</span></code>
+method which first introduced this Partial Mock type.</p>
+</div>
+<div class="section" id="proxied-partial-mock">
+<h2>Proxied Partial Mock<a class="headerlink" href="#proxied-partial-mock" title="Permalink to this headline">¶</a></h2>
+<p>A proxied partial mock is a partial of last resort. You may encounter a class
+which is simply not capable of being mocked because it has been marked as
+final. Similarly, you may find a class with methods marked as final. In such a
+scenario, we cannot simply extend the class and override methods to mock - we
+need to get creative.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(new MyClass);</span>
+</pre></div>
+</div>
+<p>Yes, the new mock is a Proxy. It intercepts calls and reroutes them to the
+proxied object (which you construct and pass in) for methods which are not
+subject to any expectations. Indirectly, this allows you to mock methods
+marked final since the Proxy is not subject to those limitations. The tradeoff
+should be obvious - a proxied partial will fail any typehint checks for the
+class being mocked since it cannot extend that class.</p>
+</div>
+<div class="section" id="special-internal-cases">
+<h2>Special Internal Cases<a class="headerlink" href="#special-internal-cases" title="Permalink to this headline">¶</a></h2>
+<p>All mock objects, with the exception of Proxied Partials, allow you to make
+any expectation call the underlying real class method using the <code class="docutils literal"><span class="pre">passthru()</span></code>
+expectation call. This will return values from the real call and bypass any
+mocked return queue (which can simply be omitted obviously).</p>
+<p>There is a fourth kind of partial mock reserved for internal use. This is
+automatically generated when you attempt to mock a class containing methods
+marked final. Since we cannot override such methods, they are simply left
+unmocked. Typically, you don&#8217;t need to worry about this but if you really
+really must mock a final method, the only possible means is through a Proxied
+Partial Mock. SplFileInfo, for example, is a common class subject to this form
+of automatic internal partial since it contains public final methods used
+internally.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

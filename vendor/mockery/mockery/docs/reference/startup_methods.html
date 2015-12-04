@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Reference &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Quick Reference</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/startup_methods.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-reference">
+<span id="index-0"></span><h1>Quick Reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h1>
+<p>Mockery implements a shorthand API when creating a mock. Here&#8217;s a sampling of
+the possible startup methods.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;foo&#39;);</span>
+</pre></div>
+</div>
+<p>Creates a mock object named &#8220;foo&#8221;. In this case, &#8220;foo&#8221; is a name (not
+necessarily a class name) used as a simple identifier when raising exceptions.
+This creates a mock object of type <code class="docutils literal"><span class="pre">\Mockery\Mock</span></code> and is the loosest form
+of mock possible.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(array(&#39;foo&#39;=&gt;1,&#39;bar&#39;=&gt;2));</span>
+</pre></div>
+</div>
+<p>Creates an mock object named unknown since we passed no name. However we did
+pass an expectation array, a quick method of setting up methods to expect with
+their return values.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;foo&#39;, array(&#39;foo&#39;=&gt;1,&#39;bar&#39;=&gt;2));</span>
+</pre></div>
+</div>
+<p>Similar to the previous examples and all examples going forward, expectation
+arrays can be passed for all mock objects as the second parameter to
+<code class="docutils literal"><span class="pre">mock()</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;foo&#39;, function($mock) {</span>
+<span class="x">    $mock-&gt;shouldReceive(method_name);</span>
+<span class="x">});</span>
+</pre></div>
+</div>
+<p>In addition to expectation arrays, you can also pass in a closure which
+contains reusable expectations. This can be passed as the second parameter, or
+as the third parameter if partnered with an expectation array. This is one
+method for creating reusable mock expectations.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;stdClass&#39;);</span>
+</pre></div>
+</div>
+<p>Creates a mock identical to a named mock, except the name is an actual class
+name. Creates a simple mock as previous examples show, except the mock object
+will inherit the class type (via inheritance), i.e. it will pass type hints or
+instanceof evaluations for stdClass. Useful where a mock object must be of a
+specific type.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;FooInterface&#39;);</span>
+</pre></div>
+</div>
+<p>You can create mock objects based on any concrete class, abstract class or
+even an interface. Again, the primary purpose is to ensure the mock object
+inherits a specific type for type hinting. There is an exception in that
+classes marked final, or with methods marked final, cannot be mocked fully. In
+these cases a partial mock (explained later) must be utilised.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;alias:MyNamespace\MyClass&#39;);</span>
+</pre></div>
+</div>
+<p>Prefixing the valid name of a class (which is NOT currently loaded) with
+&#8220;alias:&#8221; will generate an &#8220;alias mock&#8221;. Alias mocks create a class alias with
+the given classname to stdClass and are generally used to enable the mocking
+of public static methods. Expectations set on the new mock object which refer
+to static methods will be used by all static calls to this class.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;overload:MyNamespace\MyClass&#39;);</span>
+</pre></div>
+</div>
+<p>Prefixing the valid name of a class (which is NOT currently loaded) with
+&#8220;overload:&#8221; will generate an alias mock (as with &#8220;alias:&#8221;) except that created
+new instances of that class will import any expectations set on the origin
+mock (<code class="docutils literal"><span class="pre">$mock</span></code>). The origin mock is never verified since it&#8217;s used an
+expectation store for new instances. For this purpose we use the term
+&#8220;instance mock&#8221; to differentiate it from the simpler &#8220;alias mock&#8221;.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using alias/instance mocks across more than one test will generate a fatal
+error since you can&#8217;t have two classes of the same name. To avoid this,
+run each test of this kind in a separate PHP process (which is supported
+out of the box by both PHPUnit and PHPT).</p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;stdClass, MyInterface1, MyInterface2&#39;);</span>
+</pre></div>
+</div>
+<p>The first argument can also accept a list of interfaces that the mock object
+must implement, optionally including no more than one existing class to be
+based on. The class name doesn&#8217;t need to be the first member of the list but
+it&#8217;s a friendly convention to use for readability. All subsequent arguments
+remain unchanged from previous examples.</p>
+<p>If the given class does not exist, you must define and include it beforehand
+or a <code class="docutils literal"><span class="pre">\Mockery\Exception</span></code> will be thrown.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;MyNamespace\MyClass[foo,bar]&#39;);</span>
+</pre></div>
+</div>
+<p>The syntax above tells Mockery to partially mock the <code class="docutils literal"><span class="pre">MyNamespace\MyClass</span></code>
+class, by mocking the <code class="docutils literal"><span class="pre">foo()</span></code> and <code class="docutils literal"><span class="pre">bar()</span></code> methods only. Any other method
+will be not be overridden by Mockery. This traditional form of &#8220;partial mock&#8221;
+can be applied to any class or abstract class (e.g. mocking abstract methods
+where a concrete implementation does not exist yet). If you attempt to partial
+mock a method marked final, it will actually be ignored in that instance
+leaving the final method untouched. This is necessary since mocking of final
+methods is, by definition in PHP, impossible.</p>
+<p>Please refer to &#8220;<a class="reference internal" href="partial_mocks.html"><em>Creating Partial Mocks</em></a>&#8221; for a detailed explanation on how to
+create Partial Mocks in Mockery.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&quot;MyNamespace\MyClass[foo]&quot;, array($arg1, $arg2));</span>
+</pre></div>
+</div>
+<p>If Mockery encounters an indexed array as the second or third argument, it
+will assume they are constructor parameters and pass them when constructing
+the mock object. The syntax above will create a new partial mock, particularly
+useful if method <code class="docutils literal"><span class="pre">bar</span></code> calls method <code class="docutils literal"><span class="pre">foo</span></code> internally with
+<code class="docutils literal"><span class="pre">$this-&gt;foo()</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(new Foo);</span>
+</pre></div>
+</div>
+<p>Passing any real object into Mockery will create a Proxied Partial Mock. This
+can be useful if real partials are impossible, e.g. a final class or class
+where you absolutely must override a method marked final. Since you can
+already create a concrete object, so all we need to do is selectively override
+a subset of existing methods (or add non-existing methods!) for our
+expectations.</p>
+<p>A little revision: All mock methods accept the class, object or alias name to
+be mocked as the first parameter. The second parameter can be an expectation
+array of methods and their return values, or an expectation closure (which can
+be the third param if used in conjunction with an expectation array).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Mockery::self()</span>
+</pre></div>
+</div>
+<p>At times, you will discover that expectations on a mock include methods which
+need to return the same mock object (e.g. a common case when designing a
+Domain Specific Language (DSL) such as the one Mockery itself uses!). To
+facilitate this, calling <code class="docutils literal"><span class="pre">\Mockery::self()</span></code> will always return the last Mock
+Object created by calling <code class="docutils literal"><span class="pre">\Mockery::mock()</span></code>. For example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;BazIterator&#39;)</span>
+<span class="x">    -&gt;shouldReceive(&#39;next&#39;)</span>
+<span class="x">    -&gt;andReturn(\Mockery::self())</span>
+<span class="x">    -&gt;mock();</span>
+</pre></div>
+</div>
+<p>The above class being mocked, as the <code class="docutils literal"><span class="pre">next()</span></code> method suggests, is an
+iterator. In many cases, you can replace all the iterated elements (since they
+are the same type many times) with just the one mock object which is
+programmed to act as discrete iterated elements.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::namedMock(&#39;MyClassName&#39;, &#39;DateTime&#39;);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">namedMock</span></code> method will generate a class called by the first argument,
+so in this example <code class="docutils literal"><span class="pre">MyClassName</span></code>. The rest of the arguments are treat in the
+same way as the <code class="docutils literal"><span class="pre">mock</span></code> method, so again, this example would create a class
+called <code class="docutils literal"><span class="pre">MyClassName</span></code> that extends <code class="docutils literal"><span class="pre">DateTime</span></code>.</p>
+<p>Named mocks are quite an edge case, but they can be useful when code depends
+on the <code class="docutils literal"><span class="pre">__CLASS__</span></code> magic constant, or when you need two derivatives of an
+abstract type, that are actually different classes.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">You can only create a named mock once, any subsequent calls to
+<code class="docutils literal"><span class="pre">namedMock</span></code>, with different arguments are likely to cause exceptions.</p>
+</div>
+<div class="section" id="behaviour-modifiers">
+<h2>Behaviour Modifiers<a class="headerlink" href="#behaviour-modifiers" title="Permalink to this headline">¶</a></h2>
+<p>When creating a mock object, you may wish to use some commonly preferred
+behaviours that are not the default in Mockery.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Mockery::mock(&#39;MyClass&#39;)-&gt;shouldIgnoreMissing()</span>
+</pre></div>
+</div>
+<p>The use of the <code class="docutils literal"><span class="pre">shouldIgnoreMissing()</span></code> behaviour modifier will label this
+mock object as a Passive Mock. In such a mock object, calls to methods which
+are not covered by expectations will return <code class="docutils literal"><span class="pre">null</span></code> instead of the usual
+complaining about there being no expectation matching the call.</p>
+<p>You can optionally prefer to return an object of type <code class="docutils literal"><span class="pre">\Mockery\Undefined</span></code>
+(i.e.  a <code class="docutils literal"><span class="pre">null</span></code> object) (which was the 0.7.2 behaviour) by using an
+additional modifier:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Mockery::mock(&#39;MyClass&#39;)-&gt;shouldIgnoreMissing()-&gt;asUndefined()</span>
+</pre></div>
+</div>
+<p>The returned object is nothing more than a placeholder so if, by some act of
+fate, it&#8217;s erroneously used somewhere it shouldn&#8217;t it will likely not pass a
+logic check.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Mockery::mock(&#39;MyClass&#39;)-&gt;makePartial()</span>
+</pre></div>
+</div>
+<p>also</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Mockery::mock(&#39;MyClass&#39;)-&gt;shouldDeferMissing()</span>
+</pre></div>
+</div>
+<p>Known as a Passive Partial Mock (not to be confused with real partial mock
+objects discussed later), this form of mock object will defer all methods not
+subject to an expectation to the parent class of the mock, i.e. <code class="docutils literal"><span class="pre">MyClass</span></code>.
+Whereas the previous <code class="docutils literal"><span class="pre">shouldIgnoreMissing()</span></code> returned <code class="docutils literal"><span class="pre">null</span></code>, this
+behaviour simply calls the parent&#8217;s matching method.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

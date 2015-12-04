@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PHPUnit Integration &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>PHPUnit Integration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/phpunit_integration.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="phpunit-integration">
+<span id="index-0"></span><h1>PHPUnit Integration<a class="headerlink" href="#phpunit-integration" title="Permalink to this headline">¶</a></h1>
+<p>Mockery was designed as a simple-to-use <em>standalone</em> mock object framework, so
+its need for integration with any testing framework is entirely optional.  To
+integrate Mockery, you just need to define a <code class="docutils literal"><span class="pre">tearDown()</span></code> method for your
+tests containing the following (you may use a shorter <code class="docutils literal"><span class="pre">\Mockery</span></code> namespace
+alias):</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">public function tearDown() {</span>
+<span class="x">    \Mockery::close();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>This static call cleans up the Mockery container used by the current test, and
+run any verification tasks needed for your expectations.</p>
+<p>For some added brevity when it comes to using Mockery, you can also explicitly
+use the Mockery namespace with a shorter alias. For example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">use \Mockery as m;</span>
+
+<span class="x">class SimpleTest extends PHPUnit_Framework_TestCase</span>
+<span class="x">{</span>
+<span class="x">    public function testSimpleMock() {</span>
+<span class="x">        $mock = m::mock(&#39;simplemock&#39;);</span>
+<span class="x">        $mock-&gt;shouldReceive(&#39;foo&#39;)-&gt;with(5, m::any())-&gt;once()-&gt;andReturn(10);</span>
+
+<span class="x">        $this-&gt;assertEquals(10, $mock-&gt;foo(5));</span>
+<span class="x">    }</span>
+
+<span class="x">    public function tearDown() {</span>
+<span class="x">        m::close();</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Mockery ships with an autoloader so you don&#8217;t need to litter your tests with
+<code class="docutils literal"><span class="pre">require_once()</span></code> calls. To use it, ensure Mockery is on your
+<code class="docutils literal"><span class="pre">include_path</span></code> and add the following to your test suite&#8217;s <code class="docutils literal"><span class="pre">Bootstrap.php</span></code>
+or <code class="docutils literal"><span class="pre">TestHelper.php</span></code> file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">require_once &#39;Mockery/Loader.php&#39;;</span>
+<span class="x">require_once &#39;Hamcrest/Hamcrest.php&#39;;</span>
+
+<span class="x">$loader = new \Mockery\Loader;</span>
+<span class="x">$loader-&gt;register();</span>
+</pre></div>
+</div>
+<p>If you are using Composer, you can simplify this to just including the
+Composer generated autoloader file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">require __DIR__ . &#39;/../vendor/autoload.php&#39;; // assuming vendor is one directory up</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Prior to Hamcrest 1.0.0, the <code class="docutils literal"><span class="pre">Hamcrest.php</span></code> file name had a small &#8220;h&#8221;
+(i.e. <code class="docutils literal"><span class="pre">hamcrest.php</span></code>).  If upgrading Hamcrest to 1.0.0 remember to check
+the file name is updated for all your projects.)</p>
+</div>
+<p>To integrate Mockery into PHPUnit and avoid having to call the close method
+and have Mockery remove itself from code coverage reports, use this in you
+suite:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Create Suite</span>
+<span class="x">$suite = new PHPUnit_Framework_TestSuite();</span>
+
+<span class="x">// Create a result listener or add it</span>
+<span class="x">$result = new PHPUnit_Framework_TestResult();</span>
+<span class="x">$result-&gt;addListener(new \Mockery\Adapter\Phpunit\TestListener());</span>
+
+<span class="x">// Run the tests.</span>
+<span class="x">$suite-&gt;run($result);</span>
+</pre></div>
+</div>
+<p>If you are using PHPUnit&#8217;s XML configuration approach, you can include the
+following to load the <code class="docutils literal"><span class="pre">TestListener</span></code>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;listeners&gt;</span>
+    <span class="nt">&lt;listener</span> <span class="na">class=</span><span class="s">&quot;\Mockery\Adapter\Phpunit\TestListener&quot;</span><span class="nt">&gt;&lt;/listener&gt;</span>
+<span class="nt">&lt;/listeners&gt;</span>
+</pre></div>
+</div>
+<p>Make sure Composer&#8217;s or Mockery&#8217;s autoloader is present in the bootstrap file
+or you will need to also define a &#8220;file&#8221; attribute pointing to the file of the
+above <code class="docutils literal"><span class="pre">TestListener</span></code> class.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p>PHPUnit provides a functionality that allows
+<a class="reference external" href="http://phpunit.de/manual/4.0/en/appendixes.annotations.html#appendixes.annotations.runTestsInSeparateProcesses">tests to run in a separated process</a>,
+to ensure better isolation. Mockery verifies the mocks expectations using the
+<code class="docutils literal"><span class="pre">Mockery::close()</span></code> method, and provides a PHPUnit listener, that automatically
+calls this method for you after every test.</p>
+<p class="last">However, this listener is not called in the right process when using PHPUnit&#8217;s process
+isolation, resulting in expectations that might not be respected, but without raising
+any <code class="docutils literal"><span class="pre">Mockery\Exception</span></code>. To avoid this, you cannot rely on the supplied Mockery PHPUnit
+<code class="docutils literal"><span class="pre">TestListener</span></code>, and you need to explicitly calls <code class="docutils literal"><span class="pre">Mockery::close</span></code>. The easiest solution
+to include this call in the <code class="docutils literal"><span class="pre">tearDown()</span></code> method, as explained previously.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

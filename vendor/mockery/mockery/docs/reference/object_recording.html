@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Mock Object Recording &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Mock Object Recording</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/object_recording.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mock-object-recording">
+<span id="index-0"></span><h1>Mock Object Recording<a class="headerlink" href="#mock-object-recording" title="Permalink to this headline">¶</a></h1>
+<p>In certain cases, you may find that you are testing against an already
+established pattern of behaviour, perhaps during refactoring. Rather then hand
+crafting mock object expectations for this behaviour, you could instead use
+the existing source code to record the interactions a real object undergoes
+onto a mock object as expectations - expectations you can then verify against
+an alternative or refactored version of the source code.</p>
+<p>To record expectations, you need a concrete instance of the class to be
+mocked.  This can then be used to create a partial mock to which is given the
+necessary code to execute the object interactions to be recorded. A simple
+example is outline below (we use a closure for passing instructions to the
+mock).</p>
+<p>Here we have a very simple setup, a class (<code class="docutils literal"><span class="pre">SubjectUser</span></code>) which uses another
+class (<code class="docutils literal"><span class="pre">Subject</span></code>) to retrieve some value. We want to record as expectations
+on our mock (which will replace <code class="docutils literal"><span class="pre">Subject</span></code> later) all the calls and return
+values of a Subject instance when interacting with <code class="docutils literal"><span class="pre">SubjectUser</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class Subject</span>
+<span class="x">{</span>
+
+<span class="x">    public function execute() {</span>
+<span class="x">        return &#39;executed!&#39;;</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+
+<span class="x">class SubjectUser</span>
+<span class="x">{</span>
+
+<span class="x">    public function use(Subject $subject) {</span>
+<span class="x">        return $subject-&gt;execute();</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Here&#8217;s the test case showing the recording:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">class SubjectUserTest extends PHPUnit_Framework_TestCase</span>
+<span class="x">{</span>
+
+<span class="x">    public function tearDown()</span>
+<span class="x">    {</span>
+<span class="x">        \Mockery::close();</span>
+<span class="x">    }</span>
+
+<span class="x">    public function testSomething()</span>
+<span class="x">    {</span>
+<span class="x">        $mock = \Mockery::mock(new Subject);</span>
+<span class="x">        $mock-&gt;shouldExpect(function ($subject) {</span>
+<span class="x">            $user = new SubjectUser;</span>
+<span class="x">            $user-&gt;use($subject);</span>
+<span class="x">        });</span>
+
+<span class="x">        /**</span>
+<span class="x">        * Assume we have a replacement SubjectUser called NewSubjectUser.</span>
+<span class="x">        * We want to verify it behaves identically to SubjectUser, i.e.</span>
+<span class="x">        * it uses Subject in the exact same way</span>
+<span class="x">        */</span>
+<span class="x">        $newSubject = new NewSubjectUser;</span>
+<span class="x">        $newSubject-&gt;use($mock);</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>After the <code class="docutils literal"><span class="pre">\Mockery::close()</span></code> call in <code class="docutils literal"><span class="pre">tearDown()</span></code> validates the mock
+object, we should have zero exceptions if <code class="docutils literal"><span class="pre">NewSubjectUser</span></code> acted on
+<cite>Subject</cite> in a similar way to <code class="docutils literal"><span class="pre">SubjectUser</span></code>. By default the order of calls
+are not enforced, and loose argument matching is enabled, i.e. arguments may
+be equal (<code class="docutils literal"><span class="pre">==</span></code>) but not necessarily identical (<code class="docutils literal"><span class="pre">===</span></code>).</p>
+<p>If you wished to be more strict, for example ensuring the order of calls and
+the final call counts were identical, or ensuring arguments are completely
+identical, you can invoke the recorder&#8217;s strict mode from the closure block,
+e.g.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock-&gt;shouldExpect(function ($subject) {</span>
+<span class="x">    $subject-&gt;shouldBeStrict();</span>
+<span class="x">    $user = new SubjectUser;</span>
+<span class="x">    $user-&gt;use($subject);</span>
+<span class="x">});</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

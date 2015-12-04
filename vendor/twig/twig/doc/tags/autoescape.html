@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>autoescape &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li><code class="docutils literal"><span class="pre">autoescape</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/twig/twig/doc/tags/autoescape.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="autoescape">
+<h1><code class="docutils literal"><span class="pre">autoescape</span></code><a class="headerlink" href="#autoescape" title="Permalink to this headline">¶</a></h1>
+<p>Whether automatic escaping is enabled or not, you can mark a section of a
+template to be escaped or not by using the <code class="docutils literal"><span class="pre">autoescape</span></code> tag:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="c">{# The following syntax works as of Twig 1.8 -- see the note below for previous versions #}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be automatically escaped in this block</span>
+<span class="x">    using the HTML strategy</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="s1">&#39;html&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be automatically escaped in this block</span>
+<span class="x">    using the HTML strategy</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="s1">&#39;js&#39;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be automatically escaped in this block</span>
+<span class="x">    using the js escaping strategy</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">false</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be outputted as is in this block</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Before Twig 1.8, the syntax was different:</p>
+<div class="last highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">true</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be automatically escaped in this block</span>
+<span class="x">    using the HTML strategy</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">false</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be outputted as is in this block</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+
+<span class="cp">{%</span> <span class="k">autoescape</span> <span class="kp">true</span> <span class="nv">js</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    Everything will be automatically escaped in this block</span>
+<span class="x">    using the js escaping strategy</span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<p>When automatic escaping is enabled everything is escaped by default except for
+values explicitly marked as safe. Those can be marked in the template by using
+the <a class="reference internal" href="../filters/raw.html"><em>raw</em></a> filter:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">autoescape</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">safe_value</span><span class="o">|</span><span class="nf">raw</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endautoescape</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Functions returning template data (like <a class="reference internal" href="macro.html"><em>macros</em></a> and
+<a class="reference internal" href="../functions/parent.html"><em>parent</em></a>) always return safe markup.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Twig is smart enough to not escape an already escaped value by the
+<a class="reference internal" href="../filters/escape.html"><em>escape</em></a> filter.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Twig does not escape static expressions:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">set</span> <span class="nv">hello</span> <span class="o">=</span> <span class="s2">&quot;&lt;strong&gt;Hello&lt;/strong&gt;&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="nv">hello</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s2">&quot;&lt;strong&gt;world&lt;/strong&gt;&quot;</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p class="last">Will be rendered &#8220;&lt;strong&gt;Hello&lt;/strong&gt; <strong>world</strong>&#8221;.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The chapter <a class="reference internal" href="../api.html"><em>Twig for Developers</em></a> gives more information
+about when and how automatic escaping is applied.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

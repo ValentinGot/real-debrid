@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PHP Collection &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>PHP Collection</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/vendor/phpcollection/phpcollection/doc/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="php-collection">
+<h1>PHP Collection<a class="headerlink" href="#php-collection" title="Permalink to this headline">¶</a></h1>
+<p>This library adds basic collections for PHP.</p>
+<p>Collections can be seen as more specialized arrays for which certain contracts are guaranteed.</p>
+<p>Supported Collections:</p>
+<ul class="simple">
+<li>Sequences<ul>
+<li>Keys: numerical, consequentially increasing, no gaps</li>
+<li>Values: anything, duplicates allowed</li>
+<li>Classes: <code class="docutils literal"><span class="pre">Sequence</span></code>, <code class="docutils literal"><span class="pre">SortedSequence</span></code></li>
+</ul>
+</li>
+<li>Maps<ul>
+<li>Keys: strings or objects, duplicate keys not allowed</li>
+<li>Values: anything, duplicates allowed</li>
+<li>Classes: <code class="docutils literal"><span class="pre">Map</span></code>, <code class="docutils literal"><span class="pre">ObjectMap</span></code> (not yet implemented)</li>
+</ul>
+</li>
+<li>Sets (not yet implemented)<ul>
+<li>Keys: not meaningful</li>
+<li>Values: anything, each value must be unique (===)</li>
+<li>Classes: <code class="docutils literal"><span class="pre">Set</span></code></li>
+</ul>
+</li>
+</ul>
+<p>General Characteristics:</p>
+<ul class="simple">
+<li>Collections are mutable (new elements may be added, existing elements may be modified or removed). Specialized
+immutable versions may be added in the future though.</li>
+<li>Equality comparison between elements are always performed using the shallow comparison operator (===).</li>
+<li>Sorting algorithms are unstable, that means the order for equal elements is undefined (the default, and only PHP behavior).</li>
+</ul>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>PHP Collection can easily be installed via composer</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer require phpcollection/phpcollection
+</pre></div>
+</div>
+<p>or add it to your <code class="docutils literal"><span class="pre">composer.json</span></code> file.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Collection classes provide a rich API.</p>
+<div class="section" id="sequences">
+<h3>Sequences<a class="headerlink" href="#sequences" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Read Operations</span>
+<span class="x">$seq = new Sequence([0, 2, 3, 2]);</span>
+<span class="x">$seq-&gt;get(2); // int(3)</span>
+<span class="x">$seq-&gt;all(); // [0, 2, 3, 2]</span>
+
+<span class="x">$seq-&gt;first(); // Some(0)</span>
+<span class="x">$seq-&gt;last(); // Some(2)</span>
+
+<span class="x">// Write Operations</span>
+<span class="x">$seq = new Sequence([1, 5]);</span>
+<span class="x">$seq-&gt;get(0); // int(1)</span>
+<span class="x">$seq-&gt;update(0, 4);</span>
+<span class="x">$seq-&gt;get(0); // int(4)</span>
+<span class="x">$seq-&gt;remove(0);</span>
+<span class="x">$seq-&gt;get(0); // int(5)</span>
+
+<span class="x">$seq = new Sequence([1, 4]);</span>
+<span class="x">$seq-&gt;add(2);</span>
+<span class="x">$seq-&gt;all(); // [1, 4, 2]</span>
+<span class="x">$seq-&gt;addAll(array(4, 5, 2));</span>
+<span class="x">$seq-&gt;all(); // [1, 4, 2, 4, 5, 2]</span>
+
+<span class="x">// Sort</span>
+<span class="x">$seq = new Sequence([0, 5, 4, 2]);</span>
+<span class="x">$seq-&gt;sortWith(function($a, $b) { return $a - $b; });</span>
+<span class="x">$seq-&gt;all(); // [0, 2, 4, 5]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="maps">
+<h3>Maps<a class="headerlink" href="#maps" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">// Read Operations</span>
+<span class="x">$map = new Map([&#39;foo&#39; =&gt; &#39;bar&#39;, &#39;baz&#39; =&gt; &#39;boo&#39;]);</span>
+<span class="x">$map-&gt;get(&#39;foo&#39;); // Some(&#39;bar&#39;)</span>
+<span class="x">$map-&gt;get(&#39;foo&#39;)-&gt;get(); // string(&#39;bar&#39;)</span>
+<span class="x">$map-&gt;keys(); // [&#39;foo&#39;, &#39;baz&#39;]</span>
+<span class="x">$map-&gt;values(); // [&#39;bar&#39;, &#39;boo&#39;]</span>
+<span class="x">iterator_to_array($map); // [&#39;foo&#39; =&gt; &#39;bar&#39;, &#39;baz&#39; =&gt; &#39;boo&#39;]</span>
+
+<span class="x">$map-&gt;first()-&gt;get(); // [&#39;foo&#39;, &#39;bar&#39;]</span>
+<span class="x">$map-&gt;last()-&gt;get(); // [&#39;baz&#39;, &#39;boo&#39;]</span>
+
+<span class="x">// Write Operations</span>
+<span class="x">$map = new Map();</span>
+<span class="x">$map-&gt;set(&#39;foo&#39;, &#39;bar&#39;);</span>
+<span class="x">$map-&gt;setAll(array(&#39;bar&#39; =&gt; &#39;baz&#39;, &#39;baz&#39; =&gt; &#39;boo&#39;));</span>
+<span class="x">$map-&gt;remove(&#39;foo&#39;);</span>
+
+<span class="x">// Sort</span>
+<span class="x">$map-&gt;sortWith(&#39;strcmp&#39;);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>The code is released under the business-friendly <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2 license</a>.</p>
+<p>Documentation is subject to the <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs 3.0 Unported
+license</a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

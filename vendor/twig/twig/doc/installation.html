@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/vendor/twig/twig/doc/installation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>You have multiple ways to install Twig.</p>
+<div class="section" id="installing-the-twig-php-package">
+<h2>Installing the Twig PHP package<a class="headerlink" href="#installing-the-twig-php-package" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-via-composer-recommended">
+<h3>Installing via Composer (recommended)<a class="headerlink" href="#installing-via-composer-recommended" title="Permalink to this headline">¶</a></h3>
+<p>Install <a class="reference external" href="https://getcomposer.org/download/">Composer</a> and run the following command to get the latest version:</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer require twig/twig:~1.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-from-the-tarball-release">
+<h3>Installing from the tarball release<a class="headerlink" href="#installing-from-the-tarball-release" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download the most recent tarball from the <a class="reference external" href="https://github.com/twigphp/Twig/tags">download page</a></li>
+<li>Verify the integrity of the tarball <a class="reference external" href="http://fabien.potencier.org/article/73/signing-project-releases">http://fabien.potencier.org/article/73/signing-project-releases</a></li>
+<li>Unpack the tarball</li>
+<li>Move the files somewhere in your project</li>
+</ol>
+</div>
+<div class="section" id="installing-the-development-version">
+<h3>Installing the development version<a class="headerlink" href="#installing-the-development-version" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/twigphp/Twig.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-the-pear-package">
+<h3>Installing the PEAR package<a class="headerlink" href="#installing-the-pear-package" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using PEAR for installing Twig is deprecated and Twig 1.15.1 was the last
+version published on the PEAR channel; use Composer instead.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>pear channel-discover pear.twig-project.org
+pear install twig/Twig
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="installing-the-c-extension">
+<h2>Installing the C extension<a class="headerlink" href="#installing-the-c-extension" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 1.4: </span>The C extension was added in Twig 1.4.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The C extension is <strong>optional</strong> but it brings some nice performance
+improvements. Note that the extension is not a replacement for the PHP
+code; it only implements a small part of the PHP code to improve the
+performance at runtime; you must still install the regular PHP code.</p>
+</div>
+<p>Twig comes with a C extension that enhances the performance of the Twig
+runtime engine; install it like any other PHP extensions:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>ext/twig
+phpize
+./configure
+make
+make install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You can also install the C extension via PEAR (note that this method is
+deprecated and newer versions of Twig are not available on the PEAR
+channel):</p>
+<div class="last highlight-bash"><div class="highlight"><pre>pear channel-discover pear.twig-project.org
+pear install twig/CTwig
+</pre></div>
+</div>
+</div>
+<p>For Windows:</p>
+<ol class="arabic simple">
+<li>Setup the build environment following the <a class="reference external" href="https://wiki.php.net/internals/windows/stepbystepbuild">PHP documentation</a></li>
+<li>Put Twig&#8217;s C extension source code into <code class="docutils literal"><span class="pre">C:\php-sdk\phpdev\vcXX\x86\php-source-directory\ext\twig</span></code></li>
+<li>Use the <code class="docutils literal"><span class="pre">configure</span> <span class="pre">--disable-all</span> <span class="pre">--enable-cli</span> <span class="pre">--enable-twig=shared</span></code> command instead of step 14</li>
+<li><code class="docutils literal"><span class="pre">nmake</span></code></li>
+<li>Copy the <code class="docutils literal"><span class="pre">C:\php-sdk\phpdev\vcXX\x86\php-source-directory\Release_TS\php_twig.dll</span></code> file to your PHP setup.</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>For Windows ZendServer, ZTS is not enabled as mentioned in <a class="reference external" href="http://www.zend.com/en/products/server/faq#faqD6">Zend Server
+FAQ</a>.</p>
+<p>You have to use <code class="docutils literal"><span class="pre">configure</span> <span class="pre">--disable-all</span> <span class="pre">--disable-zts</span> <span class="pre">--enable-cli</span>
+<span class="pre">--enable-twig=shared</span></code> to be able to build the twig C extension for
+ZendServer.</p>
+<p class="last">The built DLL will be available in
+<code class="docutils literal"><span class="pre">C:\\php-sdk\\phpdev\\vcXX\\x86\\php-source-directory\\Release</span></code></p>
+</div>
+<p>Finally, enable the extension in your <code class="docutils literal"><span class="pre">php.ini</span></code> configuration file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="na">extension</span><span class="o">=</span><span class="s">twig.so #For Unix systems</span>
+<span class="na">extension</span><span class="o">=</span><span class="s">php_twig.dll #For Windows systems</span>
+</pre></div>
+</div>
+<p>And from now on, Twig will automatically compile your templates to take
+advantage of the C extension. Note that this extension does not replace the
+PHP code but only provides an optimized version of the
+<code class="docutils literal"><span class="pre">Twig_Template::getAttribute()</span></code> method.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

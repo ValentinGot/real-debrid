@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Twig Internals &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Twig Internals</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/vendor/twig/twig/doc/internals.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="twig-internals">
+<h1>Twig Internals<a class="headerlink" href="#twig-internals" title="Permalink to this headline">¶</a></h1>
+<p>Twig is very extensible and you can easily hack it. Keep in mind that you
+should probably try to create an extension before hacking the core, as most
+features and enhancements can be handled with extensions. This chapter is also
+useful for people who want to understand how Twig works under the hood.</p>
+<div class="section" id="how-does-twig-work">
+<h2>How does Twig work?<a class="headerlink" href="#how-does-twig-work" title="Permalink to this headline">¶</a></h2>
+<p>The rendering of a Twig template can be summarized into four key steps:</p>
+<ul class="simple">
+<li><strong>Load</strong> the template: If the template is already compiled, load it and go
+to the <em>evaluation</em> step, otherwise:<ul>
+<li>First, the <strong>lexer</strong> tokenizes the template source code into small pieces
+for easier processing;</li>
+<li>Then, the <strong>parser</strong> converts the token stream into a meaningful tree
+of nodes (the Abstract Syntax Tree);</li>
+<li>Eventually, the <em>compiler</em> transforms the AST into PHP code.</li>
+</ul>
+</li>
+<li><strong>Evaluate</strong> the template: It basically means calling the <code class="docutils literal"><span class="pre">display()</span></code>
+method of the compiled template and passing it the context.</li>
+</ul>
+</div>
+<div class="section" id="the-lexer">
+<h2>The Lexer<a class="headerlink" href="#the-lexer" title="Permalink to this headline">¶</a></h2>
+<p>The lexer tokenizes a template source code into a token stream (each token is
+an instance of <code class="docutils literal"><span class="pre">Twig_Token</span></code>, and the stream is an instance of
+<code class="docutils literal"><span class="pre">Twig_TokenStream</span></code>). The default lexer recognizes 13 different token types:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Twig_Token::BLOCK_START_TYPE</span></code>, <code class="docutils literal"><span class="pre">Twig_Token::BLOCK_END_TYPE</span></code>: Delimiters for blocks (<code class="docutils literal"><span class="pre">{%</span> <span class="pre">%}</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::VAR_START_TYPE</span></code>, <code class="docutils literal"><span class="pre">Twig_Token::VAR_END_TYPE</span></code>: Delimiters for variables (<code class="docutils literal"><span class="pre">{{</span> <span class="pre">}}</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::TEXT_TYPE</span></code>: A text outside an expression;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::NAME_TYPE</span></code>: A name in an expression;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::NUMBER_TYPE</span></code>: A number in an expression;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::STRING_TYPE</span></code>: A string in an expression;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::OPERATOR_TYPE</span></code>: An operator;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::PUNCTUATION_TYPE</span></code>: A punctuation sign;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::INTERPOLATION_START_TYPE</span></code>, <code class="docutils literal"><span class="pre">Twig_Token::INTERPOLATION_END_TYPE</span></code> (as of Twig 1.5): Delimiters for string interpolation;</li>
+<li><code class="docutils literal"><span class="pre">Twig_Token::EOF_TYPE</span></code>: Ends of template.</li>
+</ul>
+<p>You can manually convert a source code into a token stream by calling the
+<code class="docutils literal"><span class="pre">tokenize()</span></code> method of an environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>$stream = $twig-&gt;tokenize($source, $identifier);
+</pre></div>
+</div>
+<p>As the stream has a <code class="docutils literal"><span class="pre">__toString()</span></code> method, you can have a textual
+representation of it by echoing the object:</p>
+<div class="highlight-python"><div class="highlight"><pre>echo $stream.&quot;\n&quot;;
+</pre></div>
+</div>
+<p>Here is the output for the <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">{{</span> <span class="pre">name</span> <span class="pre">}}</span></code> template:</p>
+<div class="highlight-text"><div class="highlight"><pre>TEXT_TYPE(Hello )
+VAR_START_TYPE()
+NAME_TYPE(name)
+VAR_END_TYPE()
+EOF_TYPE()
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default lexer (<code class="docutils literal"><span class="pre">Twig_Lexer</span></code>) can be changed by calling
+the <code class="docutils literal"><span class="pre">setLexer()</span></code> method:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$twig-&gt;setLexer($lexer);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-parser">
+<h2>The Parser<a class="headerlink" href="#the-parser" title="Permalink to this headline">¶</a></h2>
+<p>The parser converts the token stream into an AST (Abstract Syntax Tree), or a
+node tree (an instance of <code class="docutils literal"><span class="pre">Twig_Node_Module</span></code>). The core extension defines
+the basic nodes like: <code class="docutils literal"><span class="pre">for</span></code>, <code class="docutils literal"><span class="pre">if</span></code>, ... and the expression nodes.</p>
+<p>You can manually convert a token stream into a node tree by calling the
+<code class="docutils literal"><span class="pre">parse()</span></code> method of an environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>$nodes = $twig-&gt;parse($stream);
+</pre></div>
+</div>
+<p>Echoing the node object gives you a nice representation of the tree:</p>
+<div class="highlight-python"><div class="highlight"><pre>echo $nodes.&quot;\n&quot;;
+</pre></div>
+</div>
+<p>Here is the output for the <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">{{</span> <span class="pre">name</span> <span class="pre">}}</span></code> template:</p>
+<div class="highlight-text"><div class="highlight"><pre>Twig_Node_Module(
+  Twig_Node_Text(Hello )
+  Twig_Node_Print(
+    Twig_Node_Expression_Name(name)
+  )
+)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default parser (<code class="docutils literal"><span class="pre">Twig_TokenParser</span></code>) can be changed by calling the
+<code class="docutils literal"><span class="pre">setParser()</span></code> method:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$twig-&gt;setParser($parser);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-compiler">
+<h2>The Compiler<a class="headerlink" href="#the-compiler" title="Permalink to this headline">¶</a></h2>
+<p>The last step is done by the compiler. It takes a node tree as an input and
+generates PHP code usable for runtime execution of the template.</p>
+<p>You can manually compile a node tree to PHP code with the <code class="docutils literal"><span class="pre">compile()</span></code> method
+of an environment:</p>
+<div class="highlight-python"><div class="highlight"><pre>$php = $twig-&gt;compile($nodes);
+</pre></div>
+</div>
+<p>The generated template for a <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">{{</span> <span class="pre">name</span> <span class="pre">}}</span></code> template reads as follows
+(the actual output can differ depending on the version of Twig you are
+using):</p>
+<div class="highlight-python"><div class="highlight"><pre>/* Hello {{ name }} */
+class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends Twig_Template
+{
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        // line 1
+        echo &quot;Hello &quot;;
+        echo twig_escape_filter($this-&gt;env, isset($context[&quot;name&quot;]) ? $context[&quot;name&quot;] : null), &quot;html&quot;, null, true);
+    }
+
+    // some more code
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default compiler (<code class="docutils literal"><span class="pre">Twig_Compiler</span></code>) can be changed by calling the
+<code class="docutils literal"><span class="pre">setCompiler()</span></code> method:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$twig-&gt;setCompiler($compiler);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

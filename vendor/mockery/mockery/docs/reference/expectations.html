@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Expectation Declarations &mdash; Real-Debrid API 2.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../../../../../index.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Real-Debrid API
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro.html">Intro</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../../index.html">Real-Debrid API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Expectation Declarations</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/vendor/mockery/mockery/docs/reference/expectations.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="expectation-declarations">
+<span id="index-0"></span><h1>Expectation Declarations<a class="headerlink" href="#expectation-declarations" title="Permalink to this headline">¶</a></h1>
+<p>Once you have created a mock object, you&#8217;ll often want to start defining how
+exactly it should behave (and how it should be called). This is where the
+Mockery expectation declarations take over.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">shouldReceive(method_name)</span>
+</pre></div>
+</div>
+<p>Declares that the mock expects a call to the given method name. This is the
+starting expectation upon which all other expectations and constraints are
+appended.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">shouldReceive(method1, method2, ...)</span>
+</pre></div>
+</div>
+<p>Declares a number of expected method calls, all of which will adopt any
+chained expectations or constraints.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">shouldReceive(array(&#39;method1&#39;=&gt;1, &#39;method2&#39;=&gt;2, ...))</span>
+</pre></div>
+</div>
+<p>Declares a number of expected calls but also their return values. All will
+adopt any additional chained expectations or constraints.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">shouldReceive(closure)</span>
+</pre></div>
+</div>
+<p>Creates a mock object (only from a partial mock) which is used to create a
+mock object recorder. The recorder is a simple proxy to the original object
+passed in for mocking. This is passed to the closure, which may run it through
+a set of operations which are recorded as expectations on the partial mock. A
+simple use case is automatically recording expectations based on an existing
+usage (e.g. during refactoring). See examples in a later section.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">shouldNotReceive(method_name)</span>
+</pre></div>
+</div>
+<p>Declares that the mock should not expect a call to the given method name. This
+method is a convenience method for calling <code class="docutils literal"><span class="pre">shouldReceive()-&gt;never()</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">with(arg1, arg2, ...) / withArgs(array(arg1, arg2, ...))</span>
+</pre></div>
+</div>
+<p>Adds a constraint that this expectation only applies to method calls which
+match the expected argument list. You can add a lot more flexibility to
+argument matching using the built in matcher classes (see later). For example,
+<code class="docutils literal"><span class="pre">\Mockery::any()</span></code> matches any argument passed to that position in the
+<code class="docutils literal"><span class="pre">with()</span></code> parameter list. Mockery also allows Hamcrest library matchers - for
+example, the Hamcrest function <code class="docutils literal"><span class="pre">anything()</span></code> is equivalent to
+<code class="docutils literal"><span class="pre">\Mockery::any()</span></code>.</p>
+<p>It&#8217;s important to note that this means all expectations attached only apply to
+the given method when it is called with these exact arguments. This allows for
+setting up differing expectations based on the arguments provided to expected
+calls.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">withAnyArgs()</span>
+</pre></div>
+</div>
+<p>Declares that this expectation matches a method call regardless of what
+arguments are passed. This is set by default unless otherwise specified.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">withNoArgs()</span>
+</pre></div>
+</div>
+<p>Declares this expectation matches method calls with zero arguments.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andReturn(value)</span>
+</pre></div>
+</div>
+<p>Sets a value to be returned from the expected method call.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andReturn(value1, value2, ...)</span>
+</pre></div>
+</div>
+<p>Sets up a sequence of return values or closures. For example, the first call
+will return value1 and the second value2. Note that all subsequent calls to a
+mocked method will always return the final value (or the only value) given to
+this declaration.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andReturnNull() / andReturn([NULL])</span>
+</pre></div>
+</div>
+<p>Both of the above options are primarily for communication to test readers.
+They mark the mock object method call as returning <code class="docutils literal"><span class="pre">null</span></code> or nothing.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andReturnValues(array)</span>
+</pre></div>
+</div>
+<p>Alternative syntax for <code class="docutils literal"><span class="pre">andReturn()</span></code> that accepts a simple array instead of
+a list of parameters. The order of return is determined by the numerical
+index of the given array with the last array member being return on all calls
+once previous return values are exhausted.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andReturnUsing(closure, ...)</span>
+</pre></div>
+</div>
+<p>Sets a closure (anonymous function) to be called with the arguments passed to
+the method. The return value from the closure is then returned. Useful for
+some dynamic processing of arguments into related concrete results. Closures
+can queued by passing them as extra parameters as for <code class="docutils literal"><span class="pre">andReturn()</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot currently mix <code class="docutils literal"><span class="pre">andReturnUsing()</span></code> with <code class="docutils literal"><span class="pre">andReturn()</span></code>.</p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andThrow(Exception)</span>
+</pre></div>
+</div>
+<p>Declares that this method will throw the given <code class="docutils literal"><span class="pre">Exception</span></code> object when
+called.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andThrow(exception_name, message)</span>
+</pre></div>
+</div>
+<p>Rather than an object, you can pass in the <code class="docutils literal"><span class="pre">Exception</span></code> class and message to
+use when throwing an <code class="docutils literal"><span class="pre">Exception</span></code> from the mocked method.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">andSet(name, value1) / set(name, value1)</span>
+</pre></div>
+</div>
+<p>Used with an expectation so that when a matching method is called, one can
+also cause a mock object&#8217;s public property to be set to a specified value.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">passthru()</span>
+</pre></div>
+</div>
+<p>Tells the expectation to bypass a return queue and instead call the real
+method of the class that was mocked and return the result. Basically, it
+allows expectation matching and call count validation to be applied against
+real methods while still calling the real class method with the expected
+arguments.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">zeroOrMoreTimes()</span>
+</pre></div>
+</div>
+<p>Declares that the expected method may be called zero or more times. This is
+the default for all methods unless otherwise set.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">once()</span>
+</pre></div>
+</div>
+<p>Declares that the expected method may only be called once. Like all other call
+count constraints, it will throw a <code class="docutils literal"><span class="pre">\Mockery\CountValidator\Exception</span></code> if
+breached and can be modified by the <code class="docutils literal"><span class="pre">atLeast()</span></code> and <code class="docutils literal"><span class="pre">atMost()</span></code>
+constraints.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">twice()</span>
+</pre></div>
+</div>
+<p>Declares that the expected method may only be called twice.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">times(n)</span>
+</pre></div>
+</div>
+<p>Declares that the expected method may only be called n times.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">never()</span>
+</pre></div>
+</div>
+<p>Declares that the expected method may never be called. Ever!</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">atLeast()</span>
+</pre></div>
+</div>
+<p>Adds a minimum modifier to the next call count expectation. Thus
+<code class="docutils literal"><span class="pre">atLeast()-&gt;times(3)</span></code> means the call must be called at least three times
+(given matching method args) but never less than three times.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">atMost()</span>
+</pre></div>
+</div>
+<p>Adds a maximum modifier to the next call count expectation. Thus
+<code class="docutils literal"><span class="pre">atMost()-&gt;times(3)</span></code> means the call must be called no more than three times.
+This also means no calls are acceptable.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">between(min, max)</span>
+</pre></div>
+</div>
+<p>Sets an expected range of call counts. This is actually identical to using
+<code class="docutils literal"><span class="pre">atLeast()-&gt;times(min)-&gt;atMost()-&gt;times(max)</span></code> but is provided as a
+shorthand.  It may be followed by a <code class="docutils literal"><span class="pre">times()</span></code> call with no parameter to
+preserve the APIs natural language readability.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">ordered()</span>
+</pre></div>
+</div>
+<p>Declares that this method is expected to be called in a specific order in
+relation to similarly marked methods. The order is dictated by the order in
+which this modifier is actually used when setting up mocks.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">ordered(group)</span>
+</pre></div>
+</div>
+<p>Declares the method as belonging to an order group (which can be named or
+numbered). Methods within a group can be called in any order, but the ordered
+calls from outside the group are ordered in relation to the group, i.e. you
+can set up so that method1 is called before group1 which is in turn called
+before method 2.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">globally()</span>
+</pre></div>
+</div>
+<p>When called prior to <code class="docutils literal"><span class="pre">ordered()</span></code> or <code class="docutils literal"><span class="pre">ordered(group)</span></code>, it declares this
+ordering to apply across all mock objects (not just the current mock). This
+allows for dictating order expectations across multiple mocks.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">byDefault()</span>
+</pre></div>
+</div>
+<p>Marks an expectation as a default. Default expectations are applied unless a
+non-default expectation is created. These later expectations immediately
+replace the previously defined default. This is useful so you can setup
+default mocks in your unit test <code class="docutils literal"><span class="pre">setup()</span></code> and later tweak them in specific
+tests as needed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">getMock()</span>
+</pre></div>
+</div>
+<p>Returns the current mock object from an expectation chain. Useful where you
+prefer to keep mock setups as a single statement, e.g.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$mock = \Mockery::mock(&#39;foo&#39;)-&gt;shouldReceive(&#39;foo&#39;)-&gt;andReturn(1)-&gt;getMock();</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Valentin GOT.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
