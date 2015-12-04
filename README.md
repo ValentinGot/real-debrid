@@ -2,7 +2,6 @@
 
 [![Latest Stable Version](https://poser.pugx.org/vgot/real-debrid/v/stable)](https://packagist.org/packages/vgot/real-debrid)
 [![Build Status](https://travis-ci.org/ValentinGot/real-debrid.svg)](https://travis-ci.org/ValentinGot/real-debrid)
-[![codecov.io](https://codecov.io/github/ValentinGot/real-debrid/coverage.svg?branch=master)](https://codecov.io/github/ValentinGot/real-debrid?branch=master)
 
 > A simple API interface for real-debrid.com.
 
