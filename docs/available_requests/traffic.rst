@@ -1,4 +1,5 @@
-.. _traffic:
+.. index::
+    single: Available requests; Traffic
 
 Traffic
 =======

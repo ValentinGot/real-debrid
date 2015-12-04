@@ -1,4 +1,5 @@
-.. _torrents:
+.. index::
+    single: Available requests; Torrents
 
 Torrents
 ========

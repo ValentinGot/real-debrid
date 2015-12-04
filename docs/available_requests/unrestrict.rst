@@ -1,4 +1,5 @@
-.. _unrestrict:
+.. index::
+    single: Available requests; Unrestrict
 
 Unrestrict
 ==========

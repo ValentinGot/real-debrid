@@ -1,4 +1,5 @@
-.. _user:
+.. index::
+    single: Available requests; User
 
 User
 ====

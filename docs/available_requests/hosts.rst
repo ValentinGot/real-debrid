@@ -1,4 +1,5 @@
-.. _hosts:
+.. index::
+    single: Available requests; Hosts
 
 Hosts
 =====

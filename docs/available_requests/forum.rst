@@ -1,4 +1,5 @@
-.. _forum:
+.. index::
+    single: Available requests; Forum
 
 Forum
 =====
