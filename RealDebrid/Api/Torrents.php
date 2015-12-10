@@ -30,7 +30,7 @@ class Torrents extends EndPoint {
      * @param int $page Pagination system
      * @param int $limit Entries returned per page / request (must be within 0 and 100, default: 50)
      * @param int|null $offset Starting offset (must be within 0 and X-Total-Count HTTP header)
-     * @return \stdClass User torrents list
+     * @return array User torrents list
      */
     public function get($filter = false, $page = 1, $limit = 50, $offset = null) {
         return $this->request(new TorrentsRequest($this->token, $filter, $page, $limit, $offset));
@@ -49,7 +49,7 @@ class Torrents extends EndPoint {
     /**
      * Get available hosts to upload the torrent to
      *
-     * @return \stdClass Available hosts
+     * @return array Available hosts
      */
     public function availableHosts() {
         return $this->request(new AvailableHostsRequest($this->token));
@@ -60,10 +60,12 @@ class Torrents extends EndPoint {
      *
      * The files must be selected with the selectFiles method to start the torrent
      * @param string $path Path to the torrent file
+     * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
+     * @param int|null $split Split size (under max_split_size of concerned hoster retrieved from /torrents/availableHosts)
      * @return \stdClass Torrent information
      */
-    public function addTorrent($path) {
-        return $this->request(new AddTorrentRequest($this->token, $path));
+    public function addTorrent($path, $host = null, $split = null) {
+        return $this->request(new AddTorrentRequest($this->token, $path, $host, $split));
     }
 
     /**
