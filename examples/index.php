@@ -6,8 +6,7 @@ $dotenv->load();
 
 header('Content-Type: application/json');
 
-$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token('AAA'));
-echo json_encode($realDebrid->user->get());
+$realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token(getenv('TOKEN')));
 
 // /user
 //----------------------------------------------
