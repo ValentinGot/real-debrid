@@ -1,9 +1,8 @@
 <?php
 
 namespace RealDebrid\Api;
-use RealDebrid\Request\Torrents\AddMagnet;
+
 use RealDebrid\Request\Torrents\AddMagnetRequest;
-use RealDebrid\Request\Torrents\AddTorrent;
 use RealDebrid\Request\Torrents\AddTorrentRequest;
 use RealDebrid\Request\Torrents\AvailableHostsRequest;
 use RealDebrid\Request\Torrents\DeleteRequest;
