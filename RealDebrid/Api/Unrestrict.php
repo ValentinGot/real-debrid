@@ -2,6 +2,7 @@
 
 namespace RealDebrid\Api;
 
+use RealDebrid\Request\Unrestrict\CheckRequest;
 use RealDebrid\Request\Unrestrict\ContainerFileRequest;
 use RealDebrid\Request\Unrestrict\ContainerLinkRequest;
 use RealDebrid\Request\Unrestrict\FolderRequest;
@@ -17,6 +18,18 @@ use RealDebrid\Request\Unrestrict\LinkRequest;
  * @api
  */
 class Unrestrict extends EndPoint {
+
+    /**
+     * Check if a file is downloadable on the concerned hoster
+     *
+     * @param string $link The original hoster link
+     * @param string|null $password Password to unlock the file access hoster side
+     * @return \stdClass Link information if it's available
+     * @throws \RealDebrid\Exception\FileUnavailableException In case the link is not downloadable
+     */
+    public function check($link, $password = null) {
+        return $this->request(new CheckRequest($link, $password));
+    }
 
     /**
      * Unrestrict a hoster link and get a new unrestricted link

@@ -38,6 +38,9 @@ class ExceptionStatusCodeFactory {
             case 404:
                 return new UnknownResourceException();
                 break;
+            case 503:
+                return new FileUnavailableException();
+                break;
         }
 
         return new RealDebridException($error);

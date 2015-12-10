@@ -4,6 +4,7 @@ namespace RealDebrid\Request;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -88,7 +89,7 @@ abstract class AbstractRequest {
 
         try {
             return $this->handleResponse($this->request($client), $client);
-        } catch(ClientException $e) {
+        } catch(ServerException $e) {
             // HACK for /downloads/delete/{id} URL which is throwing an error_code 7 even if it works
             if ($e->getRequest()->getMethod() !== RequestType::DELETE && json_decode($e->getResponse()->getBody())->error_code != 7)
                 throw ExceptionStatusCodeFactory::create($e->getResponse());

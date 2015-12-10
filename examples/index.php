@@ -16,6 +16,8 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token(getenv('TOKE
 // /unrestrict
 //----------------------------------------------
 
+//echo json_encode($realDebrid->unrestrict->check('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0Assdmlfksmlfk'));
+//echo json_encode($realDebrid->unrestrict->check('https://megaaa.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0Assdmlfksmlfk'));
 //echo json_encode($realDebrid->unrestrict->link('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0As'));
 //echo json_encode($realDebrid->unrestrict->link('https://www.youtube.com/watch?v=gd7iyNv1qEA'));
 //echo json_encode($realDebrid->unrestrict->link('https://mega.nz/#!Zp1FFDSC!fo7PcxtdkyDO52x0VdNaeP_W5CiCV84iPtuOqV2y0As', 'password'));
