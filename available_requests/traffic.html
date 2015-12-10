@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/> 
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Available requests" href="index.html"/>
+        <link rel="next" title="Unrestrict" href="unrestrict.html"/>
+        <link rel="prev" title="Torrents" href="torrents.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -85,8 +88,31 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic_usage/index.html">Basic usage</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Available requests</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Available requests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Forum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosts.html">Hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Traffic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">get()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#details">details()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User</a></li>
+</ul>
+</li>
 </ul>
 <ul class="simple">
 </ul>
@@ -119,6 +145,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="index.html">Available requests</a> &raquo;</li>
+      
     <li>Traffic</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -134,13 +162,136 @@
            <div itemprop="articleBody">
             
   <div class="section" id="traffic">
-<span id="id1"></span><h1>Traffic<a class="headerlink" href="#traffic" title="Permalink to this headline">¶</a></h1>
+<span id="index-0"></span><h1>Traffic<a class="headerlink" href="#traffic" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>Traffic</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;traffic</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
+<div class="section" id="get">
+<h2>get()<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Get traffic information for limited hosters (limits, current usage, extra packages).</p>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>The traffic information as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;depfile.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;left&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="nt">&quot;bytes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;links&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;reset&quot;</span><span class="p">:</span> <span class="s2">&quot;daily&quot;</span>
+    <span class="p">},</span>
+        <span class="nt">&quot;extmatrix.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;left&quot;</span><span class="p">:</span> <span class="mi">21474836480</span><span class="p">,</span>
+        <span class="nt">&quot;bytes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;gigabytes&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;reset&quot;</span><span class="p">:</span> <span class="s2">&quot;daily&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$traffic</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">traffic</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="details">
+<h2>details()<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>Get traffic details on each hoster used during a defined period</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>For <strong>start</strong> and <strong>end</strong> parameters we use the <a class="reference external" href="http://carbon.nesbot.com/">Carbon</a> library.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="31%" />
+<col width="21%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
+<th class="head">type</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>start</td>
+<td>Start period</td>
+<td>Carbon</td>
+<td>a week ago</td>
+</tr>
+<tr class="row-odd"><td>end</td>
+<td>End period</td>
+<td>Carbon</td>
+<td>today</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>Return<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The traffic details as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;2015-12-09&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;uptobox.com&quot;</span><span class="p">:</span> <span class="mi">11066701819</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;bytes&quot;</span><span class="p">:</span> <span class="mi">11066701819</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;2015-12-08&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;uptobox.com&quot;</span><span class="p">:</span> <span class="mi">872664221</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;bytes&quot;</span><span class="p">:</span> <span class="mi">872664221</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">\Carbon\Carbon</span><span class="p">;</span>
+
+<span class="c1">// Start: a week ago, End: today</span>
+<span class="nv">$traffic</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">traffic</span><span class="o">-&gt;</span><span class="na">details</span><span class="p">();</span>
+
+<span class="c1">// Start: 2015-11-24, End: today</span>
+<span class="nv">$traffic</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">traffic</span><span class="o">-&gt;</span><span class="na">details</span><span class="p">(</span><span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">24</span><span class="p">));</span>
+
+<span class="c1">// Start: 2015-11-24, End: today</span>
+<span class="nv">$traffic</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">traffic</span><span class="o">-&gt;</span><span class="na">details</span><span class="p">(</span><span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">now</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="unrestrict.html" class="btn btn-neutral float-right" title="Unrestrict" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="torrents.html" class="btn btn-neutral" title="Torrents" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

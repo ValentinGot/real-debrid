@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/> 
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Available requests" href="index.html"/>
+        <link rel="next" title="Hosts" href="hosts.html"/>
+        <link rel="prev" title="Downloads" href="downloads.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -85,8 +88,31 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic_usage/index.html">Basic usage</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Available requests</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Available requests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Forum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#forums">forums()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#topics">topics()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hosts.html">Hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traffic.html">Traffic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User</a></li>
+</ul>
+</li>
 </ul>
 <ul class="simple">
 </ul>
@@ -119,6 +145,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="index.html">Available requests</a> &raquo;</li>
+      
     <li>Forum</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -134,13 +162,181 @@
            <div itemprop="articleBody">
             
   <div class="section" id="forum">
-<span id="id1"></span><h1>Forum<a class="headerlink" href="#forum" title="Permalink to this headline">¶</a></h1>
+<span id="index-0"></span><h1>Forum<a class="headerlink" href="#forum" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>Forum</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;forum</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
+<div class="section" id="forums">
+<h2>forums()<a class="headerlink" href="#forums" title="Permalink to this headline">¶</a></h2>
+<p>Get the list of all forums with their category names.</p>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>List of forums as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;Real-Debrid FR&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Support Débridage&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Pour aider et se faire aider.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;topics&quot;</span><span class="p">:</span> <span class="mi">1323</span><span class="p">,</span>
+            <span class="nt">&quot;posts&quot;</span><span class="p">:</span> <span class="mi">6485</span><span class="p">,</span>
+            <span class="nt">&quot;unread_content&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;last_post&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">77996</span><span class="p">,</span>
+                <span class="nt">&quot;topic_id&quot;</span><span class="p">:</span> <span class="mi">13460</span><span class="p">,</span>
+                <span class="nt">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">7074</span><span class="p">,</span>
+                <span class="nt">&quot;user_name&quot;</span><span class="p">:</span> <span class="s2">&quot;link348&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;user_level&quot;</span><span class="p">:</span> <span class="s2">&quot;moderator&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-09T21:57:11.000Z&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$forums</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">forums</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="topics">
+<h2>topics()<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<p>Get the list of all topics inside the concerned forum.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="67%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
+<th class="head">type</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id *</strong></td>
+<td>Forum ID (retrieved by the forums() method)</td>
+<td>integer</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>meta</td>
+<td>TRUE to show meta information; FALSE otherwise</td>
+<td>bool</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td>page</td>
+<td>The page to retrieve</td>
+<td>integer</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>Entries returned per page / request (must be within 0 and 100)</td>
+<td>integer</td>
+<td>50</td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>Starting offset</td>
+<td>integer</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You can not use both <em>offset</em> and <em>page</em> at the same time, <em>page</em> is prioritized in case it happens.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Return<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>List of topics as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<p>In this example, <strong>meta</strong> is set to <code class="docutils literal"><span class="pre">true</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Support Débridage&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Pour aider et se faire aider.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;topics&quot;</span><span class="p">:</span> <span class="mi">1323</span><span class="p">,</span>
+        <span class="nt">&quot;autorisation_topic&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;autorisation_post&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;autorisation_stick&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;autorisation_moderation&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;topics&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sticky&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">13311</span><span class="p">,</span>
+                <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Plugin Synology [OFFICIEL]&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;TheCrach&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;administrator&quot;</span>
+                <span class="p">},</span>
+                <span class="nt">&quot;posts&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+                <span class="nt">&quot;views&quot;</span><span class="p">:</span> <span class="mi">263</span><span class="p">,</span>
+                <span class="nt">&quot;unread_content&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="nt">&quot;last_post&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">77957</span><span class="p">,</span>
+                    <span class="nt">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">440309</span><span class="p">,</span>
+                    <span class="nt">&quot;user_name&quot;</span><span class="p">:</span> <span class="s2">&quot;erriep&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;user_level&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;date&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-08T23:08:43.000Z&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;normal&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// Topic ID: 4, Meta, Page 1, Limit 50</span>
+<span class="nv">$topics</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">topics</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="c1">// Topic ID: 4, no Meta, Page 1, Limit 50</span>
+<span class="nv">$topics</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">topics</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="c1">// Topic ID: 4, Meta, Page 2, Limit 50</span>
+<span class="nv">$topics</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">topics</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// Topic ID: 4, Meta, Page 2, Limit 10</span>
+<span class="nv">$topics</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">topics</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">// Topic ID: 4, Meta, Limit 10, Offset 1</span>
+<span class="nv">$topics</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">forum</span><span class="o">-&gt;</span><span class="na">topics</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hosts.html" class="btn btn-neutral float-right" title="Hosts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="downloads.html" class="btn btn-neutral" title="Downloads" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

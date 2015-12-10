@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/> 
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Available requests" href="index.html"/>
+        <link rel="next" title="Forum" href="forum.html"/>
+        <link rel="prev" title="Available requests" href="index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -85,8 +88,31 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic_usage/index.html">Basic usage</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Available requests</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Available requests</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Downloads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">get()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#delete">delete()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Forum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosts.html">Hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traffic.html">Traffic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User</a></li>
+</ul>
+</li>
 </ul>
 <ul class="simple">
 </ul>
@@ -119,6 +145,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="index.html">Available requests</a> &raquo;</li>
+      
     <li>Downloads</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -134,13 +162,126 @@
            <div itemprop="articleBody">
             
   <div class="section" id="downloads">
-<span id="id1"></span><h1>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h1>
-<p>All <strong>Downloads</strong> methods are available under <code class="docutils literal"><span class="pre">RealDebridRealDebrid()-&gt;downloads</span></code> namespace.</p>
+<span id="index-0"></span><h1>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>Downloads</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;downloads</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
 <div class="section" id="get">
 <h2>get()<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Get user downloads list.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="67%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
+<th class="head">type</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>page</td>
+<td>The page to retrieve</td>
+<td>integer</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>Entries returned per page / request (must be within 0 and 100)</td>
+<td>integer</td>
+<td>50</td>
+</tr>
+<tr class="row-even"><td>offset</td>
+<td>Starting offset</td>
+<td>integer</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You can not use both <em>offset</em> and <em>page</em> at the same time, <em>page</em> is prioritized in case it happens.</p>
+</div>
+</div>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>The downloads list as an <code class="docutils literal"><span class="pre">Array</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;MKXSUYLZYTXKM&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;my-file&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;filesize&quot;</span><span class="p">:</span> <span class="mi">661263016</span><span class="p">,</span>
+        <span class="nt">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;http://hoster.com/ABCDEFG&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;host.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;chunks&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+        <span class="nt">&quot;download&quot;</span><span class="p">:</span> <span class="s2">&quot;http://fa.rdeb.io/d/MKXSUYLZYTXKM/my-file&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;generated&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-04T19:11:02.000Z&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// Page 1, Limit 50</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+<span class="c1">// Page 2, Limit 50</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">// Page 2, Limit 10</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">// Limit 10, Offset 1</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="delete">
 <h2>delete()<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete a link from downloads list</p>
+<div class="section" id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="59%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
+<th class="head">type</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id *</strong></td>
+<td>Download ID (retrieved by the get() method)</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;MKXSUYLZYTXKM&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -148,6 +289,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forum.html" class="btn btn-neutral float-right" title="Forum" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Available requests" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

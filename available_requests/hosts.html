@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/> 
+    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Available requests" href="index.html"/>
+        <link rel="next" title="Settings" href="settings.html"/>
+        <link rel="prev" title="Forum" href="forum.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -85,8 +88,40 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic_usage/index.html">Basic usage</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Available requests</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Available requests</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forum.html">Forum</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Hosts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">get()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#status">status()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#regex">regex()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#domains">domains()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traffic.html">Traffic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User</a></li>
+</ul>
+</li>
 </ul>
 <ul class="simple">
 </ul>
@@ -119,6 +154,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="index.html">Available requests</a> &raquo;</li>
+      
     <li>Hosts</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -134,13 +171,143 @@
            <div itemprop="articleBody">
             
   <div class="section" id="hosts">
-<span id="id1"></span><h1>Hosts<a class="headerlink" href="#hosts" title="Permalink to this headline">¶</a></h1>
+<span id="index-0"></span><h1>Hosts<a class="headerlink" href="#hosts" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>Hosts</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;hosts</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
+<div class="section" id="get">
+<h2>get()<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Get supported hosts.</p>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>List of supported hosts as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;1fichier.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1f&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;1Fichier&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cdn.realdebrid.xtnetwork.fr/0482/images/hosters/1fichier.png&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;2shared.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2s&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;2Shared&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cdn.realdebrid.xtnetwork.fr/0482/images/hosters/2shared.png&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$supportedHosts</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">hosts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="status">
+<h2>status()<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h2>
+<p>Get status of supported hosters or not and their status on competitors.</p>
+<div class="section" id="id1">
+<h3>Return<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>List of supported hosts status as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;1fichier.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1f&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;1Fichier&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cdn.realdebrid.xtnetwork.fr/0482/images/hosters/1fichier.png&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;supported&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;check_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-10T10:23:57.000Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;competitors_status&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;mega-debrid.eu&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;check_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-10T10:23:57.000Z&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;linksnappy.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;check_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-10T10:24:01.000Z&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;premiumize.me&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;check_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-12-10T10:23:58.000Z&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$status</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">hosts</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="regex">
+<h2>regex()<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h2>
+<p>Get all supported links Regex, useful to find supported links inside a document.</p>
+<div class="section" id="id3">
+<h3>Return<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>List of supported links regex as an <code class="docutils literal"><span class="pre">Array</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;/(http|https):\/\/(\w+\.)?180upload\.com\/[0-9a-z]{12}/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/(http|https):\/\/(\w+\.)?2shared\.com\/([^( |\&quot;|&#39;|&gt;|&lt;|\r\n\|\n|$)]+)/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/(http|https):\/\/(\w+\.)?4shared\.com\/([^( |\&quot;|&#39;|&gt;|&lt;|\r\n\|\n|$)]+)/&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Examples<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$regex</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">hosts</span><span class="o">-&gt;</span><span class="na">regex</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="domains">
+<h2>domains()<a class="headerlink" href="#domains" title="Permalink to this headline">¶</a></h2>
+<p>Get all hoster domains supported on the service.</p>
+<div class="section" id="id5">
+<h3>Return<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>List of supported hoster domains <code class="docutils literal"><span class="pre">Array</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">[</span>
+    <span class="s2">&quot;1fichier.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alterupload.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cjoint.net&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;desfichiers.com&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Examples<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$domains</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">hosts</span><span class="o">-&gt;</span><span class="na">domains</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="settings.html" class="btn btn-neutral float-right" title="Settings" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="forum.html" class="btn btn-neutral" title="Forum" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

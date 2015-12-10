@@ -31,11 +31,9 @@ Available requests
 ------------------
 
 .. toctree::
-    :hidden:
+    :maxdepth: 2
 
     available_requests/index
-
-.. include:: available_requests/map.rst.inc
 
 Response handlers
 -----------------
