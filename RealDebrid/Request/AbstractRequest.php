@@ -89,10 +89,12 @@ abstract class AbstractRequest {
 
         try {
             return $this->handleResponse($this->request($client), $client);
-        } catch(ServerException $e) {
+        } catch(ClientException $e) {
             // HACK for /downloads/delete/{id} URL which is throwing an error_code 7 even if it works
             if ($e->getRequest()->getMethod() !== RequestType::DELETE && json_decode($e->getResponse()->getBody())->error_code != 7)
                 throw ExceptionStatusCodeFactory::create($e->getResponse());
+        } catch (ServerException $e) {
+            throw ExceptionStatusCodeFactory::create($e->getResponse());
         }
 
         return null;
