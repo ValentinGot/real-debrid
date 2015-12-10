@@ -93,7 +93,26 @@
 <li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forum.html">Forum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hosts.html">Hosts</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">get()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update">update()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convertpoints">convertPoints()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disablelogs">disableLogs()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#addavatar">addAvatar()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deleteavatar">deleteAvatar()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="traffic.html">Traffic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
@@ -150,6 +169,113 @@
             
   <div class="section" id="settings">
 <span id="index-0"></span><h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>Settings</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;settings</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
+<div class="section" id="get">
+<h2>get()<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Get current user settings with possible values to update.</p>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>The settings as an <code class="docutils literal"><span class="pre">stdClass</span></code></p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;download_ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;secured&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;download_port&quot;</span><span class="p">:</span> <span class="s2">&quot;normal&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$settings</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">settings</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>update()<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Not working yet</p>
+</div>
+</div>
+<div class="section" id="convertpoints">
+<h2>convertPoints()<a class="headerlink" href="#convertpoints" title="Permalink to this headline">¶</a></h2>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Not working yet</p>
+</div>
+</div>
+<div class="section" id="disablelogs">
+<h2>disableLogs()<a class="headerlink" href="#disablelogs" title="Permalink to this headline">¶</a></h2>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p class="last">Not working yet</p>
+</div>
+</div>
+<div class="section" id="addavatar">
+<h2>addAvatar()<a class="headerlink" href="#addavatar" title="Permalink to this headline">¶</a></h2>
+<p>Upload a new user avatar image.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The response might throw a <code class="docutils literal"><span class="pre">RealDebrid\Exception\RealDebridException</span></code> with one of the following messages :</p>
+<ul class="last simple">
+<li><strong>Image resolution error</strong>: maximum resolution is 150px x 230px</li>
+<li><strong>File not allowed</strong>: allowed extensions are .jpg, .gif and .png</li>
+<li><strong>Upload too big</strong>: maximum file size is 1024 KB</li>
+</ul>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="42%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
+<th class="head">type</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>$path *</strong></td>
+<td>Path to the avatar file</td>
+<td>string</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$settings</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">settings</span><span class="o">-&gt;</span><span class="na">addAvatar</span><span class="p">(</span><span class="s1">&#39;C:/fakepath/avatar.png&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="deleteavatar">
+<h2>deleteAvatar()<a class="headerlink" href="#deleteavatar" title="Permalink to this headline">¶</a></h2>
+<p>Reset user avatar image to default.</p>
+<div class="section" id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$settings</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">settings</span><span class="o">-&gt;</span><span class="na">deleteAvatar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

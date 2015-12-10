@@ -176,32 +176,32 @@
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="35%" />
-<col width="22%" />
-<col width="22%" />
-<col width="22%" />
+<col width="11%" />
+<col width="67%" />
+<col width="11%" />
+<col width="11%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
 <th class="head">type</th>
-<th class="head">required</th>
 <th class="head">default</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>page</td>
+<td>The page to retrieve</td>
 <td>integer</td>
-<td>false</td>
 <td>1</td>
 </tr>
 <tr class="row-odd"><td>limit</td>
+<td>Entries returned per page / request (must be within 0 and 100)</td>
 <td>integer</td>
-<td>false</td>
 <td>50</td>
 </tr>
 <tr class="row-even"><td>offset</td>
+<td>Starting offset</td>
 <td>integer</td>
-<td>false</td>
 <td>null</td>
 </tr>
 </tbody>
@@ -233,16 +233,16 @@
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="c1">// Page 1, Limit 50</span>
-<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
 <span class="c1">// Page 2, Limit 50</span>
-<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
 <span class="c1">// Page 2, Limit 10</span>
-<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 
 <span class="c1">// Limit 10, Offset 1</span>
-<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nv">$downloads</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -254,22 +254,22 @@
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="35%" />
-<col width="22%" />
-<col width="22%" />
-<col width="22%" />
+<col width="14%" />
+<col width="59%" />
+<col width="14%" />
+<col width="14%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">param.</th>
+<th class="head">desc.</th>
 <th class="head">type</th>
-<th class="head">required</th>
 <th class="head">default</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>id</td>
+<tr class="row-even"><td><strong>id *</strong></td>
+<td>Download ID (retrieved by the get() method)</td>
 <td>string</td>
-<td>true</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
@@ -278,7 +278,7 @@
 <div class="section" id="id2">
 <h3>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
-<span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;MKXSUYLZYTXKM&#39;</span><span class="p">);</span>
+<span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">downloads</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;MKXSUYLZYTXKM&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

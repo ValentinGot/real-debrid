@@ -135,7 +135,7 @@ $realDebrid = new \RealDebrid\RealDebrid(new \RealDebrid\Auth\Token(getenv('TOKE
 //$realDebrid->settings->changePassword();
 
 // Upload avatar
-//$realDebrid->settings->addAvatar('C:\fakepath\avatar.png');
+$realDebrid->settings->addAvatar('C:\Users\v.got\Downloads\silver.png');
 
 // Delete avatar
 //$realDebrid->settings->deleteAvatar();

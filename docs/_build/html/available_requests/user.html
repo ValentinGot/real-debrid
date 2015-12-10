@@ -97,7 +97,14 @@
 <li class="toctree-l2"><a class="reference internal" href="torrents.html">Torrents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="traffic.html">Traffic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unrestrict.html">Unrestrict</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">User</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">User</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">get()</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#return">Return</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -150,6 +157,41 @@
             
   <div class="section" id="user">
 <span id="index-0"></span><h1>User<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h1>
+<p>All <strong>User</strong> methods are available under <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;user</span></code> namespace.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In order to use any of these methods, remember to create a <strong>RealDebrid client</strong>.</p>
+<p class="last">Please refer to the <a class="reference internal" href="../basic_usage/index.html#creating-a-client"><span>Creating a client</span></a> section if you didn&#8217;t do it.</p>
+</div>
+<div class="section" id="get">
+<h2>get()<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Returns some information on the current user.</p>
+<div class="section" id="return">
+<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<p>The user information as a <code class="docutils literal"><span class="pre">\RealDebrid\Response\User</span></code></p>
+<p>This method is using an example of <a class="reference internal" href="../response_handlers/index.html"><em>Response Handler</em></a>.</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">214239</span><span class="p">,</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;USERNAME&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;me@mail.fr&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;points&quot;</span><span class="p">:</span> <span class="mi">950</span><span class="p">,</span>
+    <span class="nt">&quot;locale&quot;</span><span class="p">:</span> <span class="s2">&quot;fr&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;avatar&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cdn.realdebrid.xtnetwork.fr/images/avatars/MON_AVATAR&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;premium&quot;</span><span class="p">:</span> <span class="mi">3656961</span><span class="p">,</span>
+    <span class="nt">&quot;expiration&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-01-21T19:37:40.000Z&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nv">$realDebrid</span><span class="o">-&gt;</span><span class="na">user</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

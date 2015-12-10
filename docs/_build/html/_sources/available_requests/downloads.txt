@@ -20,15 +20,15 @@ Get user downloads list.
 Parameters
 ^^^^^^^^^^
 
-+------------------+-----------+-----------+-----------+
-| param.           | type      | required  | default   |
-+==================+===========+===========+===========+
-| page             | integer   | false     | 1         |
-+------------------+-----------+-----------+-----------+
-| limit            | integer   | false     | 50        |
-+------------------+-----------+-----------+-----------+
-| offset           | integer   | false     | null      |
-+------------------+-----------+-----------+-----------+
++-----------+-------------------------------------------------------------------+-----------+-----------+
+| param.    | desc.                                                             | type      | default   |
++===========+===================================================================+===========+===========+
+| page      | The page to retrieve                                              | integer   | 1         |
++-----------+-------------------------------------------------------------------+-----------+-----------+
+| limit     | Entries returned per page / request (must be within 0 and 100)    | integer   | 50        |
++-----------+-------------------------------------------------------------------+-----------+-----------+
+| offset    | Starting offset                                                   | integer   | null      |
++-----------+-------------------------------------------------------------------+-----------+-----------+
 
 .. warning::
 
@@ -61,16 +61,16 @@ Examples
 
     <?php
     // Page 1, Limit 50
-    $downloads = $realDebrid->get();
+    $downloads = $realDebrid->downloads->get();
 
     // Page 2, Limit 50
-    $downloads = $realDebrid->get(2);
+    $downloads = $realDebrid->downloads->get(2);
 
     // Page 2, Limit 10
-    $downloads = $realDebrid->get(2, 10);
+    $downloads = $realDebrid->downloads->get(2, 10);
 
     // Limit 10, Offset 1
-    $downloads = $realDebrid->get(null, 10, 1);
+    $downloads = $realDebrid->downloads->get(null, 10, 1);
 
 delete()
 --------
@@ -80,11 +80,11 @@ Delete a link from downloads list
 Parameters
 ^^^^^^^^^^
 
-+------------------+-----------+-----------+-----------+
-| param.           | type      | required  | default   |
-+==================+===========+===========+===========+
-| id               | string    | true      |           |
-+------------------+-----------+-----------+-----------+
++-----------+-----------------------------------------------+-----------+-----------+
+| param.    | desc.                                         | type      | default   |
++===========+===============================================+===========+===========+
+| **id \*** | Download ID (retrieved by the get() method)   | string    |           |
++-----------+-----------------------------------------------+-----------+-----------+
 
 Examples
 ^^^^^^^^
@@ -92,5 +92,5 @@ Examples
 .. code-block:: php
 
     <?php
-    $realDebrid->delete('MKXSUYLZYTXKM');
+    $realDebrid->downloads->delete('MKXSUYLZYTXKM');
 
