@@ -26,9 +26,9 @@ class ExceptionStatusCodeFactory {
             case 202:
                 return new ActionAlreadyDoneException();
                 break;
-            case 400:
+            /*case 400:
                 return new BadRequestException();
-                break;
+                break;*/
             case 401:
                 return new BadTokenException();
                 break;
