@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Auth\Token;
 use RealDebrid\Exception\ExceptionStatusCodeFactory;
+use RealDebrid\Exception\FileNotFoundException;
 use RealDebrid\Interfaces\ResponseHandler;
 use RealDebrid\Response\Handlers\DefaultResponseHandler;
 
@@ -168,8 +169,13 @@ abstract class AbstractRequest {
 
         if ($this->needsPostBody())
             $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
-        if (!empty($this->filePath))
-            $options[RequestOptions::BODY] = fopen($this->filePath, 'r');
+        if (!empty($this->filePath)) {
+            if(($handle = @fopen($this->filePath, 'r')) !== false) {
+                $options[RequestOptions::BODY] = $handle;
+            } else {
+                throw new FileNotFoundException();
+            }
+        }
 
         return $options;
     }
