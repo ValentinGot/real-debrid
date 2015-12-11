@@ -56,7 +56,8 @@ $realDebrid = new RealDebrid($token);
 ### Using the API
 
 Here is some examples on how to use the Real-Debrid API.
-If you want more examples, you can go to the [/examples](https://github.com/ValentinGot/real-debrid/tree/master/examples) folder.
+
+If you want more information about the available requests, please refer to the [Available requests](https://valentingot.github.io/real-debrid/available_requests) section.
 
 ```php
 // Retrieve user information
@@ -72,10 +73,6 @@ $realDebrid->torrents->selectFiles($torrent->id);
 // Retrieve torrents list
 $torrentQueue = $realDebrid->torrents->get();
 ```
-
-## Available requests
-
-See the [Available requests](https://valentingot.github.io/real-debrid/available_requests) section of the documentation.
 
 ## Documentation
 
