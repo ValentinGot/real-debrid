@@ -1,6 +1,5 @@
-/docs/_build
+docs/_build
 .idea/
 vendor/
 composer.lock
 *.env
-.buildinfo
