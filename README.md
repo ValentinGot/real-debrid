@@ -57,7 +57,7 @@ $realDebrid = new RealDebrid($token);
 
 Here is some examples on how to use the Real-Debrid API.
 
-If you want more information about the available requests, please refer to the [Available requests](https://valentingot.github.io/real-debrid/available_requests) section.
+If you want more information about the available requests, please refer to the [Available requests](https://valentingot.github.io/real-debrid/available_requests) section of the documentation.
 
 ```php
 // Retrieve user information
