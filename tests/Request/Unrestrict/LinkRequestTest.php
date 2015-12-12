@@ -1,12 +1,10 @@
 <?php
 
-namespace Request\Unrestrict;
-
 use RealDebrid\Auth\Token;
 use RealDebrid\Request\RequestType;
 use RealDebrid\Request\Unrestrict\LinkRequest;
 
-class LinkRequestTest extends \PHPUnit_Framework_TestCase {
+class LinkRequestTest extends PHPUnit_Framework_TestCase {
 
     function testLinkRequest() {
         $request = new LinkRequest(new Token(getToken()), 'https://hoster.com/ABCDEFG');
