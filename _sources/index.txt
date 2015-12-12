@@ -42,3 +42,5 @@ Response handlers
     :hidden:
 
     response_handlers/index
+
+.. include:: response_handlers/map.rst.inc

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; Real-Debrid API 2.1.0 documentation</title>
+  <title>Response handlers &mdash; Real-Debrid API 2.1.1 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="Real-Debrid API 2.1.0 documentation" href="../index.html"/>
+    <link rel="top" title="Real-Debrid API 2.1.1 documentation" href="../index.html"/>
         <link rel="prev" title="User" href="../available_requests/user.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                2.1.0
+                2.1.1
               </div>
             
           
@@ -89,7 +89,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../available_requests/index.html">Available requests</a></li>
 </ul>
-<ul class="simple">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Response handlers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-it">Creating it</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-it">Using it</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -120,7 +131,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+    <li>Response handlers</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -134,7 +145,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="response-handlers">
+<h1>Response handlers<a class="headerlink" href="#response-handlers" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>Response Handler</strong> is an object that will be used to handle the response of an specific request.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be default, all the API requests are using the <code class="docutils literal"><span class="pre">RealDebrid\Response\Handlers\DefaultResponseHandler</span></code> handler which is simply returning the decoded json (<code class="docutils literal"><span class="pre">Array</span></code> or <code class="docutils literal"><span class="pre">stdClass</span></code>).</p>
+</div>
+<div class="section" id="creating-it">
+<span id="id1"></span><h2>Creating it<a class="headerlink" href="#creating-it" title="Permalink to this headline">¶</a></h2>
+<p>To create your own response handler, you must:</p>
+<ul class="simple">
+<li>add your handler under the the <code class="docutils literal"><span class="pre">RealDebrid\Response\Handlers</span></code> namespace</li>
+<li>make it extends the <code class="docutils literal"><span class="pre">AbstractResponseHandler</span></code> (to access the getJson() method)</li>
+<li>make it implements the <code class="docutils literal"><span class="pre">ResponseHandler</span></code> interface, to implement the handle() method</li>
+<li>add your model object that matches the API response</li>
+</ul>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>This is an example for the <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;user-&gt;get()</span></code> method.</p>
+<p>First, create your model object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">AbstractResponse</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$username</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$email</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$points</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$locale</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$avatar</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$type</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$premium</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$expiration</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">username</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">username</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">points</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">points</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">locale</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">locale</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">avatar</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">avatar</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">premium</span> <span class="o">=</span> <span class="nv">$json</span><span class="o">-&gt;</span><span class="na">premium</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expiration</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Carbon</span><span class="p">(</span><span class="nv">$json</span><span class="o">-&gt;</span><span class="na">expiration</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create your getters and setters</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, create the response handler that will populate your new model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">RealDebrid\Response\User</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserHandler</span> <span class="k">extends</span> <span class="nx">AbstractResponseHandler</span> <span class="k">implements</span> <span class="nx">ResponseHandler</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span> <span class="nx">ClientInterface</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getJson</span><span class="p">(</span><span class="nv">$response</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-it">
+<span id="id2"></span><h2>Using it<a class="headerlink" href="#using-it" title="Permalink to this headline">¶</a></h2>
+<p>The Response Handlers must be used in the <code class="docutils literal"><span class="pre">RealDebrid\Api</span></code> classes.</p>
+<div class="section" id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This is how to use the <code class="docutils literal"><span class="pre">RealDebrid\Response\Handlers\User\UserHandler</span></code> we created previously.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">EndPoint</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserRequest</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">),</span> <span class="k">new</span> <span class="nx">UserHandler</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, the UserHandler is instantiated as the second parameter of the request() method.</p>
+<p>From now on, the <code class="docutils literal"><span class="pre">\RealDebrid\RealDebrid()-&gt;user-&gt;get()</span></code> method will return a <code class="docutils literal"><span class="pre">RealDebrid\Response\User</span></code> object rather than an stdClass.</p>
+</div>
+</div>
+</div>
+
 
            </div>
           </div>
@@ -174,7 +269,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.1.0',
+            VERSION:'2.1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
