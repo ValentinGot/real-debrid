@@ -4,11 +4,13 @@ namespace RealDebrid\Request;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use RealDebrid\Auth\Token;
 use RealDebrid\Exception\ExceptionStatusCodeFactory;
+use RealDebrid\Exception\FileNotFoundException;
 use RealDebrid\Interfaces\ResponseHandler;
 use RealDebrid\Response\Handlers\DefaultResponseHandler;
 
@@ -92,6 +94,8 @@ abstract class AbstractRequest {
             // HACK for /downloads/delete/{id} URL which is throwing an error_code 7 even if it works
             if ($e->getRequest()->getMethod() !== RequestType::DELETE && json_decode($e->getResponse()->getBody())->error_code != 7)
                 throw ExceptionStatusCodeFactory::create($e->getResponse());
+        } catch (ServerException $e) {
+            throw ExceptionStatusCodeFactory::create($e->getResponse());
         }
 
         return null;
@@ -165,8 +169,13 @@ abstract class AbstractRequest {
 
         if ($this->needsPostBody())
             $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
-        if (!empty($this->filePath))
-            $options[RequestOptions::BODY] = fopen($this->filePath, 'r');
+        if (!empty($this->filePath)) {
+            if(($handle = @fopen($this->filePath, 'r')) !== false) {
+                $options[RequestOptions::BODY] = $handle;
+            } else {
+                throw new FileNotFoundException();
+            }
+        }
 
         return $options;
     }

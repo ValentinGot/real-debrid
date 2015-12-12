@@ -20,10 +20,10 @@ class LinkRequest extends AbstractRequest {
      *
      * @param Token $token Access token
      * @param string $link The original hoster link
-     * @param string $password Password to unlock the file access hoster side
-     * @param string $remote Use Remote traffic, dedicated servers and account sharing protections lifted
+     * @param string|null $password Password to unlock the file access hoster side
+     * @param string|null $remote Use Remote traffic, dedicated servers and account sharing protections lifted
      */
-    public function __construct(Token $token, $link, $password, $remote) {
+    public function __construct(Token $token, $link, $password = null, $remote = null) {
         parent::__construct();
 
         $this->setToken($token);

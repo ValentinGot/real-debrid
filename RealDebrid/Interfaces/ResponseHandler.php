@@ -4,7 +4,6 @@ namespace RealDebrid\Interfaces;
 
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
-use RealDebrid\Auth\Token;
 
 /**
  * Interface ResponseHandler

@@ -38,7 +38,7 @@ class Hosts extends EndPoint {
     /**
      * Get all supported links Regex, useful to find supported links inside a document
      *
-     * @return \stdClass Supported links regex
+     * @return array Supported links regex
      */
     public function regex() {
         return $this->request(new RegexRequest($this->token));
@@ -47,7 +47,7 @@ class Hosts extends EndPoint {
     /**
      * Get all hoster domains supported on the service
      *
-     * @return \stdClass All hoster domains
+     * @return array All hoster domains
      */
     public function domains() {
         return $this->request(new DomainsRequest($this->token));

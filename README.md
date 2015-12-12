@@ -7,8 +7,6 @@
 
 It allows you to communicate with Real-Debrid API and do things like unrestrict your download links or download some torrent files.
 
-Documentation: https://valentingot.github.io/real-debrid
-
 ## Getting started
 
 ### Install
@@ -58,7 +56,8 @@ $realDebrid = new RealDebrid($token);
 ### Using the API
 
 Here is some examples on how to use the Real-Debrid API.
-If you want more examples, you can go to the [/examples](https://github.com/ValentinGot/real-debrid/tree/master/examples) folder.
+
+If you want more information about the available requests, please refer to the [Available requests](https://valentingot.github.io/real-debrid/available_requests) section of the documentation.
 
 ```php
 // Retrieve user information
@@ -75,94 +74,9 @@ $realDebrid->torrents->selectFiles($torrent->id);
 $torrentQueue = $realDebrid->torrents->get();
 ```
 
-## Available requests
+## Documentation
 
-Methods are grouped by namespaces (e.g. "unrestrict", "user").
-
-### Downloads
-
-All **Downloads** methods are available under ```\RealDebrid\RealDebrid()->downloads``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->downloads->get($page = 1, $limit = 50, $offset = null): Get user downloads list
-\RealDebrid\RealDebrid()->downloads->delete($id): Delete a link from downloads list
-```
-
-### Forum
-
-All **Forum** methods are available under ```\RealDebrid\RealDebrid()->forum``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->forum->forums(): Get the list of all forums with their category names
-\RealDebrid\RealDebrid()->forum->topics($id, $meta = true, $page = 1, $limit = 50, $offset = null): Get the list of all topics inside the concerned forum
-```
-
-### Hosts
-
-All **Hosts** methods are available under ```\RealDebrid\RealDebrid()->hosts``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->hosts->get(): Get supported hosts
-\RealDebrid\RealDebrid()->hosts->status(): Get status of supported hosters or not and their status on competitors
-\RealDebrid\RealDebrid()->hosts->regex(): Get all supported links Regex, useful to find supported links inside a document
-\RealDebrid\RealDebrid()->hosts->domains(): Get all hoster domains supported on the service
-```
-
-### Settings
-
-All **Settings** methods are available under ```\RealDebrid\RealDebrid()->settings``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->settings->get(): Get current user settings with possible values to update
-\RealDebrid\RealDebrid()->settings->update($name, $value): Update a user setting. UNDER DEVELOPMENT
-\RealDebrid\RealDebrid()->settings->convertPoints(): Convert fidelity points. UNDER DEVELOPMENT
-\RealDebrid\RealDebrid()->settings->disableLogs(): Disable user logs ("This action is currently irreversible, take care"). UNDER DEVELOPMENT
-\RealDebrid\RealDebrid()->settings->changePassword(): Send the verification email to change the password. UNDER DEVELOPMENT
-\RealDebrid\RealDebrid()->settings->addAvatar($path): Upload a new user avatar image
-\RealDebrid\RealDebrid()->settings->deleteAvatar(): Reset user avatar image to default
-```
-
-### Torrents
-
-All **Torrents** methods are available under ```\RealDebrid\RealDebrid()->torrents``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->torrents->get($filter = false, $page = 1, $limit = 50, $offset = null): Get user torrents list
-\RealDebrid\RealDebrid()->torrents->torrent($id): Get all information on the asked torrent
-\RealDebrid\RealDebrid()->torrents->availableHosts(): Get available hosts to upload the torrent to
-\RealDebrid\RealDebrid()->torrents->addTorrent(): Add a torrent file to download
-\RealDebrid\RealDebrid()->torrents->addMagnet($magnet, $host = null, $split = null): Add a magnet link to download
-\RealDebrid\RealDebrid()->torrents->selectFiles($id, array $files = array()): Select files of a torrent to start it
-\RealDebrid\RealDebrid()->torrents->delete($id): Delete a torrent from torrents list
-```
-
-### Traffic
-
-All **Traffic** methods are available under ```\RealDebrid\RealDebrid()->traffic``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->traffic->get(): Get traffic information for limited hosters (limits, current usage, extra packages)
-\RealDebrid\RealDebrid()->traffic->details(Carbon $start = null, Carbon $end = null): Get traffic details on each hoster used during a defined period
-```
-
-### Unrestrict
-
-All **Unrestrict** methods are available under ```\RealDebrid\RealDebrid()->unrestrict``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->unrestrict->link($link, $password = null, $remote = null): Unrestrict a hoster link and get a new unrestricted link
-\RealDebrid\RealDebrid()->unrestrict->folder($link): Unrestrict a hoster folder link and get individual links
-\RealDebrid\RealDebrid()->unrestrict->containerFile(): Decrypt a container file (RSDF, CCF, CCF3, DLC)
-\RealDebrid\RealDebrid()->unrestrict->containerLink($link): Decrypt a container file from a link
-```
-
-### User
-
-All **User** methods are available under ```\RealDebrid\RealDebrid()->user``` namespace.
-
-```php
-\RealDebrid\RealDebrid()->unrestrict->get(): Returns some information on the current user
-```
+The current version can be seen at [valentingot.github.io/real-debrid](https://valentingot.github.io/real-debrid).
 
 ## License
 
