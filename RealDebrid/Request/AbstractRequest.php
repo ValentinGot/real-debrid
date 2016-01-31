@@ -170,10 +170,10 @@ abstract class AbstractRequest {
         if ($this->needsPostBody())
             $options[RequestOptions::FORM_PARAMS] = $this->getPostBody();
         if (!empty($this->filePath)) {
-            if(($handle = @fopen($this->filePath, 'r')) !== false) {
+            if(($handle = @fopen($this->filePath, 'r+')) !== false) {
                 $options[RequestOptions::BODY] = $handle;
             } else {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException(error_get_last()['message']);
             }
         }
 

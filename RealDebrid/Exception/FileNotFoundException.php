@@ -10,5 +10,8 @@ namespace RealDebrid\Exception;
  * @author Valentin GOT
  */
 class FileNotFoundException extends \Exception {
-	protected $message = "Sorry, we  weren't able to locate this file";
+
+	public function __construct($error) {
+		parent::__construct("Sorry, we  weren't able to locate this file with reason: " . $error);
+	}
 }
