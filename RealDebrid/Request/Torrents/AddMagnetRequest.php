@@ -21,7 +21,7 @@ class AddMagnetRequest extends AbstractRequest {
      * The files must be selected with the selectFiles method to start the torrent
      * @param Token $token Access token
      * @param string $magnet Magnet link
-     * @param int|null $host Hoster domain (retrieved from /torrents/availableHosts)
+     * @param string|null $host Hoster domain (retrieved from /torrents/availableHosts)
      * @param int|null $split Split size (under max_split_size of concerned hoster retrieved from /torrents/availableHosts)
      */
     public function __construct(Token $token, $magnet, $host = null, $split = null) {
